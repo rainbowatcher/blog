@@ -1,0 +1,27 @@
+.DS_Store
+.vite-ssg-dist
+.vite-ssg-temp
+*.local
+
+.idea/
+*.log
+.vscode/extensions.json
+
+# vuepress temp file
+.cache
+.temp
+
+# node
+node_modules
+
+# build
+dist-ssr
+dist
+lib/
+*.tsbuildinfo
+*.code-workspace
+
+# secret
+.vercel
+.env
+algolia.js

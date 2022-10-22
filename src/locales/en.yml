@@ -1,0 +1,12 @@
+button:
+  about: About
+  back: Back
+  go: GO
+  home: Home
+  blog: Blog
+  archives: Archives
+  tag: Tag
+  note: note
+  toggle_dark: Toggle dark mode
+  toggle_langs: Change languages
+not-found: Not found

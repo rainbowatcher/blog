@@ -1,0 +1,30 @@
+@import "../variables.scss";
+
+html.dark {
+  --c-border: #{$zinc800};
+  --c-bg: #{rgba($zinc800, .6)};
+  --c-bg2: #{$zinc900};
+}
+
+// container
+html.dark{
+  --c-container-info-border: #{$green900};
+  --c-container-info-bg: #{rgba($green900, .4)};
+  --c-container-info-text: #{$green400};
+
+  --c-container-warning-border: #{$orange800};
+  --c-container-warning-bg: #{rgba($orange800, .4)};
+  --c-container-warning-text: #{$orange400};
+
+  --c-container-tip-border: #{$sky800};
+  --c-container-tip-bg: #{rgba($sky800, .4)};
+  --c-container-tip-text: #{$sky400};
+
+  --c-container-danger-border: #{$red800};
+  --c-container-danger-bg: #{rgba($red800, .4)};
+  --c-container-danger-text: #{$red400};
+
+  --c-container-details-border: #{$zinc800};
+  --c-container-details-bg: #{rgba($zinc800, .4)};
+  --c-container-details-text: #{$zinc400};
+}

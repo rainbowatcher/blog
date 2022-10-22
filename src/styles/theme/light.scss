@@ -1,0 +1,30 @@
+@import '../variables.scss';
+
+
+:root {
+  --c-border: #{$zinc200};
+  --c-bg: #{$zinc50};
+  --c-bg2: #{$zinc100};
+}
+// container
+:root {
+  --c-container-info-border: #{$green300};
+  --c-container-info-bg: #{$green50};
+  --c-container-info-text: #{$green900};
+
+  --c-container-warning-border: #{$orange300};
+  --c-container-warning-bg: #{$orange50};
+  --c-container-warning-text: #{$orange900};
+
+  --c-container-tip-border: #{$sky300};
+  --c-container-tip-bg: #{$sky50};
+  --c-container-tip-text: #{$sky900};
+
+  --c-container-danger-border: #{$red300};
+  --c-container-danger-bg: #{$red50};
+  --c-container-danger-text: #{$red900};
+
+  --c-container-details-border: #{$zinc300};
+  --c-container-details-bg: #{$zinc50};
+  --c-container-details-text: #{$zinc900};
+}
