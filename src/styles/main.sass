@@ -1,79 +1,71 @@
-@import "./variables.scss";
+@import "./variables"
 
 html,
 body,
-#app {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-}
+#app
+  height: 100%
+  margin: 0
+  padding: 0
+  transition: background-color 0.5s
 
-html.dark {
-  background: #121212;
-  color-scheme: dark;
-  color: #d1d5db;
-}
+html.dark
+  background: #262626
+  color-scheme: dark
+  
+  color: #d1d5db
 
-a:hover {
-  color: #7dd3fc;
-}
+a:hover
+  color: #7dd3fc
 
-#nprogress {
-  pointer-events: none;
-}
+#nprogress
+  pointer-events: none
 
-#nprogress .bar {
-  background: rgb(13, 148, 136);
-  opacity: 0.75;
-  position: fixed;
-  z-index: 1031;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 2px;
-}
+
+  & .bar
+    background: rgb(13, 148, 136)
+    opacity: 0.75
+    position: fixed
+    z-index: 1031
+    top: 0
+    left: 0
+    width: 100%
+    height: 2px
 
 *,
 ::before,
-::after {
-  box-sizing: border-box;
-}
+::after
+  box-sizing: border-box
 
-html {
-  line-height: 1.4;
-  font-size: 16px;
-  -webkit-text-size-adjust: 100%;
-}
+html
+  line-height: 1.4
+  font-size: 16px
+  -webkit-text-size-adjust: 100%
 
-html.dark {
-  color-scheme: dark;
-}
+html.dark
+  color-scheme: dark
 
-body {
-  margin: 0;
-  width: 100%;
-  min-width: 320px;
-  min-height: 100vh;
+body
+  margin: 0
+  width: 100%
+  min-width: 320px
+  min-height: 100vh
   // line-height: 24px;
   // font-size: 16px;
   // font-weight: 400;
   // color: $vp-c-text-1;
   // background-color: $vp-c-bg;
-  direction: ltr;
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+  direction: ltr
+  font-synthesis: none
+  text-rendering: optimizeLegibility
+  -webkit-font-smoothing: antialiased
+  -moz-osx-font-smoothing: grayscale
 
-p {
-  margin: 0;
-}
+p
+  margin: 0
 
 strong,
-b {
-  font-weight: 600;
-}
+b
+  font-weight: 600
 
 /**
  * Avoid 300ms click delay on touch devices that support the `touch-action`
@@ -98,9 +90,8 @@ input,
 label,
 select,
 summary,
-textarea {
-  touch-action: manipulation;
-}
+textarea
+  touch-action: manipulation
 
 // a {
 //   color: inherit;
