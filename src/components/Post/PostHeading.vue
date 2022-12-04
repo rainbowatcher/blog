@@ -7,21 +7,24 @@ const { title, subtitle, date, tags, headerMask, headerImage }: Frontmatter = fr
 const bgImg = `url(${decodeURIComponent(headerImage!)})`
 const UNTITLED_WARN = "需要在设置 Frontmatter 中设置标题"
 const dynamicHeaderMask = ref<string>()
-
-const htmlTag = document.body.parentElement
-const mutationObserver = new MutationObserver(callback)
+const htmlTag = ref<HTMLElement | null>(null)
+const observer = shallowRef<MutationObserver>()
 function callback(_mutations: MutationRecord[], _observer: MutationObserver) {
-  const isDark = htmlTag?.classList.contains("dark")
+  const isDark = htmlTag.value?.classList.contains("dark")
   if (isDark) {
     dynamicHeaderMask.value = Color(headerMask).opaquer(0.3).toString()
   } else {
     dynamicHeaderMask.value = headerMask
   }
 }
-mutationObserver.observe(htmlTag!, { attributes: true })
+onMounted(() => {
+  observer.value = new MutationObserver(callback)
+  htmlTag.value = document.body.parentElement
+  observer.value.observe(htmlTag.value!, { attributes: true })
+})
 
 onUnmounted(() => {
-  mutationObserver.disconnect()
+  observer.value?.disconnect()
 })
 </script>
 

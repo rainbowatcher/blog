@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-const { y, isScrolling, arrivedState, directions } = useScroll(window)
 const header = ref<HTMLElement | null>(null)
 const unwatchList: Function[] = []
 const headerAbs = ref(true)
@@ -9,6 +8,7 @@ const toggleAbs = useToggle(headerAbs)
 const headerHide = computed(() => !headerFixedVisible.value && !headerAbs.value)
 
 onMounted(() => {
+  const { y, isScrolling, arrivedState, directions } = useScroll(window)
   const headerHeight = header.value!.scrollHeight
   const unwatchReachTop = watch(() => [isScrolling.value, directions.bottom], () => {
     if (arrivedState.top) {

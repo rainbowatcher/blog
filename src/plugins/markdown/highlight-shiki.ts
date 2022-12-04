@@ -49,7 +49,6 @@ export async function highlight(
   return (str: string, lang: string, attrs: string) => {
     const loadedLangs = highlighter.getLoadedLanguages()
     if (!loadedLangs.includes(lang as Lang)) {
-      console.log(lang as Lang)
       lang = "text"
     }
     const vPre = vueRE.test(lang) ? "" : "v-pre"

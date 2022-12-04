@@ -5,7 +5,6 @@ const { nav } = useConfig()
 const toggleLocales = () => {
   const locales = availableLocales
   locale.value = locales[(locales.indexOf(locale.value) + 1) % locales.length]
-  // window.refresh
 }
 </script>
 
@@ -20,7 +19,7 @@ const toggleLocales = () => {
     <a class="icon-btn" :title="t('button.toggle_langs')" @click="toggleLocales()">
       <div i-carbon-ibm-watson-language-translator />
     </a>
-    <a class="icon-btn" rel="noreferrer" href="https://github.com/antfu/vitesse" target="_blank" title="GitHub">
+    <a class="icon-btn" rel="noreferrer" href="https://github.com/rainbowatcher/blog" target="_blank" title="GitHub">
       <div i-carbon-logo-github />
     </a>
   </nav>
