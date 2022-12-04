@@ -1,25 +1,27 @@
 @import "./variables"
 
+:root
+  background: $neutral200
+  color: black
+
+html.dark
+  background: mix($zinc800, $slate800, $weight: 50%) 
+  color-scheme: dark
+  color: #d1d5db
+
 html,
 body,
 #app
   height: 100%
   margin: 0
   padding: 0
-  transition: background-color 0.5s
-
-html.dark
-  background: #262626
-  color-scheme: dark
-  
-  color: #d1d5db
+  transition: background-color 0.25s
 
 a:hover
-  color: #7dd3fc
+  color: $brandColor
 
 #nprogress
   pointer-events: none
-
 
   & .bar
     background: rgb(13, 148, 136)
@@ -39,7 +41,12 @@ a:hover
 html
   line-height: 1.4
   font-size: 16px
+  // https://developer.mozilla.org/zh-CN/docs/Web/CSS/font-smooth
+  @apply subpixel-antialiased
+  // text-size-auto
   -webkit-text-size-adjust: 100%
+  -moz-text-size-adjust: 100%
+  text-size-adjust: 100%
 
 html.dark
   color-scheme: dark
@@ -54,6 +61,7 @@ body
   // font-weight: 400;
   // color: $vp-c-text-1;
   // background-color: $vp-c-bg;
+  font-family: var(--sika-code-font), system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
   direction: ltr
   font-synthesis: none
   text-rendering: optimizeLegibility
@@ -93,6 +101,10 @@ summary,
 textarea
   touch-action: manipulation
 
+h1
+  letter-spacing: -0.02em
+  line-height: 40px
+  font-size: 28px
 // a {
 //   color: inherit;
 //   text-decoration: inherit;

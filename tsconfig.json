@@ -3,14 +3,16 @@
     "baseUrl": ".",
     "module": "ESNext",
     "target": "ESNext",
-    "lib": ["DOM", "ESNext"],
+    "lib": [
+      "DOM",
+      "ESNext"
+    ],
     "strict": true,
     "esModuleInterop": true,
     "jsx": "preserve",
     "skipLibCheck": true,
     "moduleResolution": "node",
     "resolveJsonModule": true,
-    "noUnusedLocals": true,
     "strictNullChecks": true,
     "allowJs": true,
     "forceConsistentCasingInFileNames": true,
@@ -19,12 +21,23 @@
       "vue/ref-macros",
       "vite-plugin-pages/client",
       "vite-plugin-vue-component-preview/client",
-      "vite-plugin-pwa/client"
+      "katex"
     ],
     "paths": {
-      "~/*": ["src/*"]
-    },
-    
+      "~/*": [
+        "src/*"
+      ],
+      "markdown-it-footnote": [
+        "./node_modules/@akiravoid/markdown-it-footnote"
+      ],
+      "markdown-it-mark": [
+        "./node_modules/@akiravoid/markdown-it-mark"
+      ]
+    }
   },
-  "exclude": ["dist", "node_modules", "markdown-it-highlight-lines"]
+  "exclude": [
+    "dist",
+    "node_modules",
+    "markdown-it-highlight-lines"
+  ]
 }

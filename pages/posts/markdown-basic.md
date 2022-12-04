@@ -285,11 +285,3 @@ this block is closed with 5 markers below
 > 这是一个引用
 >
 > > 另一个引用
-
-```js {4}
-const foo = () => {
-  setTimeout(() => {
-    console.log('hello')
-  }, 400)
-}
-```

@@ -1,5 +1,5 @@
-import { type ViteSSGContext } from 'vite-ssg'
-import type { UseHeadInput } from '@vueuse/head'
+import { type ViteSSGContext } from "vite-ssg"
+import type { UseHeadInput } from "@vueuse/head"
 
 export type UserModule = (ctx: ViteSSGContext) => void
 
@@ -14,10 +14,16 @@ export interface SiteData<ThemeConfig = any> {
 }
 
 export interface Frontmatter {
+  layout: "post" | "home" | "Post" | "Home"
+  permalinkPattern: string
+  // TODO remove
+  useHeaderImage: boolean
   title: string
+  subtitle: string
   excerpt: string
   date: string | Date
   headerImage: string
   headerMask: string
+  tags: string[]
   [key: string]: unknown
 }

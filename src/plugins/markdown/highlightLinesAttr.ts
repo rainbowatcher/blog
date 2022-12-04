@@ -2,11 +2,11 @@
 // Now this plugin is only used to normalize line attrs.
 // The else part of line highlights logic is in './highlight.ts'.
 
-import type MarkdownIt from 'markdown-it'
+import type MarkdownIt from "markdown-it"
 
 const RE = /{([\d,-]+)}/
 
-export const highlightLinePlugin = (md: MarkdownIt) => {
+export const highlightLineAttr = (md: MarkdownIt) => {
   const fence = md.renderer.rules.fence!
   md.renderer.rules.fence = (...args) => {
     const [tokens, idx] = args
@@ -25,7 +25,7 @@ export const highlightLinePlugin = (md: MarkdownIt) => {
       if (!rawInfo || !RE.test(rawInfo))
         return fence(...args)
 
-      const langName = rawInfo.replace(RE, '').trim()
+      const langName = rawInfo.replace(RE, "").trim()
 
       // ensure the next plugin get the correct lang
       token.info = langName

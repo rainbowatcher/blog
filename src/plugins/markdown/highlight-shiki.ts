@@ -1,6 +1,6 @@
-import type { HtmlRendererOptions, IThemeRegistration } from "shiki"
+// Modified from: https://github.com/vuejs/vitepress/blob/main/src/node/markdown/plugins/highlight.ts
+import type { HtmlRendererOptions, IThemeRegistration, Lang } from "shiki"
 import { getHighlighter } from "shiki"
-import type { ThemeOptions } from "../markdown"
 
 /**
  * 2 steps:
@@ -34,7 +34,7 @@ const attrsToLines = (attrs: string): HtmlRendererOptions["lineOptions"] => {
 }
 
 export async function highlight(
-  theme: ThemeOptions = "material-palenight",
+  theme: IThemeRegistration | { dark: IThemeRegistration; light: IThemeRegistration } = "material-palenight",
 ): Promise<(str: string, lang: string, attrs: string) => string> {
   const hasSingleTheme = typeof theme === "string" || "name" in theme
   const getThemeName = (themeValue: IThemeRegistration) =>
@@ -47,6 +47,11 @@ export async function highlight(
   const vueRE = /-vue$/
 
   return (str: string, lang: string, attrs: string) => {
+    const loadedLangs = highlighter.getLoadedLanguages()
+    if (!loadedLangs.includes(lang as Lang)) {
+      console.log(lang as Lang)
+      lang = "text"
+    }
     const vPre = vueRE.test(lang) ? "" : "v-pre"
     lang = lang.replace(vueRE, "").toLowerCase()
 
@@ -60,11 +65,11 @@ export async function highlight(
 
     const dark = highlighter
       .codeToHtml(str, { lang, lineOptions, theme: getThemeName(theme.dark) })
-      .replace(preRE, `<pre ${vPre} class="vp-code-dark">`)
+      .replace(preRE, `<pre ${vPre} class="code-dark">`)
 
     const light = highlighter
       .codeToHtml(str, { lang, lineOptions, theme: getThemeName(theme.light) })
-      .replace(preRE, `<pre ${vPre} class="vp-code-light">`)
+      .replace(preRE, `<pre ${vPre} class="code-light">`)
 
     return dark + light
   }

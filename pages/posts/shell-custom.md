@@ -201,7 +201,7 @@ colorscheme onedark
 
   为 zsh 提供实时自动补全功能
 
-  ![autocomplete](../../docs/.vuepress/public/img/2022/shell-custom/autocomplete.gif)
+  ![autocomplete](/img/2022/shell-custom/autocomplete.gif)
 
 - zsh-autosuggestions
 
@@ -231,7 +231,7 @@ colorscheme onedark
 
 ## 最终效果演示
 
-![demo](../../docs/.vuepress/public/img/2022/shell-custom/demo.gif)
+![demo](/img/2022/shell-custom/demo.gif)
 
 <style>
   img {

@@ -2,42 +2,55 @@
 
 html.dark
   --sika-brand-color: #{$sky600}
+  --sika-mark-bg-color: #{$yellow600}
+  --sika-mark-color: #{$neutral900}
 
-  --sika-table-header-color: #{$stone900}
-  --sika-table-border-color: #{$neutral800}
-  --sika-table-bg-color1: #{rgba($neutral800, .6)}
-  --sika-table-bg-color2: #{$neutral900}
+  // table
+  --sika-table-header-bg-color: #{$neutral900}
+  --sika-table-border-color: #{lighten($neutral900, 2)}
+  --sika-table-row-bg-color1: #{$neutral900}
+  --sika-table-row-bg-color2: #{mix($neutral800, $gray800, 60%)}
 
+  // code-block
   --sika-code-block-bg-color1: #{$neutral700}
   --sika-code-block-bg-color2: #{$neutral800}
-  --sika-code-block-bg-color2: #{$neutral900}
+  --sika-code-block-bg-color3: #{$neutral900}
+  --sika-code-block-bg-color4: #{mix($zinc800, $slate800, 50%)}
+
+  --sika-code-block-border-color: rgba(255, 255, 255, 0.08)
+  --sika-code-block-shadow-color1: rgba(0, 0, 0, 0.1)
+  --sika-code-block-shadow-color2: rgba(0, 0, 0, 0.2)
 
   --sika-code-highlight-color: #{rgba($black, .8)}
+
+  --sika-code-lang-color: #{$white}
 
   // button
   --sika-button-bg-color1: #{$neutral700}
   --sika-button-bg-color2: #{$neutral800}
   --sika-button-bg-color3: #{$neutral900}
-  --sika-button-bg-hover-color: #{rgba($neutral800, .6)}
+  --sika-button-bg-hover-color: #{rgba($neutral700, .4)}
 
-// container
-html.dark
-  --c-container-info-border: #{$green900}
-  --c-container-info-bg: #{rgba($green900, .4)}
-  --c-container-info-text: #{$green400}
+  --sika-line-numbers-text-color: #{$neutral500}
+  --sika-line-numbers-bg-color: #{mix($neutral800, $slate700, 60%)}
 
-  --c-container-warning-border: #{$orange800}
-  --c-container-warning-bg: #{rgba($orange800, .4)}
-  --c-container-warning-text: #{$orange400}
+  // container
+  --sika-container-info-border: #{$green900}
+  --sika-container-info-bg: #{rgba($green900, .4)}
+  --sika-container-info-text: #{$green400}
 
-  --c-container-tip-border: #{$sky800}
-  --c-container-tip-bg: #{rgba($sky800, .4)}
-  --c-container-tip-text: #{$sky400}
+  --sika-container-warning-border: #{$orange800}
+  --sika-container-warning-bg: #{rgba($orange800, .4)}
+  --sika-container-warning-text: #{$orange400}
 
-  --c-container-danger-border: #{$red800}
-  --c-container-danger-bg: #{rgba($red800, .4)}
-  --c-container-danger-text: #{$red400}
+  --sika-container-tip-border: #{$sky800}
+  --sika-container-tip-bg: #{rgba($sky800, .4)}
+  --sika-container-tip-text: #{$sky400}
 
-  --c-container-details-border: #{$neutral800}
-  --c-container-details-bg: #{rgba($neutral800, .4)}
-  --c-container-details-text: #{$neutral400}
+  --sika-container-danger-border: #{$red800}
+  --sika-container-danger-bg: #{rgba($red800, .4)}
+  --sika-container-danger-text: #{$red400}
+
+  --sika-container-details-border: #{$neutral800}
+  --sika-container-details-bg: #{rgba($neutral800, .4)}
+  --sika-container-details-text: #{$neutral400}

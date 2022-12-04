@@ -10,17 +10,17 @@ const toggleLocales = () => {
 </script>
 
 <template>
-  <nav text-base nav-item lt-md:display-none bg="backdrop-filter">
-    <RouterLink v-for="item in nav" :key="item.link" class="icon-btn mx-2" :to="item.link" :title="t(item.text)">
-      <p v-t="item.text" />
+  <nav text-base site-nav lt-md:display-none gap4>
+    <RouterLink v-for="item in nav" :key="item.link" :to="item.link" :title="t(item.text)">
+      <span v-t="item.text" menu-item />
     </RouterLink>
-    <button class="icon-btn mx-2 !outline-none" :title="t('button.toggle_dark')" @click="toggleDark()">
+    <button class="icon-btn" :title="t('button.toggle_dark')" @click="toggleDark()">
       <div i="carbon-sun dark:carbon-moon" />
     </button>
-    <a class="icon-btn mx-2" :title="t('button.toggle_langs')" @click="toggleLocales()">
+    <a class="icon-btn" :title="t('button.toggle_langs')" @click="toggleLocales()">
       <div i-carbon-ibm-watson-language-translator />
     </a>
-    <a class="icon-btn mx-2" rel="noreferrer" href="https://github.com/antfu/vitesse" target="_blank" title="GitHub">
+    <a class="icon-btn" rel="noreferrer" href="https://github.com/antfu/vitesse" target="_blank" title="GitHub">
       <div i-carbon-logo-github />
     </a>
   </nav>

@@ -1,5 +1,9 @@
 ---
 title: Vitepress 源码解析
+subtitle: 源码解析
+date: 2022-11-30
+headerMask: rgba(0, 0, 0, .6)
+headerImage: /img/ssg-tools.jpg
 ---
 
 测试摘要
@@ -19,10 +23,10 @@ SSG: 静态内容生成
 
 ```ts
 // src/node/cli.ts
-import c from 'picocolors' // 控制台颜色库
-import minimist from 'minimist' // 命令行参数解析库
-import { version } from '../../package.json'
-import { build, createServer, serve } from '.' // 从index.ts中导入
+import c from "picocolors" // 控制台颜色库
+import minimist from "minimist" // 命令行参数解析库
+import { version } from "../../package.json"
+import { build, createServer, serve } from "." // 从index.ts中导入
 
 const argv: any = minimist(process.argv.slice(2))
 
@@ -33,7 +37,7 @@ const root = argv._[command ? 1 : 0]
 if (root)
   argv.root = root
 
-if (!command || command === 'dev') {
+if (!command || command === "dev") {
   const createDevServer = async () => {
     // root: 项目根目录 通常为docs; argv: 命令函参数; recreateServer: 当服务失败时重建的回调
     const server = await createServer(root, argv, async () => {
@@ -45,23 +49,20 @@ if (!command || command === 'dev') {
     server.printUrls()
   }
   createDevServer().catch((err) => {
-    console.error(c.red('failed to start server. error:\n'), err)
+    console.error(c.red("failed to start server. error:\n"), err)
     process.exit(1)
   })
-}
-else if (command === 'build') {
+} else if (command === "build") {
   build(root, argv).catch((err) => {
-    console.error(c.red('build error:\n'), err)
+    console.error(c.red("build error:\n"), err)
     process.exit(1)
   })
-}
-else if (command === 'serve') {
+} else if (command === "serve") {
   serve(argv).catch((err) => {
-    console.error(c.red('failed to start server. error:\n'), err)
+    console.error(c.red("failed to start server. error:\n"), err)
     process.exit(1)
   })
-}
-else {
+} else {
   console.log(c.red(`unknown command "${command}".`))
   process.exit(1)
 }
@@ -85,7 +86,7 @@ export async function createServer(
     delete serverOptions.base
   }
 
-  dns.setDefaultResultOrder('verbatim')
+  dns.setDefaultResultOrder("verbatim")
 
   return createViteServer({
     root: config.srcDir,
@@ -105,8 +106,8 @@ export async function createServer(
 // src/node/config.ts
 async function resolveConfig(
   root = process.cwd(), // 若执行vitepress命令是没有指定目录，则使用项目根路径
-  command = 'serve',
-  mode = 'development'
+  command = "serve",
+  mode = "development"
 ) {
   // 1. 读取用户配置文件
   const [userConfig, configPath, configDeps] = await resolveUserConfig(
@@ -116,18 +117,18 @@ async function resolveConfig(
   )
   // 2. 处理站点数据
   const site = await resolveSiteData(root, userConfig)
-  const srcDir = path$s.resolve(root, userConfig.srcDir || '.')
+  const srcDir = path$s.resolve(root, userConfig.srcDir || ".")
   const outDir = userConfig.outDir
     ? path$s.resolve(root, userConfig.outDir)
-    : resolve(root, 'dist')
-  const userThemeDir = resolve(root, 'theme')
+    : resolve(root, "dist")
+  const userThemeDir = resolve(root, "theme")
   const themeDir = (await fs$c.pathExists(userThemeDir))
     ? userThemeDir
     : DEFAULT_THEME_PATH
   const pages = (
-    await out(['**.md'], {
+    await out(["**.md"], {
       cwd: srcDir,
-      ignore: ['**/node_modules', ...(userConfig.srcExclude || [])],
+      ignore: ["**/node_modules", ...(userConfig.srcExclude || [])],
     })
   ).sort()
   const config = {
@@ -139,7 +140,7 @@ async function resolveConfig(
     configPath,
     configDeps,
     outDir,
-    tempDir: resolve(root, '.temp'),
+    tempDir: resolve(root, ".temp"),
     markdown: userConfig.markdown,
     lastUpdated: userConfig.lastUpdated,
     vue: userConfig.vue,
@@ -147,7 +148,7 @@ async function resolveConfig(
     shouldPreload: userConfig.shouldPreload,
     mpa: !!userConfig.mpa,
     ignoreDeadLinks: userConfig.ignoreDeadLinks,
-    cleanUrls: userConfig.cleanUrls || 'disabled',
+    cleanUrls: userConfig.cleanUrls || "disabled",
     buildEnd: userConfig.buildEnd,
     transformHead: userConfig.transformHead,
     transformHtml: userConfig.transformHtml,
@@ -155,10 +156,10 @@ async function resolveConfig(
   return config
 }
 
-const supportedConfigExtensions = ['js', 'ts', 'cjs', 'mjs', 'cts', 'mts']
+const supportedConfigExtensions = ["js", "ts", "cjs", "mjs", "cts", "mts"]
 async function resolveUserConfig(
   root: string,
-  command: 'serve' | 'build',
+  command: "serve" | "build",
   mode: string
 ): Promise<[UserConfig, string | undefined, string[]]> {
   // 1.1 推测配置文件路径
@@ -169,9 +170,8 @@ async function resolveUserConfig(
   let userConfig: RawConfigExports = {}
   let configDeps: string[] = []
   if (!configPath) {
-    debug('no config file found.')
-  }
-  else {
+    debug("no config file found.")
+  } else {
     // 读取配置文件和配置文件依赖项
     const configExports = await loadConfigFromFile(
       // https://vitejs.dev/guide/api-javascript.html#loadconfigfromfile
@@ -193,7 +193,7 @@ async function resolveUserConfig(
 async function resolveConfigExtends(
   config: RawConfigExports
 ): Promise<UserConfig> {
-  const resolved = await (typeof config === 'function' ? config() : config)
+  const resolved = await (typeof config === "function" ? config() : config)
   if (resolved.extends) {
     const base = await resolveConfigExtends(resolved.extends)
     return mergeConfig(base, resolved)
@@ -214,7 +214,7 @@ function mergeConfig(a: UserConfig, b: UserConfig, isRoot = true) {
       continue
     }
     if (isObject(existing) && isObject(value)) {
-      if (isRoot && key === 'vite')
+      if (isRoot && key === "vite")
         merged[key] = mergeViteConfig(existing, value)
       else merged[key] = mergeConfig(existing, value, false)
 

@@ -9,9 +9,6 @@
 // .prose img {
 //   width: 100%;
 // }
-:root
-  --sika-line-numbers-width: 1.25rem
-
 html
   &.dark
     .code-light
@@ -83,6 +80,9 @@ html
   em
     font-style: italic
 
+  mark
+    background-color: var(--sika-mark-bg-color)
+    color: var(--sika-mark-color)
   // table
   // --------------------------------------------------------------------------
   table
@@ -94,22 +94,40 @@ html
 
     td,
     th
+      border-radius: 5px
       padding: .5rem .8rem
       border: 1px solid var(--sika-table-border-color)
 
     tr
-      background-color: var(--sika-table-bg-color1)
-      border-top: 1px solid var(--sika-table-border-color)
+      background-color: var(--sika-table-row-bg-color1)
       transition: background-color 0.5s
+     
+
 
     tr:nth-child(2n)
-      background-color: var(--sika-table-bg-color2)
+      background-color: var(--sika-table-row-bg-color2)
+      // background-size: 5px 5px
+      // background-image: radial-gradient(var(--sika-code-block-bg-color4) 1px,var(--sika-code-block-bg-color3) 1px)
+      // background-repeat: repeat
 
     th
+      width: -moz-fit-content
+      width: fit-content
       font-size: 16px
       font-weight: 600
-      background-color: var(--sika-table-header-color)
+      // background-size: 5px 5px
+      // background-image: radial-gradient(var(--sika-line-numbers-bg-color) 1px,var(--sika-code-block-bg-color3) 1px)
+      // background-repeat: repeat
+      background-color: var(--sika-table-row-bg-color1)
       transition: background-color 0.5s
+
+    // th:last-child
+      // width: 100%
+      
+  hr
+    margin: 16px 0
+    border: none
+    border-top: 1px solid var(--sika-table-border-color)
 
   // header anchor
   .header-anchor
@@ -141,29 +159,35 @@ html
   // code block
   // --------------------------------------------------------------------------
   div[class*=language-]
-    transition: background-color 0.5s
+    background-size: 5px 5px
+    background-image: radial-gradient(var(--sika-code-block-bg-color4) 1px,var(--sika-code-block-bg-color3) 1px)
+    background-repeat: repeat
+    transition: background-color 0.25s
     position: relative
-    background: var(--sika-code-block-bg-color2)
+    box-shadow: 0px 3px 6px var(--sika-code-block-shadow-color1), 0px 8px 15px var(--sika-code-block-shadow-color2), 0 0 0 1px var(--sika-code-block-border-color)
+    // background: var(--sika-code-block-bg-color3)
     z-index: 1
     margin: 0
     overflow-x: auto
-    font-family: var(--sika-code-font-family)
-    font-size: var(--sika-code-font-size)
-    line-height: var(--sika-code-line-hight)
+    // outline: 1px solid var(--sika-code-block-border-color)
+
+    code
+      font-family: var(--sika-code-font-mono)
+      font-size: var(--sika-code-font-size)
+      font-weight: 400
+      line-height: var(--sika-code-line-hight)
 
     @media (min-width: 640px)
-      border-radius: 8px
+      border-radius: 5px
       margin: 16px 0
 
     @media (max-width: 639px)
-      border-radius: 8px 0 0 8px
+      border-radius: 5px 0 0 5px
 
     pre
-      // position: relative
       z-index: 1
       margin: 0
-      padding: 1rem var(--sika-line-numbers-width)
-      // background: transparent
+      padding: 1rem 0
       overflow-x: auto
 
     pre,
@@ -183,19 +207,7 @@ html
 
     // line numbers
     &.line-numbers-mode
-      padding-left: calc(var(--sika-line-numbers-width) - 1rem)
-
-    &.line-numbers-mode::after
-      content: ""
-      position: absolute
-      top: 0
-      left: 0
-      z-index: 2
-      width: var(--sika-line-numbers-width)
-      height: 100%
-      // border-right: 1px solid var(--code-highlight-line-color)
-      border-radius: 6px 0 0 6px
-      // transition: border-color var(--color-transition)
+      padding-left: calc(var(--sika-line-numbers-width) + .5rem)
 
     > .line-numbers-wrapper
       position: absolute
@@ -204,18 +216,24 @@ html
       bottom: 0
       left: 0
       z-index: 3
-      border-right: 1px solid var(--sika-table-border-color)
-      padding-top: var(--sika-line-numbers-width)
+      // border-right: 1px solid var(--sika-table-border-color)
+      background-color: var(--sika-line-numbers-bg-color)
+      // background-color: var(--sika-code-block-bg-color2)
+      padding-top: 1rem
+      padding-right: .5rem
       width: var(--sika-line-numbers-width)
-      text-align: center
-      font-family: var(--sika-code-font-family)
+      text-align: right
+      font-family: var(--sika-code-font-mono)
       font-size: var(--sika-code-font-size)
       line-height: var(--sika-code-line-hight)
-      // color: var(--vp-code-line-number-color);
+      -webkit-user-select: none
+      user-select: none
+      border-right: 1px solid var(--sika-code-block-bg-color1)
+      color: var(--sika-line-numbers-text-color)
       transition: border-color 0.5s, color 0.5s
 
     // highlight lines
-    .highlighted-line
+    .highlighted
       background-color: var(--sika-code-highlight-color)
       transition: background-color 0.5s
       margin: 0 calc(0px - var(--sika-line-numbers-width))
@@ -281,9 +299,31 @@ html
       z-index: 2
       font-size: 12px
       font-weight: 500
-      color: var(--vp-c-text-dark-3)
+      color: var(--sika-code-lang-color)
+      opacity: 40%
       transition: color 0.4s, opacity 0.4s
 
     &:hover > button.copy + span.lang,
     button.copy:focus + span.lang
       opacity: 0
+
+  // Lists
+  // --------------------------------------------------------------------------
+
+  ul,
+  ol
+    padding-left: 1.25rem
+    margin: 16px 0
+
+  ul
+    list-style: disc
+
+  ol
+    list-style: decimal
+
+  li + li
+    margin-top: 8px
+
+  li > ol,
+  li > ul
+    margin: 8px 0 0

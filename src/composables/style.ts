@@ -1,4 +1,4 @@
-import { isMobile } from '~/utils/device'
+import { isMobile } from "~/utils/device"
 
 const codeBlockStyles = `
 
@@ -6,7 +6,7 @@ const codeBlockStyles = `
 
 export const useDynamicStyle = () => {
   if (!isMobile()) {
-    const style = document.createElement('style')
+    const style = document.createElement("style")
     style.textContent = codeBlockStyles
     document.head.append(style)
   }

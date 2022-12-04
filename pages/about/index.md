@@ -8,7 +8,7 @@ layout: Default
 ```js
 // syntax highlighting example
 function vitesse() {
-  const foo = 'bar'
+  const foo = "bar"
   console.log(foo)
 }
 ```

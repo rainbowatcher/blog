@@ -1,7 +1,7 @@
 ---
 layout: Post
 title: ElasticSearch REST API 使用示例
-subtitle: 
+subtitle: abc
 date: 2022-08-19
 permalinkPattern: /post/:year/:month/:day/:slug/
 headerImage: /img/elasticsearch.png
@@ -200,6 +200,3 @@ PUT /index_name/_mapping
   }
 }
 ```
-
-
-

@@ -11,28 +11,17 @@ const route = useRoute()
 const content = ref<HTMLDivElement>()
 
 onMounted(() => {
-  const navigate = () => {
-    if (location.hash) {
-      const ele = document.querySelector(decodeURIComponent(location.hash))
-      // @ts-expect-error-ts-2239
-      const offset = ele?.offsetTop
-      if (offset)
-        window.scroll({ top: offset - 100, behavior: 'smooth' })
-      else ele?.scrollIntoView({ behavior: 'smooth' })
-    }
-  }
-
   const handleAnchors = (
     event: MouseEvent & { target: HTMLElement },
   ) => {
-    const link = event.target.closest('a')
+    const link = event.target.closest("a")
 
     if (
       !event.defaultPrevented
       && link
       && event.button === 0
-      && link.target !== '_blank'
-      && link.rel !== 'external'
+      && link.target !== "_blank"
+      && link.rel !== "external"
       && !link.download
       && !event.metaKey
       && !event.ctrlKey
@@ -46,37 +35,24 @@ onMounted(() => {
       event.preventDefault()
       const { pathname, hash } = url
       if (hash && (!pathname || pathname === location.pathname)) {
-        window.history.replaceState({}, '', hash)
-        navigate()
-      }
-      else {
+        window.history.replaceState({}, "", hash)
+        useScrollIntoAnchor()
+      } else {
         router.push({ path: pathname, hash })
       }
     }
   }
 
-  useEventListener(window, 'hashchange', navigate)
-  useEventListener(content.value!, 'click', handleAnchors, { passive: false })
+  useEventListener(window, "hashchange", useScrollIntoAnchor)
+  useEventListener(content.value!, "click", handleAnchors, { passive: false })
 
-  navigate()
-  setTimeout(navigate, 500)
+  useScrollIntoAnchor()
+  setTimeout(useScrollIntoAnchor, 500)
 })
 </script>
 
 <template>
-  <div v-if="frontmatter.display ?? frontmatter.title" class="prose max-w-2/3 m-auto mb-8">
-    <h1 class="mb-0">
-      {{ frontmatter.display ?? frontmatter.title }}
-    </h1>
-    <p v-if="frontmatter.date" class="opacity-50 !-mt-2">
-      {{ useDateFormat(frontmatter.date, 'YYYY-MM-DD').value }} <span v-if="frontmatter.duration">· {{
-        frontmatter.duration }}</span>
-    </p>
-    <p v-if="frontmatter.subtitle" class="opacity-50 !-mt-6 italic">
-      {{ frontmatter.subtitle }}
-    </p>
-  </div>
-  <article ref="content">
+  <article ref="content" mt-8>
     <slot />
   </article>
   <div v-if="route.path !== '/'" class="prose max-w-2/3 m-auto mt-8 mb-8">
@@ -90,7 +66,7 @@ onMounted(() => {
 </template>
 
 <style>
-.header-anchor{
+.header-anchor {
   @apply display-hide
 }
 </style>

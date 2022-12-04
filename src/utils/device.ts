@@ -1,1 +1,1 @@
-export const isMobile = () => navigator.userAgent.includes('Mobi')
+export const isMobile = () => navigator.userAgent.includes("Mobi")
