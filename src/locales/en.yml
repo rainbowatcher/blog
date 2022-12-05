@@ -5,7 +5,7 @@ button:
   home: Home
   blog: Blog
   archives: Archives
-  tag: Tag
+  tags: Tags
   note: note
   toggle_dark: Toggle dark mode
   toggle_langs: Change languages

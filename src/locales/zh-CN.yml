@@ -5,7 +5,7 @@ button:
   home: 首页
   blog: 博客
   archives: 归档
-  tag: 标签
+  tags: 标签
   note: 笔记
   toggle_dark: 切换深色模式
   toggle_langs: 切换语言

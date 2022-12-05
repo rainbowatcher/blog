@@ -36,8 +36,8 @@ export const useConfig = (): SiteConfig => ({
       link: "/archives",
     },
     {
-      text: "button.tag",
-      link: "/tag",
+      text: "button.tags",
+      link: "/tags",
     },
     {
       text: "button.note",
