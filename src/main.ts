@@ -7,6 +7,7 @@ import routes from "~pages"
 import "@unocss/reset/tailwind.css"
 import "./styles/index.sass"
 import "uno.css"
+import "katex/dist/katex.min.css"
 
 // https://github.com/antfu/vite-ssg
 export const createApp = ViteSSG(
