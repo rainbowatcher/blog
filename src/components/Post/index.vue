@@ -7,7 +7,6 @@ const { frontmatter } = defineProps({
 })
 
 const router = useRouter()
-const route = useRoute()
 const content = ref<HTMLDivElement>()
 
 onMounted(() => {
@@ -55,14 +54,6 @@ onMounted(() => {
   <article ref="content" mt-8>
     <slot />
   </article>
-  <div v-if="route.path !== '/'" class="prose max-w-2/3 m-auto mt-8 mb-8">
-    <router-link
-      :to="route.path.split('/').slice(0, -1).join('/') || '/'"
-      class="font-mono no-underline opacity-50 hover:opacity-75"
-    >
-      cd ..
-    </router-link>
-  </div>
 </template>
 
 <style>
