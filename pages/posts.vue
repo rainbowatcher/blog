@@ -5,14 +5,16 @@ const current = ref()
 <template>
   <Header />
   <PostHeading />
-  <main flex="~ row">
-    <div>left</div>
-    <div flex="1">
-      <router-view v-slot="{ Component }">
-        <component :is="Component" :ref="current" />
-      </router-view>
+  <main flex="~ row nowrap" justify-center mx-auto sm:px-6 md:px-8>
+    <div hidden md:block px-8 overflow-y-auto basis-240px>
+      left
     </div>
-    <div>right</div>
+    <router-view v-slot="{ Component }">
+      <component :is="Component" :ref="current" />
+    </router-view>
+    <div hidden lg:block px-8 overflow-y-auto basis-240px>
+      right
+    </div>
   </main>
   <div text-center>
     [post layout]

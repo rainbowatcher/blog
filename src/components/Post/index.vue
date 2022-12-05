@@ -45,13 +45,13 @@ onMounted(() => {
   useEventListener(window, "hashchange", useScrollIntoAnchor)
   useEventListener(content.value!, "click", handleAnchors, { passive: false })
 
-  useScrollIntoAnchor()
-  setTimeout(useScrollIntoAnchor, 500)
+  useScrollIntoAnchor(10)
+  // setTimeout(useScrollIntoAnchor, 500)
 })
 </script>
 
 <template>
-  <article ref="content" mt-8>
+  <article ref="content" class="md-doc sm:(mt-8 mb-8 px-8) max-w-4xl flex-1">
     <slot />
   </article>
 </template>

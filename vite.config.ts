@@ -94,8 +94,15 @@ export default defineConfig({
     // https://github.com/antfu/vite-plugin-vue-markdown
     // Don't need this? Try vitesse-lite: https://github.com/antfu/vitesse-lite
     Markdown({
+      // frontmatterPreprocess(_frontmatter, _options) {
+      //   const head = {}
+      //   return {
+      //     head,
+      //     frontmatter: _frontmatter,
+      //   }
+      // },
       wrapperComponent: "post",
-      wrapperClasses: "md-doc m-auto max-w-2/3",
+      // wrapperClasses: "md-doc mt-8 mb-8 px-8",
       headEnabled: true,
       markdownItOptions: {
         highlight: await highlight({

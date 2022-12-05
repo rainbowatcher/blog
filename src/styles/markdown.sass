@@ -157,17 +157,24 @@ html
   // code block
   // --------------------------------------------------------------------------
   div[class*=language-]
-    background-size: 5px 5px
-    background-image: radial-gradient(var(--sika-code-block-bg-color4) 1px,var(--sika-code-block-bg-color3) 1px)
-    background-repeat: repeat
     transition: background-color 0.25s
     position: relative
-    box-shadow: 0px 3px 6px var(--sika-code-block-shadow-color1), 0px 8px 15px var(--sika-code-block-shadow-color2), 0 0 0 1px var(--sika-code-block-border-color)
-    // background: var(--sika-code-block-bg-color3)
     z-index: 1
-    margin: 0
     overflow-x: auto
+    background: var(--sika-code-block-bg-color3)
+    // margin: 0
     // outline: 1px solid var(--sika-code-block-border-color)
+
+    @media (min-width: 640px) 
+      background-size: 5px 5px
+      background-image: radial-gradient(var(--sika-code-block-bg-color4) 1px,var(--sika-code-block-bg-color3) 1px)
+      background-repeat: repeat
+      box-shadow: 0px 3px 6px var(--sika-code-block-shadow-color1), 0px 8px 15px var(--sika-code-block-shadow-color2), 0 0 0 1px var(--sika-code-block-border-color)
+      border-radius: 5px
+      margin: 16px 0
+
+    // @media (max-width: 639px)
+    //   border-radius: 8px 0 0 8px
 
     code
       font-family: var(--sika-code-font-mono)
@@ -201,6 +208,7 @@ html
       padding-left: calc(var(--sika-line-numbers-width) + .5rem)
 
     > .line-numbers-wrapper
+      @apply lt-md:hidden
       position: absolute
       pointer-events: none
       top: 0
