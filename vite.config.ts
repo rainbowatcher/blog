@@ -9,7 +9,6 @@ import generateSitemap from "vite-ssg-sitemap"
 import Components from "unplugin-vue-components/vite"
 import AutoImport from "unplugin-auto-import/vite"
 import Markdown from "vite-plugin-vue-markdown"
-// import { VitePWA } from "vite-plugin-pwa"
 import VueI18n from "@intlify/vite-plugin-vue-i18n"
 import Inspect from "vite-plugin-inspect"
 import LinkAttributes from "markdown-it-link-attributes"
@@ -18,7 +17,6 @@ import anchor from "markdown-it-anchor"
 import emoji from "markdown-it-emoji"
 import footnote from "markdown-it-footnote"
 import mark from "markdown-it-mark"
-// import Shiki from "markdown-it-shiki"
 
 import {
   containerPlugin,
@@ -102,7 +100,6 @@ export default defineConfig({
       //   }
       // },
       wrapperComponent: "post",
-      // wrapperClasses: "md-doc mt-8 mb-8 px-8",
       headEnabled: true,
       markdownItOptions: {
         highlight: await highlight({
@@ -129,10 +126,6 @@ export default defineConfig({
             rel: "noopener noreferrer",
           },
         })
-          // .use(Shiki, {
-          //   light: "vitesse-light",
-          //   dark: "one-dark-pro",
-          // })
           .use(containerPlugin)
           // related: antfu/antfu.me
           .use(anchor, {
@@ -144,10 +137,6 @@ export default defineConfig({
               placement: "before",
             }),
           })
-          // .use(highlightLines)
-          // .use(imagePlugin)
-          // .use(lineNumberPlugin)
-          // .use(katexPlugin)
       },
       transforms: {
         before: (code, _id) => {
@@ -158,35 +147,6 @@ export default defineConfig({
         },
       },
     }),
-
-    // https://github.com/antfu/vite-plugin-pwa
-    // VitePWA({
-    //   registerType: "autoUpdate",
-    //   includeAssets: ["favicon.svg", "safari-pinned-tab.svg"],
-    //   manifest: {
-    //     name: "Vitesse",
-    //     short_name: "Vitesse",
-    //     theme_color: "#ffffff",
-    //     icons: [
-    //       {
-    //         src: "/pwa-192x192.png",
-    //         sizes: "192x192",
-    //         type: "image/png",
-    //       },
-    //       {
-    //         src: "/pwa-512x512.png",
-    //         sizes: "512x512",
-    //         type: "image/png",
-    //       },
-    //       {
-    //         src: "/pwa-512x512.png",
-    //         sizes: "512x512",
-    //         type: "image/png",
-    //         purpose: "any maskable",
-    //       },
-    //     ],
-    //   },
-    // }),
 
     // https://github.com/intlify/bundle-tools/tree/main/packages/vite-plugin-vue-i18n
     VueI18n({

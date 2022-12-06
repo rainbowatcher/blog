@@ -29,13 +29,7 @@ export default defineConfig({
         display: "inline-block",
       },
     }),
-    presetTypography({
-      cssExtend: {
-        ".md-doc": {
-          "max-width": "fit-content",
-        },
-      },
-    }),
+    presetTypography(),
     presetWebFonts(),
   ],
   transformers: [

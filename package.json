@@ -56,7 +56,6 @@
     "markdown-it-highlight-lines": "^1.0.2",
     "markdown-it-link-attributes": "^4.0.1",
     "markdown-it-mark": "^3.0.1",
-    "markdown-it-shiki": "^0.7.2",
     "mermaid": "^9.2.2",
     "pnpm": "^7.17.1",
     "rimraf": "^3.0.2",
