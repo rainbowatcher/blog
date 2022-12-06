@@ -18,7 +18,7 @@ html
     .code-dark
       display: none
 
-.md-doc
+.markdown-body
   word-wrap: break-word
 
   // Headings
@@ -39,13 +39,14 @@ html
     font-size: 28px
 
     @media (min-width: 768px)
+      margin: 48px 0 16px
       letter-spacing: -0.02em
       line-height: 40px
       font-size: 32px
 
   h2
     margin: 48px 0 16px
-    // padding-top: 24px;
+    // padding-top: 24px
     letter-spacing: -0.02em
     line-height: 32px
     font-size: 24px
@@ -67,9 +68,9 @@ html
 
   // Paragraph and inline elements
   // --------------------------------------------------------------------------
-  p,
-  summary
-    margin: 16px 0
+  // p,
+  // summary
+  //   margin: 16px 0
 
   // text
   a
@@ -81,6 +82,7 @@ html
   mark
     background-color: var(--sika-mark-bg-color)
     color: var(--sika-mark-color)
+
   // table
   // --------------------------------------------------------------------------
   table
@@ -92,15 +94,13 @@ html
 
     td,
     th
-      border-radius: 5px
+      // border-radius: 5px
       padding: .5rem .8rem
       border: 1px solid var(--sika-table-border-color)
 
     tr
       background-color: var(--sika-table-row-bg-color1)
       transition: background-color 0.5s
-     
-
 
     tr:nth-child(2n)
       background-color: var(--sika-table-row-bg-color2)
@@ -121,7 +121,7 @@ html
 
     // th:last-child
       // width: 100%
-      
+
   hr
     margin: 16px 0
     border: none
@@ -162,19 +162,16 @@ html
     z-index: 1
     overflow-x: auto
     background: var(--sika-code-block-bg-color3)
-    // margin: 0
-    // outline: 1px solid var(--sika-code-block-border-color)
+    margin: .8rem -1rem
+    padding: 0 1rem
 
-    @media (min-width: 640px) 
+    @media (min-width: 640px)
       background-size: 5px 5px
       background-image: radial-gradient(var(--sika-code-block-bg-color4) 1px,var(--sika-code-block-bg-color3) 1px)
       background-repeat: repeat
       box-shadow: 0px 3px 6px var(--sika-code-block-shadow-color1), 0px 8px 15px var(--sika-code-block-shadow-color2), 0 0 0 1px var(--sika-code-block-border-color)
       border-radius: 5px
       margin: 16px 0
-
-    // @media (max-width: 639px)
-    //   border-radius: 8px 0 0 8px
 
     code
       font-family: var(--sika-code-font-mono)
@@ -205,10 +202,10 @@ html
 
     // line numbers
     &.line-numbers-mode
-      padding-left: calc(var(--sika-line-numbers-width) + .5rem)
+      @media (min-width: 640px)
+        padding-left: calc(var(--sika-line-numbers-width) + .5rem)
 
     > .line-numbers-wrapper
-      @apply lt-md:hidden
       position: absolute
       pointer-events: none
       top: 0
@@ -230,6 +227,7 @@ html
       border-right: 1px solid var(--sika-code-block-bg-color1)
       color: var(--sika-line-numbers-text-color)
       transition: border-color 0.5s, color 0.5s
+      @apply lt-sm:hidden
 
     // highlight lines
     .highlighted
@@ -326,3 +324,8 @@ html
   li > ol,
   li > ul
     margin: 8px 0 0
+
+  :not(.markdown-body) > div[class*=language-]
+    border-radius: 8px
+    margin: 0
+    
