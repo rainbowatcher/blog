@@ -1,20 +1,21 @@
 <script lang="ts" setup>
 import Color from "color"
-import type { Frontmatter } from "~/types"
-const { meta: { frontmatter } } = useRoute()
+defineProps({
+  pageTitle: String,
+})
 
-const { title, subtitle, date, tags, headerMask, headerImage }: Frontmatter = frontmatter
-const bgImg = `url(${decodeURIComponent(headerImage!)})`
-const UNTITLED_WARN = "需要在设置 Frontmatter 中设置标题"
-const dynamicHeaderMask = ref<string>()
+const { meta: { frontmatter, author, updateTime } } = useRoute()
+
+const bgImg = frontmatter.headerImage ? `url(${decodeURIComponent(frontmatter.headerImage!)})` : ""
+const dynamicHeaderMask = ref<string>(frontmatter.headerMask)
 const htmlTag = ref<HTMLElement | null>(null)
 const observer = shallowRef<MutationObserver>()
 function callback(_mutations: MutationRecord[], _observer: MutationObserver) {
   const isDark = htmlTag.value?.classList.contains("dark")
-  if (isDark) {
-    dynamicHeaderMask.value = Color(headerMask).opaquer(0.3).toString()
+  if (isDark && frontmatter.headerMask) {
+    dynamicHeaderMask.value = Color(frontmatter.headerMask).opaquer(0.3).toString()
   } else {
-    dynamicHeaderMask.value = headerMask
+    dynamicHeaderMask.value = frontmatter.headerMask
   }
 }
 onMounted(() => {
@@ -29,34 +30,47 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="article-header h-27rem bg-center-cover relative">
-    <div v-if="headerMask" class="article-header-mask absolute w-full h-full z1" />
-    <div class="article-header-content relative mx-auto p-(y8rem x2.5rem) max-w-800px z22 h-full">
+  <div class="article-header h-27rem bg-center-cover relative max-w-full" :class="{ 'has-bg-image': bgImg }">
+    <div class="article-header-mask absolute w-full h-full z1 top-0" :class="{ 'has-mask': dynamicHeaderMask }" />
+    <div class="article-header-content relative mx-auto p-(y8rem x2.5rem) max-w-4xl z1 h-full">
       <div class="article-header-tags flex gap2 mb-4 text-2">
-        <span v-for="tag in tags" :key="tag" border rounded-2xl px-2 py-1>
+        <span v-for="tag in frontmatter.tags" :key="tag" class="border rounded-2xl px-2 py-1">
           {{ tag }}
         </span>
       </div>
-      <h1 class="mb-10 text-3.5rem font-bold lh-4rem">
-        {{ title ?? UNTITLED_WARN }}
+      <h1 v-if="frontmatter.title" class="article-header-title mb-10 text-3.5rem font-bold lh-4rem">
+        {{ frontmatter.title }}
       </h1>
-      <p v-if="subtitle" class="opacity-50 italic">
-        {{ subtitle }}
+      <h1 v-if="pageTitle" class="article-header-page-title mb-10 text-3.5rem font-bold lh-4rem text-center">
+        {{ pageTitle }}
+      </h1>
+      <p v-if="frontmatter.subtitle" class="article-header-subtitle opacity-50 italic">
+        {{ frontmatter.subtitle }}
       </p>
-      <div v-if="date" class="text-sm opacity-90 flex flex-row items-center lh-8">
-        <span class="i-carbon-calendar" mr-2 />
-        <p>{{ useDateFormat(date, 'YYYY-MM-DD').value }}</p>
+      <div v-if="frontmatter.layout === 'post' && author" class="article-header-meta text-sm opacity-90 flex flex-row items-center lh-8 gap2">
+        <div flex="inline" items-center gap-2 mr-4>
+          <span class="i-carbon-user" />
+          <p>{{ author }}</p>
+        </div>
+        <div flex="inline" items-center gap-2 mr-4>
+          <span class="i-carbon-calendar" />
+          <p>{{ useDateFormat(frontmatter.date, 'YYYY-MM-DD').value }}</p>
+        </div>
+        <div flex="inline" items-center gap-2 mr-4>
+          <span class="i-carbon-time" />
+          <p>{{ updateTime }}</p>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <style lang="css">
-.article-header {
+.has-bg-image {
   background-image: v-bind(bgImg);
   color: white;
 }
-.article-header-mask {
+.has-mask {
   background-color: v-bind(dynamicHeaderMask);
 }
 </style>

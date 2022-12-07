@@ -5,7 +5,7 @@
   "scripts": {
     "build": "vite-ssg build",
     "check": "pnpm exec lychee -c lychee.toml -f markdown .",
-    "clean": "rimraf src/auto-imports.d.ts src/components.d.ts dist",
+    "clean": "rimraf src/auto-imports.d.ts src/components.d.ts dist node_modules/.vite",
     "dev": "vite --port 3333",
     "lint": "eslint .",
     "preview": "serve dist",
@@ -67,7 +67,6 @@
     "unocss": "^0.47.5",
     "unplugin-auto-import": "^0.12.0",
     "unplugin-vue-components": "^0.22.11",
-    "vercel": "^28.7.2",
     "vite": "^3.2.5",
     "vite-plugin-inspect": "^0.7.9",
     "vite-plugin-pages": "^0.27.1",

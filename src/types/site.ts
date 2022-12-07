@@ -1,16 +1,12 @@
 import { type ViteSSGContext } from "vite-ssg"
 import type { UseHeadInput } from "@vueuse/head"
+import type { RouteMeta } from "vue-router"
 
 export type UserModule = (ctx: ViteSSGContext) => void
 
 export interface SiteConfig {
   head: UseHeadInput<any>
   nav: { text: string; link: string }[]
-}
-
-export interface SiteData<ThemeConfig = any> {
-  title: string
-  themeConfig: ThemeConfig
 }
 
 export interface Frontmatter {
@@ -26,4 +22,18 @@ export interface Frontmatter {
   headerMask: string
   tags: string[]
   [key: string]: unknown
+}
+
+export interface TagInfo {
+  name: string
+  // link?: string
+  pages: RouteMeta[]
+  color?: string
+}
+
+export interface MenuItem {
+  level: number
+  title: string
+  link: string
+  children?: MenuItem[]
 }

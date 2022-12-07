@@ -1,5 +1,5 @@
 ---
-layout: Post
+layout: post
 title: Mysql 基本概念介绍
 subtitle:
 date: 2022-08-15

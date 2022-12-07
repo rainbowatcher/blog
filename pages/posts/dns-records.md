@@ -1,5 +1,5 @@
 ---
-layout: Post
+layout: post
 title: 域名购买和DNS设置过程记录
 date: 2022-05-21
 permalinkPattern: /post/:year/:month/:day/:slug/

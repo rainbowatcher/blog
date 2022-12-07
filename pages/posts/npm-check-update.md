@@ -1,5 +1,5 @@
 ---
-layout: Post
+layout: post
 title: npm 包升级检测工具 ncu 介绍
 subtitle:
 date: 2022-06-08

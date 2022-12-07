@@ -20,6 +20,12 @@ declare module '*.vue' {
 
 declare module 'vue-router' {
   interface RouteMeta {
-    frontmatter: Partial<Frontmatter>
+    frontmatter: Frontmatter
+    author: string
+    email: string
+    commits: number
+    createTime: string
+    updateTime: string
+    path: string
   }
 }

@@ -61,7 +61,7 @@ export const highlightLines = (md: MarkdownIt) => {
       attrs: [["class", langName ? `language-${langName}` : ""]],
     }
     const attrs = self.renderAttrs(tmpToken as Token)
-    console.log(`<pre${attrs}><code${attrs}>${highlightedCode.trim()}</code></pre>`)
+    // console.log(`<pre${attrs}><code${attrs}>${highlightedCode.trim()}</code></pre>`)
     return `<pre${attrs}><code${attrs}>${highlightedCode.trim()}</code></pre>`
   }
 }

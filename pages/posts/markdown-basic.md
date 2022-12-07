@@ -1,5 +1,5 @@
 ---
-layout: Post
+layout: post
 title: Markdown简明语法
 subtitle: markdown语法功能测试
 headerImage: /img/markdown.png

@@ -1,5 +1,5 @@
 ---
-layout: Post
+layout: post
 title: Unix Shell 基本语法
 subtitle:
 date: 2022-09-26

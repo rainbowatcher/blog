@@ -1,5 +1,5 @@
 ---
-layout: Post
+layout: post
 title: 使用 Maven Bom 管理项目依赖
 subtitle: 
 date: 2022-07-30

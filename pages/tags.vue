@@ -1,21 +1,59 @@
 <script lang="ts" setup>
-const map = new Map<string, number>()
-useRouter().getRoutes().filter(route => route.meta.frontmatter && route.meta.frontmatter.tags)
-  .forEach((route) => {
-    const tags: string[] = route.meta.frontmatter.tags
-    tags.forEach((tag) => {
-      const num = map.get(tag) || 0
-      map.set(tag, num + 1)
-    })
-  })
+import type { TagInfo } from "~/types"
+
+const { t } = useI18n()
+
+const tags = useTags()
+const posts = usePosts()
+const currentTags = ref<TagInfo[]>([])
+const filteredPages = computed(() => {
+  if (currentTags.value.length === 0) {
+    return posts
+  }
+  return currentTags.value.flatMap(tag => tag.pages)
+})
+
+// usePageData()
+const toggleTag = (tag: TagInfo) => {
+  currentTags.value.push(tag)
+}
+
+const showAll = () => {
+  currentTags.value = []
+}
+
+// TODO
+// console.log(useRouter().getRoutes())
 </script>
 
 <template>
   <Header />
-  <PostHeading />
-  <div>
-    <span v-for="i in map" :key="i[0]" inline-block outline-white-solid outline-1 rounded-lg mr-2>
-      {{ i[0] }}
+  <PostHeading :page-title="t('button.tags')" />
+  <div max-w-4xl ma mb-8 transition>
+    <span
+      bg-blue text-black
+      inline-block cursor-pointer outline="zinc-300 dark:zinc-600 solid 1"
+      rounded-lg mr-2 px-2 mb-2 hover="bg-cyan text-zinc-800 outline-none"
+      @click="showAll"
+    >Show All</span>
+    <span
+      v-for="i in tags" :key="i.name" inline-block cursor-pointer outline="zinc-300 dark:zinc-600 solid 1"
+      rounded-lg mr-2 px-2 mb-2 hover="bg-cyan text-zinc-800 outline-none" @click="toggleTag(i)"
+    >
+      {{ i.name }}<sup>{{ i.pages.length }}</sup>
     </span>
   </div>
+  <div max-w-4xl ma>
+    <div v-for="page in filteredPages" :key="page.path" my-2 border>
+      <RouterLink :to="page.path">
+        {{ page.frontmatter.title }}
+      </RouterLink>
+      <p>{{ page.frontmatter.subtitle }}</p>
+      <p>{{ page.createTime }}</p>
+      <p>{{ page.updateTime }}</p>
+      <p>{{ page.author }}</p>
+      <p>{{ page.email }}</p>
+    </div>
+  </div>
+  <Footer />
 </template>

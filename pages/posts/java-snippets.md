@@ -1,5 +1,5 @@
 ---
-layout: Post
+layout: post
 title: Java 小技巧
 subtitle: 
 date: 2022-08-27

@@ -1,5 +1,5 @@
 ---
-layout: Post
+layout: post
 title: 冒泡排序及鸡尾酒排序算法
 date: 2022-07-17
 permalinkPattern: /post/:year/:month/:day/:slug/

@@ -1,5 +1,5 @@
 ---
-layout: Post
+layout: post
 title: 正则表达式按 Unicode 类型匹配汉字、表情、拉丁文
 subtitle:
 date: 2022-07-03

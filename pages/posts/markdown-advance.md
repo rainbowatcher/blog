@@ -1,5 +1,5 @@
 ---
-layout: Post
+layout: post
 title: Markdown进阶语法
 subtitle: markdown语法功能测试
 date: 2022-05-04

@@ -1,5 +1,5 @@
 ---
-layout: Post
+layout: post
 title: 数据仓库、数据湖、湖仓一体以及他们的区别
 date: 2022-06-25
 permalinkPattern: /post/:year/:month/:day/:slug/

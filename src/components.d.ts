@@ -10,6 +10,8 @@ declare module '@vue/runtime-core' {
     Button: typeof import('./components/Button.vue')['default']
     Card: typeof import('./components/Card.vue')['default']
     Counter: typeof import('./components/Counter.vue')['default']
+    DocAside: typeof import('./components/DocAside.vue')['default']
+    DocAsideItem: typeof import('./components/DocAsideItem.vue')['default']
     Footer: typeof import('./components/Footer.vue')['default']
     Header: typeof import('./components/Header/index.vue')['default']
     Nav: typeof import('./components/Header/Nav.vue')['default']
@@ -20,6 +22,5 @@ declare module '@vue/runtime-core' {
     README: typeof import('./components/README.md')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
-    Tags: typeof import('./components/Tags.vue')['default']
   }
 }

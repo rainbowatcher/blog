@@ -21,6 +21,5 @@ export const createApp = ViteSSG(
       }),
     ).forEach(i => i.install?.(ctx))
     ctx.app.use(Previewer)
-    // ctx.app.provide(new Symbol(data), data)
   },
 )

@@ -28,6 +28,7 @@ import {
   preWrapperPlugin,
 } from "./src/plugins/markdown"
 import { slugify } from "./src/utils"
+import { getCreateTime, getGitStat, getUpdateTime } from "./src/utils/git"
 
 export default defineConfig({
   resolve: {
@@ -50,13 +51,29 @@ export default defineConfig({
       extensions: ["vue", "md"],
       dirs: "pages",
       extendRoute(route) {
-        const path = resolve(__dirname, route.component.slice(1))
-        const md = fs.readFileSync(path, "utf-8")
-        const { data, excerpt } = matter(md, {
-          excerpt_separator: "<!-- more -->",
-        })
-        const frontmatter = { frontmatter: Object.assign(data, { excerpt }) }
-        route.meta = Object.assign(route.meta || {}, frontmatter)
+        if (route.component.endsWith(".md")) {
+          const path = resolve(__dirname, route.component.slice(1))
+          const md = fs.readFileSync(path, "utf-8")
+          const { author, email, commits } = getGitStat(path)
+          const createTime = getCreateTime(path)
+          const updateTime = getUpdateTime(path)
+
+          const { data, excerpt } = matter(md, {
+            excerpt_separator: "<!-- more -->",
+          })
+          const frontmatter = {
+            frontmatter: Object.assign(data, { excerpt }),
+            author,
+            email,
+            commits,
+            createTime,
+            updateTime,
+            path: route.path,
+          }
+          route.meta = Object.assign(route.meta || {}, frontmatter)
+        } else {
+          route.meta = { frontmatter: {} }
+        }
         return route
       },
     }),

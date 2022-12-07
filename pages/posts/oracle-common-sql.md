@@ -1,5 +1,5 @@
 ---
-layout: Post
+layout: post
 title: Oracle 常用语句
 subtitle:
 date: 2022-08-02

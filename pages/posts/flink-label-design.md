@@ -1,5 +1,5 @@
 ---
-layout: Post
+layout: post
 title: Flink 任务的程序设计和思考
 date: 2022-05-27
 permalinkPattern: /post/:year/:month/:day/:slug/

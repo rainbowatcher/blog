@@ -1,5 +1,5 @@
 ---
-layout: Post
+layout: post
 title: Shell 定制折腾记录
 subtitle:
 permalinkPattern: /post/:year/:month/:day/:slug/

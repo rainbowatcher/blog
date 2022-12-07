@@ -1,5 +1,5 @@
 ---
-layout: Post
+layout: post
 title: ElasticSearch REST API 使用示例
 subtitle: abc
 date: 2022-08-19
