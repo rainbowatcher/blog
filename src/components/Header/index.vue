@@ -52,14 +52,14 @@ onUnmounted(() => {
 
 <style lang="sass" scoped>
 .header-abs
-  @apply absolute color-white;
+  @apply absolute color-white
 
 .header-visible
-  @apply fixed top-0 bg-zinc-700/40 shadow-md backdrop-blur-md shadow-dark/40 text-white b-b-zinc900/10 b-b-1;
+  @apply fixed top-0 bg-zinc-700/40 shadow-md backdrop-blur-md shadow-dark/40 text-white b-b-zinc900/10 b-b-1
 
 .header-hide
-  @apply fixed -top-4.5rem b-b-zinc900/10 b-b-1;
+  @apply fixed -top-4.5rem b-b-zinc900/10 b-b-1
 
 h1
-  @apply text-2xl;
+  @apply text-2xl
 </style>
