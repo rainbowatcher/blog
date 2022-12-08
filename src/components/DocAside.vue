@@ -30,7 +30,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div ref="container" class="aside-outline-container hidden md:block relative text-sm mt-8 b-(l-1 zinc-400/30)" w-13rem :class="{ 'is-fixed': isFixed }">
+  <div ref="container" class="aside-outline-container hidden md:block text-sm mt-8 b-(l-1 zinc-400/30)" w-13rem :class="{ 'is-fixed': isFixed, 'is-abs': !isFixed }">
     <div ref="marker" class="outline-marker absolute top-8 -left-1px z3 opacity-0 w-1px h-6 bg-blue transition-top-250" />
     <nav aria-labelledby="doc-outline-aria-label">
       <!-- <ul>
@@ -46,8 +46,12 @@ onUnmounted(() => {
 </template>
 
 <style lang="scss">
-.is-fixed{
+.is-fixed {
   position: fixed;
   top: 74px;
+}
+
+.is-abs {
+  position: absolute;
 }
 </style>
