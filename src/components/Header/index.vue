@@ -35,8 +35,7 @@ onUnmounted(() => {
 <template>
   <header
     ref="header" flex="~ flex-1 row nowrap"
-    class="justify-between fixed w-full p-xl z-99 transition-all duration-250 b-b-transparent"
-    :class="{
+    class="justify-between fixed w-full p-xl z-99 transition-all duration-250 b-b-transparent" :class="{
       'header-abs': headerAbs,
       'header-hide': headerHide,
       'header-visible': headerFixedVisible,
@@ -51,7 +50,7 @@ onUnmounted(() => {
   </header>
 </template>
 
-<style scoped>
+<style lang="sass" scoped>
 .header-abs {
   @apply absolute color-white;
 }

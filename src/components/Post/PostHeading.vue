@@ -30,24 +30,24 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="article-header h-27rem bg-center-cover relative max-w-full" :class="{ 'has-bg-image': bgImg }">
+  <div class="article-header lt-md:h-20rem md-h-27rem bg-center-cover relative max-w-full" :class="{ 'has-bg-image': bgImg }">
     <div class="article-header-mask absolute w-full h-full z1 top-0" :class="{ 'has-mask': dynamicHeaderMask }" />
-    <div class="article-header-content relative mx-auto p-(y8rem x2.5rem) max-w-4xl z1 h-full">
+    <div class="article-header-content relative mx-auto lt-md:p-(y6rem x1.5rem) md:p-(y8rem x2.5rem) max-w-4xl z1 h-full">
       <div class="article-header-tags flex gap2 mb-4 text-2">
         <span v-for="tag in frontmatter.tags" :key="tag" class="border rounded-2xl px-2 py-1">
           {{ tag }}
         </span>
       </div>
-      <h1 v-if="frontmatter.title" class="article-header-title mb-10 text-3.5rem font-bold lh-4rem">
+      <h1 v-if="frontmatter.title" class="article-header-title lt-md:mb-4 md:mb-10 lt-md:text-2rem md:text-3.5rem font-bold lh-4rem">
         {{ frontmatter.title }}
       </h1>
-      <h1 v-if="pageTitle" class="article-header-page-title mb-10 text-3.5rem font-bold lh-4rem text-center">
+      <h1 v-if="pageTitle" class="article-header-page-title mb-4 text-3.5rem font-bold lh-4rem text-center">
         {{ pageTitle }}
       </h1>
       <p v-if="frontmatter.subtitle" class="article-header-subtitle opacity-50 italic">
         {{ frontmatter.subtitle }}
       </p>
-      <div v-if="frontmatter.layout === 'post' && author" class="article-header-meta text-sm opacity-90 flex flex-row items-center lh-8 gap2">
+      <div v-if="frontmatter.layout === 'post' && author" class="article-header-meta lt-md:(lh-6) md:(lh-8) text-sm opacity-90 items-center gap2">
         <div flex="inline" items-center gap-2 mr-4>
           <span class="i-carbon-user" />
           <p>{{ author }}</p>
@@ -58,7 +58,7 @@ onUnmounted(() => {
         </div>
         <div flex="inline" items-center gap-2 mr-4>
           <span class="i-carbon-time" />
-          <p>{{ updateTime }}</p>
+          <p>{{ useDateFormat(updateTime, 'YYYY-MM-DD').value }}</p>
         </div>
       </div>
     </div>

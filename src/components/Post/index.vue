@@ -67,7 +67,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <article ref="content" class="px-4 sm:(mt-8 mb-8 px-8) max-w-4xl w-full grow-1">
+  <article ref="content" class="px-4 md:(mt-8 mb-8 px-8) max-w-4xl w-full grow-1">
     <slot />
   </article>
 </template>

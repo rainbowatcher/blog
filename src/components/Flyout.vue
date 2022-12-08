@@ -3,5 +3,7 @@
 </script>
 
 <template>
-  hello
+  <div lg:hidden lt-md:hidden>
+    Flyout
+  </div>
 </template>
