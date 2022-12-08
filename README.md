@@ -5,10 +5,13 @@
 
 ## RoadMap
 
+- [x] Floating Page Header
+- [ ] Side Outline
+- [ ] Tags
+- [ ] Mobile Nav
+- [ ] Pagenation
 - [ ] Mermaid
 - [ ] Task list
 - [ ] Define list
 - [ ] useData
-- [ ] Pagenation
-- [ ] Tags
 - [ ] Cheatsheet
