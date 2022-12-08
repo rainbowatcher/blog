@@ -8,7 +8,7 @@
     "clean": "rimraf src/auto-imports.d.ts src/components.d.ts dist node_modules/.vite",
     "dev": "vite --port 3333",
     "lint": "eslint .",
-    "preview": "serve dist",
+    "preview": "pnpm build && serve dist",
     "test": "vitest",
     "test:unit": "vitest",
     "typecheck": "vue-tsc --noEmit",
