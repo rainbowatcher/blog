@@ -9,6 +9,8 @@ const containerTop = ref(0)
 const siteHeaderHeight = 74 + 32
 
 function onScroll() {
+  // console.log(window.screenY)
+  console.log(containerTop.value)
   if (window.scrollY > (containerTop.value - siteHeaderHeight)) {
     isFixed.value = true
   } else {
@@ -17,7 +19,7 @@ function onScroll() {
 }
 
 onMounted(() => {
-  containerTop.value = (container.value as HTMLDivElement).getClientRects()[0].top
+  containerTop.value = (container.value as HTMLDivElement).getClientRects()[0].y
   headers.value = getHeaders(3)
   window.addEventListener("scroll", onScroll)
 })
