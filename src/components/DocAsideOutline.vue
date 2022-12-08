@@ -17,7 +17,7 @@ function checkOutlinePosition() {
 }
 
 onMounted(() => {
-  containerTop.value = (container.value as HTMLDivElement).getClientRects()[0].top + window.scrollY
+  containerTop.value = (container.value as HTMLDivElement).getClientRects()[0]?.top + window.scrollY
   checkOutlinePosition()
   headers.value = getHeaders(3)
   window.addEventListener("scroll", checkOutlinePosition)
@@ -38,7 +38,7 @@ onUnmounted(() => {
     <div class="content b-(l-1 zinc-400/30)">
       <div ref="marker" class="outline-marker absolute top-8 -left-1px z3 opacity-0 w-1px h-6 bg-blue transition-top-250" />
       <nav>
-        <DocAsideItem :headers="headers" />
+        <DocAsideOutlineItem :headers="headers" />
       </nav>
     </div>
   </div>
@@ -50,7 +50,7 @@ onUnmounted(() => {
   top: 74px;
 }
 
-// .is-abs {
-//   position: absolute;
-// }
+.is-abs {
+  position: absolute;
+}
 </style>
