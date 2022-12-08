@@ -46,7 +46,6 @@ onUnmounted(() => {
       <h1>
         Polymorph
       </h1>
-      <!-- {{ arrivedState.top }} -->
     </RouterLink>
     <Nav />
   </header>
