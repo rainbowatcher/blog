@@ -1,10 +1,10 @@
 @import "./variables"
 
 :root
-  background: $neutral50
+  // background: $neutral50
   color: black
 
-html.dark
+:root.dark
   background: mix($zinc800, $slate800, $weight: 50%) 
   color-scheme: dark
   color: $neutral300
@@ -14,17 +14,21 @@ body,
 #app
   // height: 100%
   width: 100%
-  margin: 0
-  padding: 0
-  transition: background-color 0.25s
+  // margin: 0
+  // padding: 0
+
+a:link
+  text-decoration: dashed
+  opacity: .75
 
 a:hover
   color: $brandColor
+  opacity: 1
 
 #nprogress
   pointer-events: none
 
-  & .bar
+  .bar
     background: rgb(13, 148, 136)
     opacity: 0.75
     position: fixed
@@ -41,26 +45,25 @@ a:hover
 //   box-sizing: border-box
 
 html
-  line-height: 1.4
+  line-height: 1.4rem
   font-size: 16px
   // https://developer.mozilla.org/zh-CN/docs/Web/CSS/font-smooth
   @apply subpixel-antialiased
-  // text-size-auto
   -webkit-text-size-adjust: 100%
   -moz-text-size-adjust: 100%
   text-size-adjust: 100%
+  // font-family: SmileySans-Oblique
 
 body
-  margin: 0
-  width: 100%
+  // margin: 0
   min-width: 320px
   min-height: 100vh
-  // line-height: 24px;
+  // line-height: 24px
   // font-size: 16px;
   // font-weight: 400;
   // color: $vp-c-text-1;
   // background-color: $vp-c-bg;
-  font-family: var(--sika-code-font), system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
+  // font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
   direction: ltr
   font-synthesis: none
   text-rendering: optimizeLegibility
@@ -107,43 +110,6 @@ h1
 
 .katex-display
   overflow: auto
-// a {
-//   color: inherit;
-//   text-decoration: inherit;
-// }
-
-// ol,
-// ul {
-//   list-style: none;
-//   margin: 0;
-//   padding: 0;
-// }
-
-// blockquote {
-//   margin: 0;
-// }
-
-// pre,
-// code,
-// kbd,
-// samp {
-//   font-family: $vp-font-family-mono;
-// }
-
-// img,
-// svg,
-// video,
-// canvas,
-// audio,
-// iframe,
-// embed,
-// object {
-//   display: block;
-// }
-
-// figure {
-//   margin: 0;
-// }
 
 // img,
 // video {

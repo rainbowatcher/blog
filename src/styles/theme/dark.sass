@@ -1,15 +1,20 @@
 @import "../variables"
 
-html.dark
+:root.dark
+  // $sikaCodeNumberBgColor: $amber900
   --sika-brand-color: #{$sky600}
   --sika-mark-bg-color: #{$yellow600}
   --sika-mark-color: #{$neutral900}
 
   // table
   --sika-table-header-bg-color: #{$neutral900}
-  --sika-table-border-color: #{lighten($neutral900, 2)}
+  --sika-table-border-color: rgba(255, 255, 255, 0.06)
   --sika-table-row-bg-color1: #{$neutral900}
   --sika-table-row-bg-color2: #{mix($neutral800, $gray800, 60%)}
+
+  // inline code
+  --sika-inline-code-bg-color: #{darken($sky400, 35)}
+  --sika-inline-code-color: #{$neutral300}
 
   // code-block
   --sika-code-block-bg-color1: #{$neutral700}

@@ -5,10 +5,11 @@ const { t } = useI18n()
 
 const tags = useTags()
 const posts = usePosts()
+console.log(posts)
 const currentTags = ref<TagInfo[]>([])
 const filteredPages = computed(() => {
   if (currentTags.value.length === 0) {
-    return posts
+    return posts.sort((a, b) => +new Date(b.frontmatter.date) - +new Date(a.frontmatter.date))
   }
   return currentTags.value.flatMap(tag => tag.pages)
 })
@@ -27,32 +28,38 @@ const showAll = () => {
 </script>
 
 <template>
-  <Header />
-  <PostHeading :page-title="t('button.tags')" />
-  <div max-w-4xl ma mb-8 transition>
+  <PageHeader />
+  <PostHeader :page-title="t('button.tags')" />
+  <div max-w-4xl mxa my-8>
     <span
       bg-blue text-black
       inline-block cursor-pointer outline="zinc-300 dark:zinc-600 solid 1"
-      rounded-lg mr-2 px-2 mb-2 hover="bg-cyan text-zinc-800 outline-none"
+      rounded-lg mr-2 px-2 mb-2 hover="bg-sky text-zinc-800 outline-none"
       @click="showAll"
     >Show All</span>
     <span
       v-for="i in tags" :key="i.name" inline-block cursor-pointer outline="zinc-300 dark:zinc-600 solid 1"
-      rounded-lg mr-2 px-2 mb-2 hover="bg-cyan text-zinc-800 outline-none" @click="toggleTag(i)"
+      rounded-lg mr-2 px-2 mb-2 hover="bg-sky text-zinc-800 outline-none" @click="toggleTag(i)"
     >
       {{ i.name }}<sup>{{ i.pages.length }}</sup>
     </span>
   </div>
-  <div max-w-4xl ma>
-    <div v-for="page in filteredPages" :key="page.path" my-2 border>
+  <div max-w-4xl mxa my-8 divide="zinc500/30 y">
+    <div v-for="page in filteredPages" :key="page.path" my-2 p-2>
       <RouterLink :to="page.path">
-        {{ page.frontmatter.title }}
+        <p text-xl class="font-[SmileySans-Oblique] text-sky-500">
+          {{ page.frontmatter.title }}
+        </p>
       </RouterLink>
-      <p>{{ page.frontmatter.subtitle }}</p>
-      <p>{{ page.createTime }}</p>
-      <p>{{ page.updateTime }}</p>
-      <p>{{ page.author }}</p>
-      <p>{{ page.email }}</p>
+      <p text-sm>
+        {{ page.frontmatter.subtitle }}
+      </p>
+      <p text-sm>
+        {{ page.frontmatter.excerpt }}
+      </p>
+      <sub>
+        {{ useDateFormat(page.frontmatter.date, "YYYY-MM-DD").value }}
+      </sub>
     </div>
   </div>
   <Footer />

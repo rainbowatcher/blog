@@ -14,10 +14,7 @@ const pages = router.getRoutes()
 </script>
 
 <template>
-  <div
-    flex="~ col gap-y-4" class="w-4/6"
-    container max-w-screen-2xl m-auto
-  >
+  <div flex="~ col gap-y-4" max-w-4xl m-auto>
     <div v-for="page in pages" :key="page.link" class="post-item" w-auto>
       <section flex-row p4>
         <RouterLink :to="page.link">
@@ -34,14 +31,12 @@ const pages = router.getRoutes()
   </div>
 </template>
 
-<style lang="scss">
-.post-item {
-  box-shadow: 0 3px 6px var(--sika-code-block-shadow-color1), 0 8px 15px var(--sika-code-block-shadow-color2), 0 0 0 1px var(--sika-code-block-border-color);
-  border-radius: 8px;
-  transition: .5s;
+<style lang="sass">
+.post-item
+  box-shadow: 0 3px 6px var(--sika-code-block-shadow-color1), 0 8px 15px var(--sika-code-block-shadow-color2), 0 0 0 1px var(--sika-code-block-border-color)
+  border-radius: 8px
+  // transition: .5s
 
-  &:hover{
-    box-shadow: 0 3px 6px var(--sika-code-block-shadow-color1), 0 15px 25px var(--sika-code-block-shadow-color2), 0 0 0 1px var(--sika-code-block-border-color);
-  }
-}
+  &:hover
+    box-shadow: 0 3px 6px var(--sika-code-block-shadow-color1), 0 15px 25px var(--sika-code-block-shadow-color2), 0 0 0 1px var(--sika-code-block-border-color)
 </style>

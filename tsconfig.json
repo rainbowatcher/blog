@@ -18,6 +18,8 @@
     "forceConsistentCasingInFileNames": true,
     "types": [
       "vite/client",
+      "@vueuse/core",
+      "mermaid",
       "vue/ref-macros",
       "vite-plugin-pages/client",
       "vite-plugin-vue-component-preview/client",

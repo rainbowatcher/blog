@@ -9,7 +9,7 @@ import generateSitemap from "vite-ssg-sitemap"
 import Components from "unplugin-vue-components/vite"
 import AutoImport from "unplugin-auto-import/vite"
 import Markdown from "vite-plugin-vue-markdown"
-import VueI18n from "@intlify/vite-plugin-vue-i18n"
+import VueI18n from "@intlify/unplugin-vue-i18n/vite"
 import Inspect from "vite-plugin-inspect"
 import LinkAttributes from "markdown-it-link-attributes"
 import Unocss from "unocss/vite"
@@ -17,6 +17,7 @@ import anchor from "markdown-it-anchor"
 import emoji from "markdown-it-emoji"
 import footnote from "markdown-it-footnote"
 import mark from "markdown-it-mark"
+import autoprefixer from "autoprefixer"
 
 import {
   containerPlugin,
@@ -180,9 +181,11 @@ export default defineConfig({
 
   // https://github.com/antfu/vite-ssg
   ssgOptions: {
-    // crittersOptions
+    crittersOptions: {
+      preload: "swap",
+    },
     dirStyle: "nested",
-    script: "async",
+    script: "defer",
     formatting: "minify",
     // onBeforePageRender: (route, indexHtml, ctx) => {
     //   return `<h1>Hello</h1>`
@@ -191,7 +194,13 @@ export default defineConfig({
       generateSitemap()
     },
   },
-
+  css: {
+    postcss: {
+      plugins: [
+        autoprefixer(),
+      ],
+    },
+  },
   ssr: {
     // TODO: workaround until they support native ESM
     noExternal: ["workbox-window", /vue-i18n/],

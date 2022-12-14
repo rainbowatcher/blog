@@ -1,3 +1,4 @@
+import { isClient } from "@vueuse/core"
 import type { App } from "vue"
 import type { RouteMeta, Router } from "vue-router"
 import type { TagInfo, UserModule } from "~/types"
@@ -7,6 +8,7 @@ const offset = 80
 export const install: UserModule = ({ app, router, isClient }) => {
   setupTagMap(router, app)
   setupRouter(router, isClient)
+  setupHistoryPosition()
 }
 
 function setupTagMap(router: Router, app: App<Element>) {
@@ -66,6 +68,7 @@ function setupRouter(router: Router, isClient: boolean) {
               }
             } else {
               router.push(pathname)
+              // scrollTo(link, hash, true)
             }
           }
         }
@@ -106,5 +109,12 @@ function scrollTo(el: HTMLElement, hash: string, smooth = false) {
       behavior: smooth ? "smooth" : "auto",
     })
     // }
+  }
+}
+
+function setupHistoryPosition() {
+  if (isClient && window.history.state?.scroll?.top) {
+    // console.log(window.history.state.scroll.top)
+    setTimeout(() => window.scrollTo({ top: window.history.state.scroll.top, behavior: "smooth" }), 500)
   }
 }

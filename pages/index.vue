@@ -1,7 +1,5 @@
 <template>
-  <Header />
-  <main pt-6rem>
+  <HomeLayout>
     <PostList />
-  </main>
-  <Footer />
+  </HomeLayout>
 </template>

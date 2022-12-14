@@ -1,14 +1,5 @@
 @import "./variables"
-// .prose{
-//   max-width: none;
-//   :where(a):not(:where(.not-prose,.not-prose *)){
-//     text-decoration: inherit;
-//   }
-// }
 
-// .prose img {
-//   width: 100%;
-// }
 html
   &.dark
     .code-light
@@ -32,6 +23,7 @@ html
     position: relative
     font-weight: 600
     outline: none
+    font-family: var(--sika-title-font)
 
   h1
     letter-spacing: -0.02em
@@ -46,10 +38,16 @@ html
 
   h2
     margin: 48px 0 16px
-    // padding-top: 24px
+    padding-top: 24px
+    border-top: 1px solid var(--sika-code-block-border-color)
     letter-spacing: -0.02em
     line-height: 32px
     font-size: 24px
+
+    &:first-child
+      border-top: none
+      padding-top: 0
+      margin: 0 0 16px
 
   h3
     margin: 32px 0 0
@@ -68,13 +66,13 @@ html
 
   // Paragraph and inline elements
   // --------------------------------------------------------------------------
-  // p,
-  // summary
-  //   margin: 16px 0
+  p,
+  summary
+    margin: 16px 0
 
   // text
-  a
-    text-decoration: none
+  // a
+    // text-decoration: none
 
   em
     font-style: italic
@@ -94,19 +92,15 @@ html
 
     td,
     th
-      // border-radius: 5px
       padding: .5rem .8rem
       border: 1px solid var(--sika-table-border-color)
 
     tr
       background-color: var(--sika-table-row-bg-color1)
-      transition: background-color 0.5s
+      // transition: background-color 0.5s
 
     tr:nth-child(2n)
       background-color: var(--sika-table-row-bg-color2)
-      // background-size: 5px 5px
-      // background-image: radial-gradient(var(--sika-code-block-bg-color4) 1px,var(--sika-code-block-bg-color3) 1px)
-      // background-repeat: repeat
 
     th
       width: -moz-fit-content
@@ -117,7 +111,7 @@ html
       // background-image: radial-gradient(var(--sika-line-numbers-bg-color) 1px,var(--sika-code-block-bg-color3) 1px)
       // background-repeat: repeat
       background-color: var(--sika-table-row-bg-color1)
-      transition: background-color 0.5s
+      // transition: background-color 0.5s
 
     // th:last-child
       // width: 100%
@@ -153,11 +147,16 @@ html
   /* inline code */
   :not(pre, h1, h2, h3, h4, h5, h6) > code
     font-size: var(--sika-code-font-size)
+    font-family: var(--sika-code-font-mono)
+    background-color: var(--sika-inline-code-bg-color)
+    color: var(--sika-inline-code-color)
+    padding: .2rem .3rem
+    border-radius: .25rem
 
   // code block
   // --------------------------------------------------------------------------
   div[class*=language-]
-    transition: background-color 0.25s
+    // transition: background-color 0.25s
     position: relative
     z-index: 1
     overflow-x: auto
@@ -214,7 +213,7 @@ html
       z-index: 3
       // border-right: 1px solid var(--sika-table-border-color)
       background-color: var(--sika-line-numbers-bg-color)
-      // background-color: var(--sika-code-block-bg-color2)
+      // background-color: $sikaCodeNumberBgColor
       padding-top: 1rem
       padding-right: .5rem
       width: var(--sika-line-numbers-width)
@@ -226,13 +225,13 @@ html
       user-select: none
       border-right: 1px solid var(--sika-code-block-bg-color1)
       color: var(--sika-line-numbers-text-color)
-      transition: border-color 0.5s, color 0.5s
+      // transition: border-color 0.5s, color 0.5s
       @apply lt-md:hidden
 
     // highlight lines
     .highlighted
       background-color: var(--sika-code-highlight-color)
-      transition: background-color 0.5s
+      // transition: background-color 0.5s
       margin: 0 calc(0px - var(--sika-line-numbers-width))
       padding: 0 calc(var(--sika-line-numbers-width))
       width: calc(100% + 2 * var(--sika-line-numbers-width))
@@ -257,7 +256,7 @@ html
       background-position: 50%
       background-size: 20px
       background-repeat: no-repeat
-      transition: opacity 0.4s
+      transition: background-color 0.4s, opacity 0.4s
 
     &:hover > button.copy,
     button.copy:focus
