@@ -14,15 +14,16 @@ const pages = router.getRoutes()
 </script>
 
 <template>
-  <div flex="~ col gap-y-4" max-w-4xl m-auto>
+  <div flex="~ col" max-w-4xl mxa divide="zinc500/30 y">
     <div v-for="page in pages" :key="page.link" class="post-item" w-auto>
       <section flex-row p4>
         <RouterLink :to="page.link">
-          {{ page.title }}
+          <p class="font-[SmileySans-Oblique] text-sky-500 text-xl">
+            {{ page.title }}
+          </p>
         </RouterLink>
-        <br>
-        <small>{{ `${(page.date)} ` }}</small>
         <small v-for="tag in page.tags" :key="tag">{{ `#${tag} ` }}</small>
+        <small>{{ `${(page.date)} ` }}</small>
         <p v-if="page.excerpt" text-sm text-gray>
           {{ page.excerpt }}
         </p>
@@ -30,13 +31,3 @@ const pages = router.getRoutes()
     </div>
   </div>
 </template>
-
-<style lang="sass">
-.post-item
-  box-shadow: 0 3px 6px var(--sika-code-block-shadow-color1), 0 8px 15px var(--sika-code-block-shadow-color2), 0 0 0 1px var(--sika-code-block-border-color)
-  border-radius: 8px
-  // transition: .5s
-
-  &:hover
-    box-shadow: 0 3px 6px var(--sika-code-block-shadow-color1), 0 15px 25px var(--sika-code-block-shadow-color2), 0 0 0 1px var(--sika-code-block-border-color)
-</style>
