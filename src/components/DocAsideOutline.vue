@@ -5,17 +5,6 @@ const headers = ref<MenuItem[]>([])
 const container = ref()
 const marker = ref()
 const { asideClass, canceler } = useAsidePos()
-// const isFixed = ref(false)
-// const containerTop = ref(0)
-// const siteHeaderHeight = 74 + 32
-
-// function checkOutlinePosition() {
-//   if (window.scrollY >= (containerTop.value - siteHeaderHeight)) {
-//     isFixed.value = true
-//   } else {
-//     isFixed.value = false
-//   }
-// }
 
 onMounted(() => {
   headers.value = getHeaders(3)

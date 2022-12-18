@@ -16,7 +16,9 @@ tags: [Oracle, Database, SQL]
 | user_tables | 用户表信息   |
 | all_tables  | 全局表信息   |
 | user_source | 用户资源信息 |
-| all_source  | 全局资源信息 | -->
+| all_source  | 全局资源信息 |
+| dba_db_links  | 全局DBLink信息 |
+ -->
 
 ## 表的元数据
 

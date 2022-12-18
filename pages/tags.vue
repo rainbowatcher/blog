@@ -5,7 +5,7 @@ const { t } = useI18n()
 
 const tags = useTags()
 const posts = usePosts()
-console.log(posts)
+// console.log(posts)
 const currentTags = ref<TagInfo[]>([])
 const filteredPages = computed(() => {
   if (currentTags.value.length === 0) {

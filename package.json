@@ -15,7 +15,6 @@
     "up": "taze major -I"
   },
   "dependencies": {
-    "@types/node": "^18.11.15",
     "@unocss/reset": "^0.47.6",
     "@vueuse/core": "^9.6.0",
     "@vueuse/head": "^1.0.22",
@@ -31,6 +30,7 @@
     "@akiravoid/markdown-it-footnote": "^1.0.2",
     "@akiravoid/markdown-it-mark": "^1.0.2",
     "@antfu/eslint-config": "^0.34.0",
+    "@floating-ui/vue": "^0.1.0",
     "@iconify-json/carbon": "^1.1.11",
     "@iconify-json/icon-park-outline": "^1.1.7",
     "@intlify/unplugin-vue-i18n": "^0.8.1",
@@ -41,6 +41,7 @@
     "@types/markdown-it-container": "^2.0.5",
     "@types/markdown-it-emoji": "^2.0.2",
     "@types/markdown-it-link-attributes": "^3.0.1",
+    "@types/node": "^18.11.15",
     "@types/nprogress": "^0.2.0",
     "@vitejs/plugin-vue": "^3.2.0",
     "autoprefixer": "^10.4.13",

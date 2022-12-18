@@ -4,6 +4,7 @@ specifiers:
   '@akiravoid/markdown-it-footnote': ^1.0.2
   '@akiravoid/markdown-it-mark': ^1.0.2
   '@antfu/eslint-config': ^0.34.0
+  '@floating-ui/vue': ^0.1.0
   '@iconify-json/carbon': ^1.1.11
   '@iconify-json/icon-park-outline': ^1.1.7
   '@intlify/unplugin-vue-i18n': ^0.8.1
@@ -80,6 +81,7 @@ devDependencies:
   '@akiravoid/markdown-it-footnote': 1.0.2
   '@akiravoid/markdown-it-mark': 1.0.2
   '@antfu/eslint-config': 0.34.0_ha6vam6werchizxrnqvarmz2zu
+  '@floating-ui/vue': 0.1.0_vue@3.2.45
   '@iconify-json/carbon': 1.1.11
   '@iconify-json/icon-park-outline': 1.1.7
   '@intlify/unplugin-vue-i18n': 0.8.1_vue-i18n@9.2.2
@@ -345,6 +347,30 @@ packages:
       strip-json-comments: 3.1.1
     transitivePeerDependencies:
       - supports-color
+    dev: true
+
+  /@floating-ui/core/1.0.4:
+    resolution: {integrity: sha512-FPFLbg2b06MIw1dqk2SOEMAMX3xlrreGjcui5OTxfBDtaKTmh0kioOVjT8gcfl58juawL/yF+S+gnq8aUYQx/Q==}
+    dev: true
+
+  /@floating-ui/dom/1.0.10:
+    resolution: {integrity: sha512-ZRe5ZmtGYCd82zrjWnnMW8hN5H1otedLh0Ur6rRo6f0exbEe6IlkVvo1RO7tgiMvbF0Df8hkhdm50VcVYqwP6g==}
+    dependencies:
+      '@floating-ui/core': 1.0.4
+    dev: true
+
+  /@floating-ui/vue/0.1.0_vue@3.2.45:
+    resolution: {integrity: sha512-bEvv51RvvpZ9FV2vraL6s8V26Imqz4b3/Wket6h48ZjAmLqj/upf08UTjrOfn61M/EvsdqSfENxLMUgF7oYR/Q==}
+    peerDependencies:
+      '@vue/composition-api': ^1.0.0-rc.1
+      vue: ^2.0.0 || >=3.0.0
+    peerDependenciesMeta:
+      '@vue/composition-api':
+        optional: true
+    dependencies:
+      '@floating-ui/dom': 1.0.10
+      vue: 3.2.45
+      vue-demi: 0.13.11_vue@3.2.45
     dev: true
 
   /@gar/promisify/1.1.3:

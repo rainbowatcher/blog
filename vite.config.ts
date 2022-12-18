@@ -187,8 +187,20 @@ export default defineConfig({
     dirStyle: "nested",
     script: "defer",
     formatting: "minify",
-    // onBeforePageRender: (route, indexHtml, ctx) => {
-    //   return `<h1>Hello</h1>`
+    onBeforePageRender(_route, indexHTML) {
+      const RE = /.*(<link rel="stylesheet".*?>).*/
+      const match = RE.exec(indexHTML)
+      if (match) {
+        const stylesheetLinkTag = match[1].trim()
+        indexHTML = indexHTML.replace(stylesheetLinkTag, "")
+        indexHTML = indexHTML.replace("<!-- script-slot -->", stylesheetLinkTag)
+      }
+      return indexHTML
+    },
+    // onBeforePageRender: (route, indexHtml) => {
+    //   console.log("route: ", route)
+    //   console.log("indexHtml: ", indexHtml)
+    //   return indexHtml
     // },
     onFinished() {
       generateSitemap()
