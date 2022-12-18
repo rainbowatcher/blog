@@ -1,5 +1,9 @@
 import type { SiteConfig } from "../types"
 
+export const isDark = useDark()
+export const toggleDark = useToggle(isDark)
+export const preferredDark = usePreferredDark()
+
 export const useConfig = (): SiteConfig => ({
   head: {
     title: "Blog",
@@ -45,4 +49,3 @@ export const useConfig = (): SiteConfig => ({
     },
   ],
 })
-
