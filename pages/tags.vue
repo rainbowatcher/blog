@@ -47,7 +47,7 @@ const showAll = () => {
   <div max-w-4xl mxa my-8 divide="zinc500/30 y">
     <div v-for="page in filteredPages" :key="page.path" my-2 p-2>
       <RouterLink :to="page.path">
-        <p class="font-[SmileySans-Oblique] text-sky-500 text-xl">
+        <p class="text-sky-500 text-xl">
           {{ page.frontmatter.title }}
         </p>
       </RouterLink>
