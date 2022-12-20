@@ -3,8 +3,8 @@ import { isClient } from "@vueuse/core"
 import type { LengthUnit } from "~/types/position"
 import { Length } from "~/types/position"
 
-const pageHeaderHight = useCssVar("--sika-page-header-height")
-const postHeaderHight = useCssVar("--sika-post-header-height")
+export const pageHeaderHight = useCssVar("--sika-h-page-header")
+export const postHeaderHight = useCssVar("--sika-h-post-header")
 
 export function useAsidePos() {
   const asideClass = ref("is-abs")
@@ -29,9 +29,9 @@ export function useAsidePos() {
   }
 }
 
-export function usePx(length: MaybeComputedRef<string>, element?: MaybeElementRef, initialValue = 0) {
+export function usePx(length: MaybeComputedRef<string>, element?: MaybeElementRef<HTMLElement>, initialValue = 0) {
   const px = ref(initialValue)
-  const elementRef = computed(() => unrefElement(element) ?? document?.documentElement)
+  const elementRef = computed(() => unrefElement(element) ?? computedBody.value)
 
   if (elementRef && length) {
     const fontSize = useFontSize(unrefElement(elementRef))
@@ -56,10 +56,10 @@ export function usePx(length: MaybeComputedRef<string>, element?: MaybeElementRe
   return px
 }
 
-export function useFontSize(el?: Element, defaultSize = 16) {
+export function useFontSize(el?: MaybeElementRef<HTMLElement | null>, defaultSize = 16) {
   let fontSize: number = defaultSize
-  if (isClient && el) {
-    fontSize = Number.parseInt(window.getComputedStyle(el).getPropertyValue("font-size"))
+  if (isClient && unrefElement(el)) {
+    fontSize = Number.parseInt(window.getComputedStyle(unrefElement(el)!).getPropertyValue("font-size"))
   }
   return fontSize
 }

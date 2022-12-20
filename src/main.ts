@@ -5,7 +5,10 @@ import type { UserModule } from "./types"
 import routes from "~pages"
 
 import "@unocss/reset/tailwind.css"
-import "./styles/index.sass"
+import "~/styles/theme.sass"
+import "~/styles/fonts.sass"
+import "~/styles/main.sass"
+import "~/styles/container.sass"
 import "uno.css"
 
 // https://github.com/antfu/vite-ssg

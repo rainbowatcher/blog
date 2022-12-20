@@ -27,7 +27,7 @@ const props = defineProps<{
     padding-left: calc(2 * var(--padding-offset));
   }
   &.active {
-    color: var(--sika-c-brand)
+    color: skyblue
   }
 }
 </style>

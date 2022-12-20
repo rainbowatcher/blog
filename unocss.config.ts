@@ -13,11 +13,11 @@ import {
 export default defineConfig({
   theme: {
     height: {
-      header: "var(--sika-page-header-height)",
+      header: "var(--sika-h-page-header)",
     },
     spacing: {
-      "ph-hide": "calc(0px - var(--sika-page-header-height))",
-      "under-header": "var(--sika-page-header-height)",
+      "ph-hide": "calc(0px - var(--sika-h-page-header))",
+      "under-header": "var(--sika-h-page-header)",
     },
   },
   shortcuts: [
@@ -27,8 +27,8 @@ export default defineConfig({
     ["flex-center", "justify-center items-center"],
     ["menu-item", "cursor-pointer"],
     ["bg-center-cover", "bg-(center no-repeat cover)"],
-    ["under-page-header", "top-[var(--sika-page-header-height)]"],
-    ["under-post-header", "top-[var(--sika-post-header-height)]"],
+    ["under-page-header", "top-[var(--sika-h-page-header)]"],
+    ["under-post-header", "top-[var(--sika-h-post-header)]"],
   ],
   presets: [
     presetUno(),

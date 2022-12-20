@@ -1,5 +1,6 @@
 <script setup lang='ts'>
 import "katex/dist/katex.min.css"
+import "~/styles/markdown.sass"
 // const { frontmatter } = defineProps({
 //   frontmatter: {
 //     type: Object,

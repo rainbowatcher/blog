@@ -23,7 +23,7 @@ html
     position: relative
     font-weight: 600
     outline: none
-    // font-family: var(--sika-title-font)
+    // font-family: var(--sika-f-title)
 
   h1
     letter-spacing: -0.02em
@@ -78,8 +78,8 @@ html
     font-style: italic
 
   mark
-    background-color: var(--sika-mark-bg-color)
-    color: var(--sika-mark-color)
+    background-color: var(--sika-c-mark-bg)
+    color: var(--sika-c-mark)
 
   // table
   // --------------------------------------------------------------------------
@@ -93,14 +93,14 @@ html
     td,
     th
       padding: .5rem .8rem
-      border: 1px solid var(--sika-table-border-color)
+      border: 1px solid var(--sika-c-table-border)
 
     tr
-      background-color: var(--sika-table-row-bg-color1)
+      background-color: var(--sika-c-table-row-bg1)
       // transition: background-color 0.5s
 
     tr:nth-child(2n)
-      background-color: var(--sika-table-row-bg-color2)
+      background-color: var(--sika-c-table-row-bg2)
 
     th
       width: -moz-fit-content
@@ -110,7 +110,7 @@ html
       // background-size: 5px 5px
       // background-image: radial-gradient(var(--sika-line-numbers-bg-color) 1px,var(--sika-code-block-bg-color3) 1px)
       // background-repeat: repeat
-      background-color: var(--sika-table-row-bg-color1)
+      background-color: var(--sika-c-table-row-bg1)
       // transition: background-color 0.5s
 
     // th:last-child
@@ -119,7 +119,7 @@ html
   hr
     margin: 16px 0
     border: none
-    border-top: 1px solid var(--sika-table-border-color)
+    border-top: 1px solid var(--sika-c-table-border)
 
   // header anchor
   .header-anchor
@@ -130,7 +130,7 @@ html
     -webkit-user-select: none
     user-select: none
     opacity: 0
-    color: var(--sika-brand-color)
+    color: var(--sika-c-brand)
     transition: color 0.25s, opacity 0.25s
 
   h1,
@@ -146,8 +146,8 @@ html
 
   /* inline code */
   :not(pre, h1, h2, h3, h4, h5, h6) > code
-    font-size: var(--sika-code-font-size)
-    font-family: var(--sika-code-font-mono)
+    font-size: var(--sika-s-code-font)
+    font-family: var(--sika-f-code-mono)
     background-color: var(--sika-inline-code-bg-color)
     color: var(--sika-inline-code-color)
     padding: .2rem .3rem
@@ -173,10 +173,10 @@ html
       margin: 16px 0
 
     code
-      font-family: var(--sika-code-font-mono)
-      font-size: var(--sika-code-font-size)
+      font-family: var(--sika-f-code-mono)
+      font-size: var(--sika-s-code-font)
       font-weight: 400
-      line-height: var(--sika-code-line-hight)
+      line-height: var(--sika-lh-code)
 
     pre
       z-index: 1
@@ -202,7 +202,7 @@ html
     // line numbers
     &.line-numbers-mode
       @media (min-width: 640px)
-        padding-left: calc(var(--sika-line-numbers-width) + .5rem)
+        padding-left: calc(var(--sika-w-line-numbers) + .5rem)
 
     > .line-numbers-wrapper
       position: absolute
@@ -211,16 +211,16 @@ html
       bottom: 0
       left: 0
       z-index: 3
-      // border-right: 1px solid var(--sika-table-border-color)
+      // border-right: 1px solid var(--sika-c-table-border)
       background-color: var(--sika-line-numbers-bg-color)
       // background-color: $sikaCodeNumberBgColor
       padding-top: 1rem
       padding-right: .5rem
-      width: var(--sika-line-numbers-width)
+      width: var(--sika-w-line-numbers)
       text-align: right
-      font-family: var(--sika-code-font-mono)
-      font-size: var(--sika-code-font-size)
-      line-height: var(--sika-code-line-hight)
+      font-family: var(--sika-f-code-mono)
+      font-size: var(--sika-s-code-font)
+      line-height: var(--sika-lh-code)
       -webkit-user-select: none
       user-select: none
       border-right: 1px solid var(--sika-code-block-bg-color1)
@@ -232,9 +232,9 @@ html
     .highlighted
       background-color: var(--sika-code-highlight-color)
       // transition: background-color 0.5s
-      margin: 0 calc(0px - var(--sika-line-numbers-width))
-      padding: 0 calc(var(--sika-line-numbers-width))
-      width: calc(100% + 2 * var(--sika-line-numbers-width))
+      margin: 0 calc(0px - var(--sika-w-line-numbers))
+      padding: 0 calc(var(--sika-w-line-numbers))
+      width: calc(100% + 2 * var(--sika-w-line-numbers))
       display: inline-block
 
     // code block button copy
@@ -283,7 +283,7 @@ html
       text-align: center
       font-size: 12px
       font-weight: 500
-      color: var(--sika-brand-color)
+      color: var(--sika-c-brand)
       background-color: var(--sika-table-bg-color2)
       white-space: nowrap
       content: "Copied"

@@ -46,11 +46,12 @@ html
   line-height: 1.4rem
   font-size: 16px
   // https://developer.mozilla.org/zh-CN/docs/Web/CSS/font-smooth
-  @apply subpixel-antialiased
+  -webkit-font-smoothing: auto
+  -moz-osx-font-smoothing: auto
+  font-smoothing: auto
   -webkit-text-size-adjust: 100%
   -moz-text-size-adjust: 100%
   text-size-adjust: 100%
-  // font-family: SmileySans-Oblique
 
 body
   // margin: 0

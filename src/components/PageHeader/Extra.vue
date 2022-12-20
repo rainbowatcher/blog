@@ -21,7 +21,7 @@ const toggleLocales = () => {
     </div>
 
     <div class="social-links flex">
-      <a class="icon-btn" rel="noreferrer" href="https://github.com/rainbowatcher/blog" target="_blank" title="GitHub">
+      <a class="icon-btn" rel="noopener noreferrer" href="https://github.com/rainbowatcher/blog" target="_blank" title="GitHub">
         <div i-carbon-logo-github />
       </a>
     </div>
