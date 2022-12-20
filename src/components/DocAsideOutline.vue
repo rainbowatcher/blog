@@ -7,11 +7,10 @@ const marker = ref()
 const { asideClass, canceler } = useAsidePos()
 
 onMounted(() => {
-  headers.value = getHeaders(3)
+  headers.value = getHeaders(2)
 })
 
 useActiveAnchor(container, marker)
-
 onUnmounted(() => {
   canceler()
 })
@@ -24,9 +23,7 @@ onUnmounted(() => {
     </div>
     <div class="content b-(l-1 zinc-400/30)">
       <div ref="marker" class="outline-marker absolute top-8 left-0 z3 opacity-0 w-1px h-6 bg-blue transition-top-250" />
-      <nav>
-        <DocAsideOutlineItem :headers="headers" />
-      </nav>
+      <DocAsideOutlineItem :headers="headers" />
     </div>
   </div>
 </template>

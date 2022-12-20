@@ -1,19 +1,23 @@
 import { type Ref, onMounted, onUnmounted, onUpdated } from "vue"
 import type { MenuItem } from "~/types"
 
-const PAGE_OFFSET = 74
+const PAGE_OFFSET = usePx(pageHeaderHight)
 
 /**
  * get headers
  * @param levelRange header level range
  * @returns headers
  */
-export function getHeaders(levelRange = 2) {
+export function getHeaders(levelDeep = 2, baseLevel = 2) {
   const updatedHeaders: MenuItem[] = []
+  const levelRange = [baseLevel, levelDeep + baseLevel]
   document
     .querySelectorAll<HTMLHeadingElement>("h2, h3, h4, h5, h6")
     .forEach((el) => {
-      if (el.textContent && el.id) {
+      const level = Number(el.tagName[1])
+      console.log(levelRange[1])
+      const inRange = level >= levelRange[0] && level < levelRange[1]
+      if (el.textContent && el.id && inRange) {
         updatedHeaders.push({
           level: Number(el.tagName[1]),
           title: el.innerText.replace(/\s*#\s*/, ""),
@@ -21,64 +25,7 @@ export function getHeaders(levelRange = 2) {
         })
       }
     })
-  return resolveHeaders(updatedHeaders, levelRange)
-}
-
-export function resolveHeaders(
-  headers: MenuItem[],
-  levelsRange = 2,
-) {
-  const levels: [number, number]
-    = typeof levelsRange === "number"
-      ? [2, levelsRange]
-      : levelsRange === "deep"
-        ? [2, 6]
-        : levelsRange
-
-  return groupHeaders(headers, levels)
-}
-
-function groupHeaders(headers: MenuItem[], levelsRange: [number, number]) {
-  const result: MenuItem[] = []
-
-  headers = headers.map(h => ({ ...h }))
-  headers.forEach((h, index) => {
-    if (h.level >= levelsRange[0] && h.level <= levelsRange[1]) {
-      if (addToParent(index, headers, levelsRange)) {
-        result.push(h)
-      }
-    }
-  })
-
-  return result
-}
-
-function addToParent(
-  currIndex: number,
-  headers: MenuItem[],
-  levelsRange: [number, number],
-) {
-  if (currIndex === 0) {
-    return true
-  }
-
-  const currentHeader = headers[currIndex]
-  for (let index = currIndex - 1; index >= 0; index--) {
-    const header = headers[index]
-
-    if (
-      header.level < currentHeader.level
-      && header.level >= levelsRange[0]
-      && header.level <= levelsRange[1]
-    ) {
-      if (header.children == null)
-        header.children = []
-      header.children.push(currentHeader)
-      return false
-    }
-  }
-
-  return true
+  return updatedHeaders
 }
 
 export function useActiveAnchor(
@@ -165,7 +112,7 @@ export function useActiveAnchor(
 }
 
 function getAnchorTop(anchor: HTMLAnchorElement): number {
-  return anchor.parentElement!.offsetTop - PAGE_OFFSET
+  return anchor.parentElement!.offsetTop - PAGE_OFFSET.value
 }
 
 function isAnchorActive(
