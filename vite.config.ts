@@ -18,6 +18,7 @@ import emoji from "markdown-it-emoji"
 import footnote from "markdown-it-footnote"
 import mark from "markdown-it-mark"
 import autoprefixer from "autoprefixer"
+import Inspector from "vite-plugin-vue-inspector"
 
 import {
   containerPlugin,
@@ -121,10 +122,7 @@ export default defineConfig({
       wrapperComponent: "post",
       headEnabled: true,
       markdownItOptions: {
-        highlight: await highlight({
-          light: "vitesse-light",
-          dark: "one-dark-pro",
-        }),
+        highlight: await highlight("one-dark-pro"),
       },
       markdownItUses: [
         highlightLineAttr,
@@ -177,6 +175,9 @@ export default defineConfig({
     // https://github.com/antfu/vite-plugin-inspect
     // Visit http://localhost:3333/__inspect/ to see the inspector
     Inspect(),
+
+    // https://github.com/webfansplz/vite-plugin-vue-inspector
+    Inspector(),
   ],
 
   // https://github.com/antfu/vite-ssg
@@ -193,7 +194,10 @@ export default defineConfig({
       if (match) {
         const stylesheetLinkTag = match[1].trim()
         indexHTML = indexHTML.replace(stylesheetLinkTag, "")
-        indexHTML = indexHTML.replace("<!-- script-slot -->", stylesheetLinkTag)
+        indexHTML = indexHTML.replace(
+          "<!-- script-slot -->",
+          stylesheetLinkTag,
+        )
       }
       return indexHTML
     },
@@ -208,9 +212,7 @@ export default defineConfig({
   },
   css: {
     postcss: {
-      plugins: [
-        autoprefixer(),
-      ],
+      plugins: [autoprefixer()],
     },
   },
   ssr: {
