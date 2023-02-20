@@ -160,14 +160,17 @@ html
     position: relative
     z-index: 1
     overflow-x: auto
-    background: var(--sika-code-block-bg-color3)
+    background: var(--sika-code-block-bg-color4)
     margin: .8rem -1rem
     padding: 0 1rem
+    *
+      ::selection
+        background-color: var(--sika-c-code-block-selected)
 
     @media (min-width: 640px)
       background-size: 5px 5px
-      background-image: radial-gradient(var(--sika-code-block-bg-color4) 1px,var(--sika-code-block-bg-color3) 1px)
-      background-repeat: repeat
+      // background-image: radial-gradient(var(--sika-code-block-bg-color4) 1px, var(--sika-code-block-bg-color3) 1px)
+      // background-repeat: repeat
       box-shadow: 0px 3px 6px var(--sika-code-block-shadow-color1), 0px 8px 15px var(--sika-code-block-shadow-color2), 0 0 0 1px var(--sika-code-block-border-color)
       border-radius: 5px
       margin: 16px 0
@@ -220,7 +223,8 @@ html
       text-align: right
       font-family: var(--sika-f-code-mono)
       font-size: var(--sika-s-code-font)
-      line-height: var(--sika-lh-code)
+      // Don't know why, disable it can align code and line numbers
+      // line-height: var(--sika-lh-code)
       -webkit-user-select: none
       user-select: none
       border-right: 1px solid var(--sika-code-block-bg-color1)
@@ -327,4 +331,3 @@ html
   :not(.markdown-body) > div[class*=language-]
     border-radius: 8px
     margin: 0
-    
