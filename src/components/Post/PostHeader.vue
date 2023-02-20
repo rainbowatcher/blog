@@ -20,10 +20,10 @@ watch(isDark, () => {
 
 <template>
   <div
-    class="article-header lt-md:h-20rem md-h-27rem bg-center-cover relative max-w-full"
+    class="article-header lt-md:h-20rem md-h-27rem bg-center-cover relative max-w-full w-full"
     :class="{ 'has-bg-image': bgImg, 'default-bg-image': !bgImg }"
   >
-    <div class="article-header-mask" :class="{ 'has-mask': dynamicHeaderMask }" />
+    <div class="article-header-mask page-header-mask" />
     <div class="article-header-content">
       <div class="article-header-tags flex gap2 mb-4 text-2">
         <span v-for="tag in frontmatter.tags" :key="tag" class="border rounded-2xl px-2 py-1 text-white">
@@ -71,7 +71,7 @@ watch(isDark, () => {
 .default-bg-image
   @apply bg-gradient-to-br from-teal-600 to-indigo-600
 
-.has-mask
+.page-header-mask
   background-color: v-bind(dynamicHeaderMask)
 
 .article-header-mask
