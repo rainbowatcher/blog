@@ -1,6 +1,4 @@
 <script lang="ts" setup>
-const { t } = useI18n()
-const { nav } = useConfig()
 const show = ref(false)
 const lock = useScrollLock(computedBody, false)
 const toggleShow = useToggle(show)

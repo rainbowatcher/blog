@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { flip, offset, shift, useFloating } from "@floating-ui/vue"
+import { offset, useFloating } from "@floating-ui/vue"
 const triggerText = "Google"
 const trigger = ref<HTMLElement>()
 const content = ref<HTMLElement>()
