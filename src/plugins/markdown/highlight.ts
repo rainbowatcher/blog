@@ -1,6 +1,5 @@
 import type { HtmlRendererOptions, IThemeRegistration } from "shiki"
 import { getHighlighter } from "shiki"
-import type { ThemeOptions } from "../markdown"
 
 /**
  * 2 steps:
@@ -34,7 +33,8 @@ const attrsToLines = (attrs: string): HtmlRendererOptions["lineOptions"] => {
 }
 
 export async function highlight(
-  theme: ThemeOptions = "material-palenight",
+  // theme: ThemeOptions = "material-palenight",
+  theme: IThemeRegistration | { dark: IThemeRegistration; light: IThemeRegistration } = "material-palenight",
 ): Promise<(str: string, lang: string, attrs: string) => string> {
   const hasSingleTheme = typeof theme === "string" || "name" in theme
   const getThemeName = (themeValue: IThemeRegistration) =>
