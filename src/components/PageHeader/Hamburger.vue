@@ -1,6 +1,4 @@
 <script lang="ts" setup>
-import { RouterLink } from "vue-router"
-
 const { t } = useI18n()
 const { nav } = useConfig()
 const show = ref(false)
