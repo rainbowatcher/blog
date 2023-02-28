@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Docker 常用的容器启动命令
-subtitle: 
+subtitle:
 date: 2022-08-12
 permalinkPattern: /post/:year/:month/:day/:slug/
 headerImage: /img/docker.png
@@ -156,4 +156,15 @@ docker run -d --name kafka \
     -p 9092:9092 \
     -v ~/DockerVolumes/kafka:/bitnami/kafka \
     bitnami/kafka:latest
+```
+
+## Kafka-ui [<Badge type="tip" text="tags" vertical="middle" />](https://github.com/provectus/kafka-ui)
+
+```bash
+docker run -p 8080:8080 \
+	-e KAFKA_CLUSTERS_0_NAME=test \
+	-e KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS=test-kafka01:9092 \
+	-e KAFKA_CLUSTERS_1_NAME=prod \
+	-e KAFKA_CLUSTERS_1_BOOTSTRAPSERVERS=prod-kafka01:9092 \
+	-d provectuslabs/kafka-ui:latest
 ```
