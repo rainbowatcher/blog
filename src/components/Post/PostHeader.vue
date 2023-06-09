@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import Color from "color"
+
 defineProps({
   pageTitle: String,
 })
@@ -26,7 +27,7 @@ watch(isDark, () => {
     <div class="article-header-mask page-header-mask" />
     <div class="article-header-content">
       <div class="article-header-tags flex gap2 mb-4 text-2">
-        <span v-for="tag in frontmatter.tags" :key="tag" class="border rounded-2xl px-2 py-1 text-white">
+        <span v-for="tag in frontmatter.tags" :key="tag" class="border rounded-2xl px-2 leading-5 h5 text-white">
           {{ tag }}
         </span>
       </div>

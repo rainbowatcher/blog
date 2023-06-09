@@ -4,7 +4,7 @@ import type { TagInfo } from "~/types"
 
 export const tagMapSymbol: InjectionKey<Map<string, TagInfo>> = Symbol.for("blogTags")
 
-export const useTagMap = () => {
+export function useTagMap() {
   const tagMap = inject(tagMapSymbol)
 
   if (!tagMap) {
@@ -14,13 +14,13 @@ export const useTagMap = () => {
   return tagMap
 }
 
-export const useTags = () => {
+export function useTags() {
   const tagMap = useTagMap()
 
   const tags = [] as TagInfo[]
 
   for (const tag of tagMap.keys()) {
-    const info = {} as TagInfo
+    const info: TagInfo = { name: "", pages: [] }
     const end = Color("#34d399")
 
     info.name = tag

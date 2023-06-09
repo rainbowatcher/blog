@@ -1,6 +1,6 @@
 export * from "./site"
 
-export interface LineNumberOptions {
+export type LineNumberOptions = {
   className: string
   wrapperName: string
 }

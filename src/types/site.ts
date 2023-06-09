@@ -4,12 +4,13 @@ import type { RouteMeta } from "vue-router"
 
 export type UserModule = (ctx: ViteSSGContext) => void
 
-export interface SiteConfig {
+export type SiteConfig = {
   head: UseHeadInput<any>
-  nav: { text: string; link: string }[]
+  nav: Array<{ text: string; link: string }>
 }
 
-export interface Frontmatter {
+export type Frontmatter = {
+  [key: string]: unknown
   layout: "post" | "home" | "Post" | "Home"
   permalinkPattern: string
   // TODO remove
@@ -21,17 +22,16 @@ export interface Frontmatter {
   headerImage: string
   headerMask: string
   tags: string[]
-  [key: string]: unknown
 }
 
-export interface TagInfo {
+export type TagInfo = {
   name: string
   // link?: string
   pages: RouteMeta[]
   color?: string
 }
 
-export interface MenuItem {
+export type MenuItem = {
   level: number
   title: string
   link: string

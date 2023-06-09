@@ -13,7 +13,7 @@ interface Props {
   disabled: boolean
 }
 
-const mapRound = (round: string): string => {
+function mapRound(round: string): string {
   switch (round) {
     case "sm":
       return "rounded-sm"
@@ -30,7 +30,7 @@ const mapRound = (round: string): string => {
   }
 }
 
-const classList = () => {
+function classList() {
   const { round, color, size, disabled } = props
   const _round = mapRound(round)
   return [

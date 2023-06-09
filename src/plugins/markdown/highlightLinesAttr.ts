@@ -6,7 +6,7 @@ import type MarkdownIt from "markdown-it"
 
 const RE = /{([\d,-]+)}/
 
-export const highlightLineAttr = (md: MarkdownIt) => {
+export function highlightLineAttr(md: MarkdownIt) {
   const fence = md.renderer.rules.fence!
   md.renderer.rules.fence = (...args) => {
     const [tokens, idx] = args

@@ -1,4 +1,4 @@
-export const scrollIntoAnchor = (offset = 10) => {
+export function scrollIntoAnchor(offset = 10) {
   if (location.hash) {
     const ele = document.querySelector(decodeURIComponent(location.hash))
     // @ts-expect-error-ts-2239
@@ -10,17 +10,19 @@ export const scrollIntoAnchor = (offset = 10) => {
   }
 }
 
-export const usePosts = () => {
-  return useRouter().getRoutes().filter(route => route.meta.frontmatter.layout === "post").map((route) => {
-    const { path, meta: { frontmatter, author, createTime, commits, updateTime, email } } = route
-    return {
-      frontmatter,
-      path,
-      author,
-      commits,
-      createTime,
-      updateTime,
-      email,
-    }
-  }).sort((a, b) => +new Date(a.createTime) - +new Date(b.createTime))
+export function usePosts() {
+  return useRouter().getRoutes().filter(route => route.meta.frontmatter.layout === "post")
+    .map((route) => {
+      const { path, meta: { frontmatter, author, createTime, commits, updateTime, email } } = route
+      return {
+        frontmatter,
+        path,
+        author,
+        commits,
+        createTime,
+        updateTime,
+        email,
+      }
+    })
+    .sort((a, b) => +new Date(a.createTime) - +new Date(b.createTime))
 }

@@ -1,3 +1,4 @@
+/* eslint-disable */
 // Process footnotes
 //
 import type MarkdownIt from "markdown-it"
@@ -39,11 +40,11 @@ const render_footnote_ref: Renderer.RenderRule = (tokens, idx, options, env, slf
 
   return (
     `<sup class="footnote-ref"><a href="#fn${
-    id
+      id
     }" id="fnref${
-    refId
+      refId
     }">${
-    caption
+      caption
     }</a></sup>`
   )
 }
@@ -88,8 +89,8 @@ const render_footnote_anchor: Renderer.RenderRule = (tokens: Token[], idx, optio
 }
 
 module.exports = function footnote_plugin(md: MarkdownIt) {
-  const parseLinkLabel = md.helpers.parseLinkLabel
-  const isSpace = md.utils.isSpace
+  const { parseLinkLabel } = md.helpers
+  const { isSpace } = md.utils
 
   md.renderer.rules.footnote_ref = render_footnote_ref
   md.renderer.rules.footnote_block_open = render_footnote_block_open
@@ -374,7 +375,7 @@ module.exports = function footnote_plugin(md: MarkdownIt) {
     if (!state.env.footnotes.list)
       return
 
-    const list = state.env.footnotes.list
+    const { list } = state.env.footnotes
 
     token = new state.Token("footnote_block_open", "", 1)
     state.tokens.push(token)

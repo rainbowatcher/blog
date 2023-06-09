@@ -15,11 +15,11 @@ const filteredPages = computed(() => {
 })
 
 // usePageData()
-const toggleTag = (tag: TagInfo) => {
+function toggleTag(tag: TagInfo) {
   currentTags.value.push(tag)
 }
 
-const showAll = () => {
+function showAll() {
   currentTags.value = []
 }
 

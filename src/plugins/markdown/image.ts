@@ -3,7 +3,7 @@
 import type MarkdownIt from "markdown-it"
 import { EXTERNAL_URL_RE } from "../../utils"
 
-export const imagePlugin = (md: MarkdownIt) => {
+export function imagePlugin(md: MarkdownIt) {
   const imageRule = md.renderer.rules.image!
   md.renderer.rules.image = (tokens, idx, options, env, self) => {
     const token = tokens[idx]

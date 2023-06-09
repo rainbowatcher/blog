@@ -67,7 +67,7 @@ function setupRouter(router: Router, isClient: boolean) {
                 scrollTo(link, hash, link.classList.contains("header-anchor") || link.classList.contains("outline-link"))
               }
             } else {
-              router.push(pathname)
+              void router.push(pathname)
               // scrollTo(link, hash, true)
             }
           }
@@ -79,6 +79,7 @@ function setupRouter(router: Router, isClient: boolean) {
 }
 
 function scrollTo(el: HTMLElement, hash: string, smooth = false) {
+  // eslint-disable-next-line @typescript-eslint/ban-types
   let target: HTMLElement | null = null
 
   try {
@@ -114,7 +115,6 @@ function scrollTo(el: HTMLElement, hash: string, smooth = false) {
 
 function setupHistoryPosition() {
   if (isClient && window.history.state?.scroll?.top) {
-    // console.log(window.history.state.scroll.top)
-    setTimeout(() => window.scrollTo({ top: window.history.state.scroll.top, behavior: "smooth" }), 500)
+    setTimeout(() => { window.scrollTo({ top: window.history.state.scroll.top, behavior: "smooth" }) }, 500)
   }
 }

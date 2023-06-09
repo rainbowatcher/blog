@@ -3,7 +3,7 @@ const show = ref(false)
 const lock = useScrollLock(computedBody, false)
 const toggleShow = useToggle(show)
 const toggleLock = useToggle(lock)
-const togglePanel = () => {
+function togglePanel() {
   toggleLock()
   toggleShow()
 }

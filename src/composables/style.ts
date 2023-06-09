@@ -4,7 +4,7 @@ const codeBlockStyles = `
 
 `
 
-export const useDynamicStyle = () => {
+export function useDynamicStyle() {
   if (!isMobile()) {
     const style = document.createElement("style")
     style.textContent = codeBlockStyles

@@ -3,7 +3,7 @@ defineProps<{
   inContent?: boolean
 }>()
 const { t, availableLocales, locale } = useI18n()
-const toggleLocales = () => {
+function toggleLocales() {
   const locales = availableLocales
   locale.value = locales[(locales.indexOf(locale.value) + 1) % locales.length]
 }

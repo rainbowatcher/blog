@@ -4,8 +4,9 @@ import type { MenuItem } from "~/types"
 const PAGE_OFFSET = usePx(pageHeaderHight)
 
 /**
- * get headers
- * @param levelRange header level range
+ * get blog page's headers
+ * @param levelDeep depth on the base level
+ * @param baseLevel the head tag level to start
  * @returns headers
  */
 export function getHeaders(levelDeep = 2, baseLevel = 2) {
@@ -16,8 +17,8 @@ export function getHeaders(levelDeep = 2, baseLevel = 2) {
     .forEach((el) => {
       const level = Number(el.tagName[1])
       console.log(levelRange[1])
-      const inRange = level >= levelRange[0] && level < levelRange[1]
-      if (el.textContent && el.id && inRange) {
+      const isInRange = level >= levelRange[0] && level < levelRange[1]
+      if (el.textContent && el.id && isInRange) {
         updatedHeaders.push({
           level: Number(el.tagName[1]),
           title: el.innerText.replace(/\s*#\s*/, ""),
@@ -32,22 +33,21 @@ export function useActiveAnchor(
   container: Ref<HTMLElement>,
   marker: Ref<HTMLElement>,
 ) {
-  const onScroll = useThrottleFn(setActiveLink, 200)
-
+  // eslint-disable-next-line @typescript-eslint/ban-types
   let prevActiveLink: HTMLAnchorElement | null = null
 
   onMounted(() => {
-    requestAnimationFrame(setActiveLink)
-    window.addEventListener("scroll", onScroll)
+    window.addEventListener("scroll", setActiveLink)
+    // requestAnimationFrame(setActiveLink)
   })
 
-  onUpdated(() => {
-    // sidebar update means a route change
-    activateLink(location.hash)
-  })
+  // onUpdated(() => {
+  //   // sidebar update means a route change
+  //   activateLink(location.hash)
+  // })
 
   onUnmounted(() => {
-    window.removeEventListener("scroll", onScroll)
+    window.removeEventListener("scroll", setActiveLink)
   })
 
   function setActiveLink() {
@@ -63,9 +63,9 @@ export function useActiveAnchor(
         })
       }) as HTMLAnchorElement[]
 
-    const scrollY = window.scrollY
-    const innerHeight = window.innerHeight
-    const offsetHeight = document.body.offsetHeight
+    const { scrollY } = window
+    const { innerHeight } = window
+    const { offsetHeight } = document.body
     const isBottom = Math.abs(scrollY + innerHeight - offsetHeight) < 10
 
     // page bottom - highlight last one
@@ -87,12 +87,12 @@ export function useActiveAnchor(
     }
   }
 
-  function activateLink(hash: string | null) {
+  function activateLink(hash: string | undefined) {
     if (prevActiveLink) {
       prevActiveLink.classList.remove("active")
     }
 
-    if (hash !== null) {
+    if (hash) {
       prevActiveLink = container.value.querySelector(
         `a[href="${decodeURIComponent(hash)}"]`,
       )
@@ -120,20 +120,20 @@ function isAnchorActive(
   anchor: HTMLAnchorElement,
   nextAnchor: HTMLAnchorElement | undefined,
   top = 0,
-): [boolean, string | null] {
+): [boolean, string | undefined] {
   const scrollTop = window.scrollY
 
   if (index === 0 && scrollTop === top) {
-    return [true, null]
+    return [true, undefined]
   }
 
   if (scrollTop + top < getAnchorTop(anchor)) {
-    return [false, null]
+    return [false, undefined]
   }
 
   if (!nextAnchor || scrollTop + top <= getAnchorTop(nextAnchor)) {
     return [true, anchor.hash]
   }
 
-  return [false, null]
+  return [false, undefined]
 }

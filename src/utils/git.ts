@@ -1,7 +1,7 @@
 import { execaSync } from "execa"
 import dayjs from "dayjs"
 
-export const getGitStat = (path: string) => {
+export function getGitStat(path: string) {
   const { stdout } = execaSync("git", ["--no-pager", "shortlog", "-nes", "HEAD", "--", path])
   return stdout
     .split("\n")
@@ -14,12 +14,12 @@ export const getGitStat = (path: string) => {
     }))[0]
 }
 
-export const getUpdateTime = (path: string): string => {
+export function getUpdateTime(path: string): string {
   const { stdout } = execaSync("git", ["--no-pager", "log", "--format=%at", "-1", path])
   return dayjs.unix(Number(stdout.trim())).format("YYYY-MM-DD HH:mm:ss")
 }
 
-export const getCreateTime = (path: string) => {
+export function getCreateTime(path: string) {
   const { stdout } = execaSync("git", ["--no-pager", "log", "--diff-filter=A", "--format=%at", path])
   return dayjs.unix(Number(stdout.trim())).format("YYYY-MM-DD HH:mm:ss")
 }

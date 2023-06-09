@@ -11,10 +11,8 @@ const DEFAULT_OPTIONS: LineNumberOptions = {
   className: "line-number",
 }
 
-export const lineNumberPlugin = (
-  md: MarkdownIt,
-  options: LineNumberOptions,
-) => {
+export function lineNumberPlugin(md: MarkdownIt,
+  options: LineNumberOptions) {
   const fence = md.renderer.rules.fence!
   const { className, wrapperName } = { ...DEFAULT_OPTIONS, ...options }
   md.renderer.rules.fence = (...args) => {

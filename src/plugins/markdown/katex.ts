@@ -7,10 +7,8 @@ import type StateInline from "markdown-it/lib/rules_inline/state_inline"
 import type Token from "markdown-it/lib/token"
 import { escapeHtml } from "markdown-it/lib/common/utils"
 
-const isValidDelim = (
-  state: StateInline,
-  pos: number,
-): { canOpen: boolean; canClose: boolean } => {
+function isValidDelim(state: StateInline,
+  pos: number): { canOpen: boolean; canClose: boolean } {
   const prevChar = pos > 0 ? state.src.charCodeAt(pos - 1) : -1
   const nextChar = pos + 1 <= state.posMax ? state.src.charCodeAt(pos + 1) : -1
 
@@ -37,7 +35,7 @@ const isValidDelim = (
   }
 }
 
-const mathInline = (state: StateInline, silent?: boolean): boolean => {
+function mathInline(state: StateInline, silent?: boolean): boolean {
   let match, token, res, pos
 
   if (state.src[state.pos] !== "$")
@@ -116,16 +114,15 @@ const mathInline = (state: StateInline, silent?: boolean): boolean => {
   return true
 }
 
-const mathBlock = (
-  state: StateBlock,
+function mathBlock(state: StateBlock,
   start: number,
   end: number,
-  silent: boolean,
-): boolean => {
+  silent: boolean): boolean {
   let firstLine
   let lastLine
   let next
   let lastPos
+  // eslint-disable-next-line @typescript-eslint/naming-convention
   let found = false
   let pos = state.bMarks[start] + state.tShift[start]
   let max = state.eMarks[start]

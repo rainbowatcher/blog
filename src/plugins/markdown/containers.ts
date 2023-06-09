@@ -3,7 +3,7 @@ import type { RenderRule } from "markdown-it/lib/renderer"
 import type Token from "markdown-it/lib/token"
 import container from "markdown-it-container"
 
-export const containerPlugin = (md: MarkdownIt) => {
+export function containerPlugin(md: MarkdownIt) {
   md.use(...createContainer("tip", "TIP", md))
     .use(...createContainer("info", "INFO", md))
     .use(...createContainer("warning", "WARNING", md))

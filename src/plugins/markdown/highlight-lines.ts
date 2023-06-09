@@ -4,7 +4,7 @@ import type MarkdownIt from "markdown-it/lib"
 
 const RE = /{([\d,-]+)}/
 
-export const highlightLines = (md: MarkdownIt) => {
+export function highlightLines(md: MarkdownIt) {
   const fence = md.renderer.rules.fence!
   md.renderer.rules.fence = (...args) => {
     const [tokens, idx, options, , self] = args
@@ -29,13 +29,13 @@ export const highlightLines = (md: MarkdownIt) => {
       if (split.includes("class=\"line\""))
         lineNumber += 1
 
-      const inRange = lineNumbers.some(([start, end]) => {
+      const isInRange = lineNumbers.some(([start, end]) => {
         if (start && end)
           return lineNumber >= start && lineNumber <= end
 
         return lineNumber === start
       })
-      if (inRange) {
+      if (isInRange) {
         return {
           code: `<span class="highlighted-line">${split}</span>`,
           highlighted: true,

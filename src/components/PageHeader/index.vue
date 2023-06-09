@@ -28,7 +28,7 @@ onMounted(() => {
 })
 
 onUnmounted(() => {
-  unwatchList.forEach(unwatch => unwatch())
+  unwatchList.forEach((unwatch) => { unwatch() })
 })
 </script>
 

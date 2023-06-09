@@ -9,7 +9,7 @@ import { getHighlighter } from "shiki"
  * 2. convert line numbers into line options:
  *    [{ line: number, classes: string[] }]
  */
-const attrsToLines = (attrs: string): HtmlRendererOptions["lineOptions"] => {
+function attrsToLines(attrs: string): HtmlRendererOptions["lineOptions"] {
   const result: number[] = []
   if (!attrs.trim())
     return []
