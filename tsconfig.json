@@ -23,7 +23,8 @@
       "vue/ref-macros",
       "vite-plugin-pages/client",
       "vite-plugin-vue-component-preview/client",
-      "katex"
+      "katex",
+      "vitest/importMeta"
     ],
     "paths": {
       "~/*": [
@@ -37,6 +38,12 @@
       ]
     }
   },
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.vue",
+    "vite.config.ts",
+    "unocss.config.ts"
+  ],
   "exclude": [
     "dist",
     "node_modules",

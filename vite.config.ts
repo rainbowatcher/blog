@@ -1,7 +1,7 @@
 import { resolve } from "node:path"
 import fs from "node:fs"
 import matter from "gray-matter"
-import { defineConfig } from "vite"
+import { defineConfig } from "vitest/config"
 import Preview from "vite-plugin-vue-component-preview"
 import Vue from "@vitejs/plugin-vue"
 import Pages from "vite-plugin-pages"
@@ -38,8 +38,10 @@ export default defineConfig({
       "~/": `${resolve(__dirname, "src")}/`,
     },
   },
+  define: {
+    "import.meta.vitest": undefined,
+  },
   publicDir: "src/public",
-
   plugins: [
     Preview(),
 
@@ -134,7 +136,7 @@ export default defineConfig({
         lineNumberPlugin,
         katexPlugin,
       ],
-      async markdownItSetup(md) {
+      markdownItSetup(md) {
         // https://prismjs.com/
         md.use(LinkAttributes, {
           matcher: (link: string) => /^https?:\/\//.test(link),
@@ -188,19 +190,19 @@ export default defineConfig({
     dirStyle: "nested",
     script: "defer",
     formatting: "minify",
-    onBeforePageRender(_route, indexHTML) {
-      const RE = /.*(<link rel="stylesheet".*?>).*/
-      const match = RE.exec(indexHTML)
-      if (match) {
-        const stylesheetLinkTag = match[1].trim()
-        indexHTML = indexHTML.replace(stylesheetLinkTag, "")
-        indexHTML = indexHTML.replace(
-          "<!-- script-slot -->",
-          stylesheetLinkTag,
-        )
-      }
-      return indexHTML
-    },
+    // onBeforePageRender(_route, indexHTML) {
+    //   const RE = /.*(<link rel="stylesheet".*?>).*/
+    //   const match = RE.exec(indexHTML)
+    //   if (match) {
+    //     const stylesheetLinkTag = match[1].trim()
+    //     indexHTML = indexHTML.replace(stylesheetLinkTag, "")
+    //     indexHTML = indexHTML.replace(
+    //       "<!-- script-slot -->",
+    //       stylesheetLinkTag,
+    //     )
+    //   }
+    //   return indexHTML
+    // },
     // onBeforePageRender: (route, indexHtml) => {
     //   console.log("route: ", route)
     //   console.log("indexHtml: ", indexHtml)
@@ -218,5 +220,8 @@ export default defineConfig({
   ssr: {
     // TODO: workaround until they support native ESM
     noExternal: ["workbox-window", /vue-i18n/],
+  },
+  test: {
+    includeSource: ["src/**/*.ts"],
   },
 })
