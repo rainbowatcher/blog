@@ -11,10 +11,17 @@ import "~/styles/main.sass"
 import "~/styles/container.sass"
 import "uno.css"
 
+function scrollBehavior(to: any, from: any, savedPosition: any) {
+  if (savedPosition)
+    return savedPosition
+  else
+    return { top: 0 }
+}
+
 // https://github.com/antfu/vite-ssg
 export const createApp = ViteSSG(
   App,
-  { routes, base: import.meta.env.BASE_URL },
+  { routes, base: import.meta.env.BASE_URL, scrollBehavior },
   (ctx) => {
     // install all modules under `modules/`
     Object.values(
