@@ -1,20 +1,21 @@
 <script lang="ts" setup>
 import { offset, useFloating } from "@floating-ui/vue"
+
 const triggerText = "Google"
 const trigger = ref<HTMLElement>()
 const content = ref<HTMLElement>()
 const show = ref(false)
 const toggleShow = useToggle(show)
-const { top, bottom, left, right, height, width } = useRect(trigger)
+const triggerRect = computed(() => trigger.value?.getBoundingClientRect())
 const { x, y, strategy } = useFloating(trigger, content, {
   placement: "left",
   middleware: [offset(10)],
 })
 
-const tri = () => {
+function tri() {
   toggleShow()
   console.log(x.value, y.value, strategy.value)
-  console.log(top.value, bottom.value, left.value, right.value, height.value, width.value)
+  console.log(triggerRect.value)
 }
 </script>
 
