@@ -4,8 +4,8 @@
 
 <template>
   <RouterLink to="/">
-    <h1>
-      Polymorph
-    </h1>
+    <span text-6 font-600>
+      Rainbow Watcher
+    </span>
   </RouterLink>
 </template>
