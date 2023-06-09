@@ -28,11 +28,11 @@
   "devDependencies": {
     "@akiravoid/markdown-it-footnote": "^1.0.2",
     "@akiravoid/markdown-it-mark": "^1.0.2",
-    "@antfu/eslint-config": "^0.35.3",
     "@floating-ui/vue": "^0.2.1",
     "@iconify-json/carbon": "^1.1.17",
     "@iconify-json/icon-park-outline": "^1.1.11",
     "@intlify/unplugin-vue-i18n": "^0.8.2",
+    "@rainbowatcher/eslint-config": "^0.2.3",
     "@types/color": "^3.0.3",
     "@types/diacritics": "^1.3.1",
     "@types/katex": "^0.16.0",

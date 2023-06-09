@@ -1,17 +1,3 @@
 {
-  "extends": "@antfu",
-  "rules": {
-    "brace-style": "off",
-    "@typescript-eslint/brace-style": [
-      "error",
-      "1tbs",
-      { "allowSingleLine": true }
-    ],
-    "curly": "off",
-    "no-console": "off",
-    // use double quotes to compability with other language like rust,java,etc
-    "quotes": ["warn", "double"],
-    "@typescript-eslint/quotes": ["warn", "double"],
-    "@typescript-eslint/prefer-ts-expect-error": "off"
-  }
+  "extends": "@rainbowatcher"
 }
