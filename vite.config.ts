@@ -12,7 +12,6 @@ import Markdown from "vite-plugin-vue-markdown"
 import VueI18n from "@intlify/unplugin-vue-i18n/vite"
 import Inspect from "vite-plugin-inspect"
 import Inspector from "vite-plugin-vue-inspector"
-import VueRouter from "unplugin-vue-router/vite"
 // Markdown plugins
 import LinkAttributes from "markdown-it-link-attributes"
 import anchor from "markdown-it-anchor"

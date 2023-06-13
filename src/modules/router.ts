@@ -1,41 +1,19 @@
 import { isClient } from "@vueuse/core"
-import type { App } from "vue"
-import type { RouteMeta, Router } from "vue-router"
-import type { TagInfo, UserModule } from "~/types"
+import type { Router } from "vue-router"
+import type { UserModule } from "~/types"
 
 const offset = 80
 
-export const install: UserModule = ({ app, router, isClient }) => {
-  setupTagMap(router, app)
-  setupRouter(router, isClient)
-  setupHistoryPosition()
-}
-
-function setupTagMap(router: Router, app: App<Element>) {
-  const tagMap = new Map<string, TagInfo>()
-  router.getRoutes().forEach((route) => {
-    const tags: string[] = route.meta.frontmatter?.tags
-    if (tags) {
-      tags.forEach((tag) => {
-        const { pages } = tagMap.get(tag) || { pages: [] as RouteMeta[] }
-        pages.push(route.meta)
-        tagMap.set(tag, { name: tag, pages })
-      })
-    }
-  })
-  app.provide(tagMapSymbol, tagMap)
-}
-
 // ref: https://github.com/vuejs/vitepress/blob/main/src/client/app/router.ts
-function setupRouter(router: Router, isClient: boolean) {
+function setSmoothScrollWhenClickAnchor(router: Router, isClient: boolean) {
   if (isClient) {
     window.addEventListener(
       "click",
       (e) => {
-        // temporary fix for docsearch action buttons
-        const button = (e.target as Element).closest("button")
-        if (button)
-          return
+        // // temporary fix for docsearch action buttons
+        // const button = (e.target as Element).closest("button")
+        // if (button)
+        //   return
 
         const link = (e.target as Element).closest("a")
         if (link && !link.download) {
@@ -78,6 +56,14 @@ function setupRouter(router: Router, isClient: boolean) {
   }
 }
 
+function handleHashChange() {
+  if (isClient) {
+    window.addEventListener("hashchange", (e) => {
+      e.preventDefault()
+    })
+  }
+}
+
 function scrollTo(el: HTMLElement, hash: string, smooth = false) {
   // eslint-disable-next-line @typescript-eslint/ban-types
   let target: HTMLElement | null = null
@@ -100,21 +86,37 @@ function scrollTo(el: HTMLElement, hash: string, smooth = false) {
       + target.getBoundingClientRect().top
       - offset
       + targetPadding
-      // only smooth scroll if distance is smaller than screen height.
-    // if (!smooth || Math.abs(targetTop - window.scrollY) > window.innerHeight) {
-    //   window.scrollTo(0, targetTop)
-    // } else {
     window.scrollTo({
       left: 0,
       top: targetTop,
       behavior: smooth ? "smooth" : "auto",
     })
-    // }
   }
 }
 
-function setupHistoryPosition() {
-  if (isClient && window.history.state?.scroll?.top) {
-    setTimeout(() => { window.scrollTo({ top: window.history.state.scroll.top, behavior: "smooth" }) }, 500)
-  }
+// function setupHistoryPosition() {
+//   if (isClient) {
+//     if (window.history.state?.scroll?.top) {
+//       setTimeout(() => { window.scrollTo({ top: window.history.state.scroll.top, behavior: "auto" }) }, 200)
+//     } else {
+//       window.scrollTo(0, 0)
+//     }
+//   }
+// }
+
+// scroll to history position
+export function scrollBehavior(to: any, from: any, savedPosition: any) {
+  if (savedPosition)
+    return savedPosition
+  else
+    return { top: 0 }
 }
+
+export const install: UserModule = ({ router, isClient }) => {
+  setSmoothScrollWhenClickAnchor(router, isClient)
+  // handleHashChange()
+  // setupHistoryPosition()
+}
+
+
+

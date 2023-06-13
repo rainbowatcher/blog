@@ -1,8 +1,6 @@
 import { type Ref, onMounted, onUnmounted, onUpdated } from "vue"
 import type { MenuItem } from "~/types"
 
-const PAGE_OFFSET = usePx(pageHeaderHight)
-
 /**
  * get blog page's headers
  * @param levelDeep depth on the base level
@@ -16,7 +14,6 @@ export function getHeaders(levelDeep = 2, baseLevel = 2) {
     .querySelectorAll<HTMLHeadingElement>("h2, h3, h4, h5, h6")
     .forEach((el) => {
       const level = Number(el.tagName[1])
-      console.log(levelRange[1])
       const isInRange = level >= levelRange[0] && level < levelRange[1]
       if (el.textContent && el.id && isInRange) {
         updatedHeaders.push({
@@ -41,10 +38,10 @@ export function useActiveAnchor(
     // requestAnimationFrame(setActiveLink)
   })
 
-  // onUpdated(() => {
-  //   // sidebar update means a route change
-  //   activateLink(location.hash)
-  // })
+  onUpdated(() => {
+    // sidebar update means a route change
+    activateLink(location.hash)
+  })
 
   onUnmounted(() => {
     window.removeEventListener("scroll", setActiveLink)
@@ -112,7 +109,7 @@ export function useActiveAnchor(
 }
 
 function getAnchorTop(anchor: HTMLAnchorElement): number {
-  return anchor.parentElement!.offsetTop - PAGE_OFFSET.value
+  return anchor.parentElement!.offsetTop - pageHeaderHight.value
 }
 
 function isAnchorActive(

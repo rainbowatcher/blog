@@ -1,43 +1,33 @@
 <script lang="ts" setup>
-const header = ref<HTMLElement | null>(null)
-const unwatchList: Function[] = []
-const headerAbs = ref(true)
-const headerFixedVisible = ref(false)
-const toggleFixedVisible = useToggle(headerFixedVisible)
-const toggleAbs = useToggle(headerAbs)
-const headerHide = computed(() => !headerFixedVisible.value && !headerAbs.value)
+const headerHeight = useCssVar("--sika-h-page-header")
+const [isVisible, toggleVisible] = useToggle(false)
+const [isHide, toggleHide] = useToggle(false)
+const [isAbs, toggleAbs] = useToggle(true)
+const headerHeightPx = usePx(headerHeight)
+const { y, arrivedState, directions } = useScroll(globalThis.window, { onScroll })
 
-onMounted(() => {
-  const { y, isScrolling, arrivedState, directions } = useScroll(window)
-  const headerHeight = header.value!.scrollHeight
-  const unwatchReachTop = watch([isScrolling, directions], () => {
-    if (arrivedState.top) {
-      toggleAbs(true)
-      toggleFixedVisible(false)
-    } else if (y.value > headerHeight && directions.top) {
-      toggleAbs(false)
-      toggleFixedVisible(true)
-    } else if (directions.bottom) {
-      toggleFixedVisible(false)
-      if (y.value > headerHeight)
-        toggleAbs(false)
-    }
-  })
-
-  unwatchList.push(unwatchReachTop)
-})
-
-onUnmounted(() => {
-  unwatchList.forEach((unwatch) => { unwatch() })
-})
+function onScroll() {
+  if (directions.top && y.value > headerHeightPx.value) {
+    toggleVisible(true)
+    toggleHide(false)
+  } else if (directions.bottom && y.value > headerHeightPx.value) {
+    toggleVisible(false)
+    toggleHide(true)
+    toggleAbs(false)
+  } else if (arrivedState.top) {
+    toggleAbs(true)
+    toggleVisible(false)
+    toggleHide(false)
+  }
+}
 </script>
 
 <template>
   <header
-    ref="header" class="page-header" :class="{
-      'header-abs': headerAbs,
-      'header-hide': headerHide,
-      'header-visible': headerFixedVisible,
+    class="page-header" :class="{
+      'header-abs': isAbs,
+      'header-hide': isHide,
+      'header-visible': isVisible,
     }"
   >
     <HeaderTitle />
@@ -52,16 +42,30 @@ onUnmounted(() => {
 
 <style lang="sass" scoped>
 .page-header
-  @apply flex-(~ row nowrap)
-  @apply justify-between w-full inset-x-0 h-header p-xl z-99 transition-all-250 b-b-transparent
+  display: flex
+  flex-direction: row
+  flex-wrap: nowrap
+  justify-content: space-between
+
+  width: 100%
+  height: var(--sika-h-page-header)
+  padding: 1.25rem
+  z-index: 99
+  transition-property: all
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1)
+  transition-duration: 250ms
+
+  color: #ffffff
+  background-color: rgba(63, 63, 70, 0.4)
+  border-bottom: 1px solid rgba(24, 24, 27, 0.1)
+  @apply shadow-md backdrop-blur-md shadow-dark/40
 
 .header-abs
-  @apply absolute text-white
+  @apply absolute text-white bg-transparent b-b-none backdrop-blur-none shadow-none
 
 .header-visible
-  @apply fixed top-0 bg-zinc-700/40 shadow-md backdrop-blur-md shadow-dark/40 text-white
-  @apply b-b-zinc900/10 b-b-1
+  @apply fixed top-0
 
 .header-hide
-  @apply fixed top-ph-hide
+  @apply fixed top-[calc(0px-var(--sika-h-page-header))]
 </style>

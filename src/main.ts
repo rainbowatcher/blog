@@ -1,7 +1,7 @@
 import { ViteSSG } from "vite-ssg"
-import Previewer from "virtual:vue-component-preview"
 import App from "./App.vue"
 import type { UserModule } from "./types"
+import { scrollBehavior } from "./modules/router"
 import routes from "~pages"
 
 import "@unocss/reset/normalize.css"
@@ -11,13 +11,6 @@ import "~/styles/fonts.scss"
 import "~/styles/main.scss"
 import "~/styles/container.scss"
 import "uno.css"
-
-function scrollBehavior(to: any, from: any, savedPosition: any) {
-  if (savedPosition)
-    return savedPosition
-  else
-    return { top: 0 }
-}
 
 // https://github.com/antfu/vite-ssg
 export const createApp = ViteSSG(

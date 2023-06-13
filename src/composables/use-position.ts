@@ -1,10 +1,9 @@
 import type { MaybeComputedRef, MaybeElementRef } from "@vueuse/core"
 import { isClient } from "@vueuse/core"
-import type { LengthUnit } from "~/types/position"
 import { Length } from "~/types/position"
 
-export const pageHeaderHight = useCssVar("--sika-h-page-header")
-export const postHeaderHight = useCssVar("--sika-h-post-header")
+export const pageHeaderHight = usePx(useCssVar("--sika-h-page-header"))
+export const postHeaderHight = usePx(useCssVar("--sika-h-post-header"))
 
 /**
  * hook that handles the positioning of an aside element
@@ -13,7 +12,7 @@ export function useAsidePos() {
   const asideClass = ref("is-abs")
 
   const pos = computed(() => {
-    return usePx(postHeaderHight).value - usePx(pageHeaderHight).value
+    return postHeaderHight.value - pageHeaderHight.value
   })
 
   const onScroll = () => {
@@ -41,22 +40,18 @@ export function usePx(length: MaybeComputedRef<string>, element?: MaybeElementRe
   const elementRef = computed(() => unrefElement(element) ?? computedBody.value)
 
   if (elementRef && length) {
-    const fontSize = useFontSize(unrefElement(elementRef) as HTMLElement | undefined)
-    let unit: LengthUnit = "px"
-    let size = -1
+    // get font size from element
+    const fontSize = useFontSize(unrefElement(element))
+    const len = Length.valueOf(resolveUnref(length)) as Length
 
-    try {
-      const len = Length.valueOf(resolveUnref(length)) as Length
-      unit = len.unit
-      size = len.size
-    } catch (e) {
-      console.log(e)
-    }
+    if (len) {
+      const { unit, size } = len
 
-    if (unit === "px") {
-      px.value = size
-    } else {
-      px.value = Number(fontSize) * size
+      if (unit === "px") {
+        px.value = size
+      } else {
+        px.value = Number(fontSize) * size
+      }
     }
   }
 
