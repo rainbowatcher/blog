@@ -2,7 +2,7 @@ import { resolve } from "node:path"
 import fs from "node:fs"
 import matter from "gray-matter"
 import { defineConfig } from "vitest/config"
-import Preview from "vite-plugin-vue-component-preview"
+// Vite plugins
 import Vue from "@vitejs/plugin-vue"
 import Pages from "vite-plugin-pages"
 import generateSitemap from "vite-ssg-sitemap"
@@ -11,14 +11,17 @@ import AutoImport from "unplugin-auto-import/vite"
 import Markdown from "vite-plugin-vue-markdown"
 import VueI18n from "@intlify/unplugin-vue-i18n/vite"
 import Inspect from "vite-plugin-inspect"
+import Inspector from "vite-plugin-vue-inspector"
+import VueRouter from "unplugin-vue-router/vite"
+// Markdown plugins
 import LinkAttributes from "markdown-it-link-attributes"
-import Unocss from "unocss/vite"
 import anchor from "markdown-it-anchor"
 import emoji from "markdown-it-emoji"
 import footnote from "markdown-it-footnote"
 import mark from "markdown-it-mark"
+// Other
+import Unocss from "unocss/vite"
 import autoprefixer from "autoprefixer"
-import Inspector from "vite-plugin-vue-inspector"
 
 import {
   containerPlugin,
@@ -43,7 +46,6 @@ export default defineConfig({
   },
   publicDir: "src/public",
   plugins: [
-    Preview(),
 
     Vue({
       include: [/\.vue$/, /\.md$/],
