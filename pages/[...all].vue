@@ -1,7 +1,3 @@
-<script lang="ts" setup>
-
-</script>
-
 <template>
   <div m-auto text-center p="t-50" h-100vh>
     <h1>Content Missing</h1>

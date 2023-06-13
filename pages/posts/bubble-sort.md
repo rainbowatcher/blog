@@ -20,7 +20,7 @@ tags: [Algorithm, Sort, Java]
 
 ![冒泡排序](https://www.runoob.com/wp-content/uploads/2019/03/bubbleSort.gif)
 
-<Align place='center'> 图片来源：<a href="https://www.runoob.com/w3cnote/bubble-sort.html">菜鸟教程</a> </Align>
+<div align='center'> 图片来源：<a href="https://www.runoob.com/w3cnote/bubble-sort.html">菜鸟教程</a> </div>
 
 ### 经典实现
 

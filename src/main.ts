@@ -4,11 +4,12 @@ import App from "./App.vue"
 import type { UserModule } from "./types"
 import routes from "~pages"
 
+import "@unocss/reset/normalize.css"
 import "@unocss/reset/tailwind.css"
-import "~/styles/theme.sass"
-import "~/styles/fonts.sass"
-import "~/styles/main.sass"
-import "~/styles/container.sass"
+import "~/styles/theme.scss"
+import "~/styles/fonts.scss"
+import "~/styles/main.scss"
+import "~/styles/container.scss"
 import "uno.css"
 
 function scrollBehavior(to: any, from: any, savedPosition: any) {
@@ -29,6 +30,6 @@ export const createApp = ViteSSG(
         eager: true,
       }),
     ).forEach((i) => { i.install?.(ctx) })
-    ctx.app.use(Previewer)
+    // ctx.app.use(Preview)
   },
 )

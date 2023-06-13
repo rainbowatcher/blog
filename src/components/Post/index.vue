@@ -1,6 +1,6 @@
 <script setup lang='ts'>
 import "katex/dist/katex.min.css"
-import "~/styles/markdown.sass"
+// import "~/styles/markdown.sass"
 // const { frontmatter } = defineProps({
 //   frontmatter: {
 //     type: Object,
@@ -15,3 +15,7 @@ const content = ref<HTMLDivElement>()
     <slot />
   </article>
 </template>
+
+<style lang="sass">
+@import "../../styles/markdown"
+</style>
