@@ -1,0 +1,384 @@
+@import "variables";
+@import "mixin/media";
+
+html {
+  &.dark {
+    .code-light {
+      display: none;
+    }
+  }
+
+  &:not(.dark) {
+    .code-dark {
+      display: none;
+    }
+  }
+}
+
+.markdown-body {
+  word-wrap: break-word;
+
+  // Headings
+  // --------------------------------------------------------------------------
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    position: relative;
+    font-weight: 600;
+    outline: none;
+    // font-family: var(--sika-f-title);
+  }
+
+  h1 {
+    letter-spacing: -0.02em;
+    line-height: 40px;
+    font-size: 28px;
+
+    @include media ('tablet') {
+      margin: 48px 0 16px;
+      letter-spacing: -0.02em;
+      line-height: 40px;
+      font-size: 32px;
+    }
+  }
+
+  h2 {
+    margin: 48px 0 16px;
+    padding-top: 24px;
+    border-top: 1px solid var(--sika-code-block-border-color);
+    letter-spacing: -0.02em;
+    line-height: 32px;
+    font-size: 24px;
+
+    &:first-child {
+      border-top: none;
+      padding-top: 0;
+      margin: 0 0 16px;
+    }
+  }
+
+  h3 {
+    margin: 32px 0 0;
+    letter-spacing: -0.01em;
+    line-height: 28px;
+    font-size: 20px;
+  }
+
+  h4 {
+    font-size: 1.15rem;
+  }
+
+  h5 {
+    font-size: 1.05rem;
+  }
+
+  h6 {
+    font-size: 1rem;
+  }
+
+  // Paragraph and inline elements
+  // --------------------------------------------------------------------------
+  p,
+  summary {
+    margin: 16px 0;
+  }
+
+  // text
+  // a
+  // text-decoration: none
+
+  em {
+    font-style: italic;
+  }
+
+  mark {
+    background-color: var(--sika-c-mark-bg);
+    color: var(--sika-c-mark);
+  }
+
+  // table
+  // --------------------------------------------------------------------------
+  table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    display: block;
+    margin: 20px 0;
+    overflow-x: auto;
+
+    td,
+    th {
+      padding: .5rem .8rem;
+      // border: 1px solid var(--sika-c-table-border)
+    }
+
+    // tr
+    //   background-color: var(--sika-c-table-row-bg1)
+    // transition: background-color 0.5s
+
+    tr:nth-child(2n) {
+      background-color: var(--sika-c-table-row-bg2);
+    }
+
+    th {
+      width: -moz-fit-content;
+      width: fit-content;
+      font-size: 16px;
+      font-weight: 600;
+      // background-size: 5px 5px
+      // background-image: radial-gradient(var(--sika-line-numbers-bg-color) 1px,var(--sika-code-block-bg-color3) 1px)
+      // background-repeat: repeat
+      background-color: var(--sika-c-table-row-bg2);
+      // transition: background-color 0.5s
+    }
+
+    // th:last-child
+    // width: 100%
+  }
+
+  hr {
+    margin: 16px 0;
+    border: none;
+    border-top: 1px solid var(--sika-c-table-border);
+  }
+
+  // header anchor
+  .header-anchor {
+    float: left;
+    margin-left: -0.87em;
+    padding-right: 0.23em;
+    font-weight: 800;
+    -webkit-user-select: none;
+    user-select: none;
+    opacity: 0;
+    color: var(--sika-c-brand);
+    transition: color 0.25s, opacity 0.25s;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 &:hover .header-anchor,
+
+  &:focus {
+    opacity: 1;
+  }
+
+  /* inline code */
+  :not(pre, h1, h2, h3, h4, h5, h6)>code {
+    font-size: var(--sika-s-code-font);
+    font-family: var(--sika-f-code-mono);
+    background-color: var(--sika-inline-code-bg-color);
+    color: var(--sika-inline-code-color);
+    padding: .2rem .3rem;
+    border-radius: .25rem;
+  }
+
+  // code block
+  // --------------------------------------------------------------------------
+  div[class*=language-] {
+    // transition: background-color 0.25s
+    position: relative;
+    z-index: 1;
+    overflow-x: auto;
+    background: var(--sika-code-block-bg-color4);
+    margin: .8rem -1rem;
+    padding: 0 1rem;
+
+    *::selection {
+      background-color: var(--sika-c-code-block-selected)
+    }
+
+    @media (min-width: 768px) {
+      background-size: 5px 5px;
+      // background-image: radial-gradient(var(--sika-code-block-bg-color4) 1px, var(--sika-code-block-bg-color3) 1px);
+      // background-repeat: repeat;
+      box-shadow: 0px 3px 6px var(--sika-code-block-shadow-color1), 0px 8px 15px var(--sika-code-block-shadow-color2), 0 0 0 1px var(--sika-code-block-border-color);
+      border-radius: 5px;
+      margin: 16px 0;
+    }
+
+    code {
+      font-family: var(--sika-f-code-mono);
+      font-size: var(--sika-s-code-font);
+      font-weight: 400;
+      line-height: var(--sika-lh-code);
+    }
+
+    pre {
+      z-index: 1;
+      margin: 0;
+      padding: 1rem 0;
+      overflow-x: auto;
+    }
+
+    pre,
+    code {
+      text-align: left;
+      white-space: pre;
+      word-spacing: normal;
+      word-break: normal;
+      word-wrap: normal;
+      -moz-tab-size: 4;
+      -o-tab-size: 4;
+      tab-size: 4;
+      -webkit-hyphens: none;
+      -moz-hyphens: none;
+      -ms-hyphens: none;
+      hyphens: none;
+    }
+
+    // line numbers
+    &.line-numbers-mode {
+      @media (min-width: 768px){
+        padding-left: calc(var(--sika-w-line-numbers) + .5rem)
+      }
+    }
+
+    >.line-numbers-wrapper {
+      position: absolute;
+      pointer-events: none;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 3;
+      // border-right: 1px solid var(--sika-c-table-border);
+      background-color: var(--sika-line-numbers-bg-color);
+      // background-color: $sikaCodeNumberBgColor;
+      padding-top: 1rem;
+      padding-right: .5rem;
+      width: var(--sika-w-line-numbers);
+      text-align: right;
+      font-family: var(--sika-f-code-mono);
+      font-size: var(--sika-s-code-font);
+      // Don't know why, disable it can align code and line numbers;
+      // line-height: var(--sika-lh-code);
+      -webkit-user-select: none;
+      user-select: none;
+      border-right: 1px solid var(--sika-code-block-bg-color1);
+      color: var(--sika-line-numbers-text-color);
+
+      @media (max-width: 767.9px) {
+        display: none;
+      }
+    }
+
+    // highlight lines
+    .highlighted {
+      background-color: var(--sika-code-highlight-color);
+      // transition: background-color 0.5s;
+      margin: 0 calc(0px - var(--sika-w-line-numbers));
+      padding: 0 calc(var(--sika-w-line-numbers));
+      width: calc(100% + 2 * var(--sika-w-line-numbers));
+      display: inline-block;
+    }
+
+    // code block button copy
+    button.copy {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      z-index: 3;
+      display: block;
+      justify-content: center;
+      align-items: center;
+      border-radius: 4px;
+      width: 40px;
+      height: 40px;
+      // background-color: var(--sika-button-bg-color3);
+      opacity: 0;
+      cursor: pointer;
+      background-image: var(--sika-copy-icon);
+      background-position: 50%;
+      background-size: 20px;
+      background-repeat: no-repeat;
+      transition: background-color 0.4s, opacity 0.4s;
+    }
+
+    &:hover>button.copy,
+    button.copy:focus {
+      opacity: 1;
+    }
+
+    button.copy:hover {
+      background-color: var(--sika-button-bg-hover-color);
+    }
+
+    button.copy.copied,
+    button.copy:hover.copied {
+      border-radius: 0 4px 4px 0;
+      background-color: var(--sika-button-bg-color2);
+      background-image: var(--sika-copy-icon);
+    }
+
+    button.copy.copied::before,
+    button.copy:hover.copied::before {
+      position: relative;
+      left: -65px;
+      display: block;
+      border-radius: 4px 0 0 4px;
+      padding-top: 8px;
+      width: 64px;
+      height: 40px;
+      text-align: center;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--sika-c-brand);
+      background-color: var(--sika-table-bg-color2);
+      white-space: nowrap;
+      content: "Copied";
+    }
+
+    span.lang {
+      position: absolute;
+      top: 6px;
+      right: 12px;
+      z-index: 2;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--sika-code-lang-color);
+      opacity: 40%;
+      transition: color 0.4s, opacity 0.4s;
+    }
+
+    &:hover>button.copy+span.lang,
+    button.copy:focus+span.lang {
+      opacity: 0;
+    }
+  }
+
+  // Lists
+  // --------------------------------------------------------------------------
+
+  ul,
+  ol {
+    padding-left: 1.25rem;
+    margin: 16px 0;
+  }
+
+  ul {
+    list-style: disc;
+  }
+
+  ol {
+    list-style: decimal;
+  }
+
+  li+li {
+    margin-top: 8px;
+  }
+
+  li>ol,
+  li>ul {
+    margin: 8px 0 0;
+  }
+
+  :not(.markdown-body)>div[class*=language-] {
+    border-radius: 8px;
+    margin: 0;
+  }
+}

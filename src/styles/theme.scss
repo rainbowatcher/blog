@@ -1,0 +1,152 @@
+@import "variables";
+@import "mixin/media";
+
+// Common
+:root {  // font
+  --sika-f-title: system-ui, -apple-system, 'Segoe UI', 'sans-serif', Lobster, Lato;
+  --sika-f-code: 'Inter var experimental', 'Inter var', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto;
+  --sika-f-code-mono: 'Fira Mono', 'FiraCode', 'DM Serif Display', Roboto, 'sans-serif', Lobster, Lato;
+  --sika-lh-code: 1rem;
+  --sika-s-code-font: .875rem;
+
+  // icon
+  --sika-copy-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='20' width='20' viewBox='0 0 32 32'%3E%3Cpath fill='rgba(128,128,128,1)' d='m27.4 14.7l-6.1-6.1C21 8.2 20.5 8 20 8h-8c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V16.1c0-.5-.2-1-.6-1.4zM20 10l5.9 6H20v-6zm-8 18V10h6v6c0 1.1.9 2 2 2h6v10H12z'/%3E%3Cpath fill='rgba(128,128,128,1)' d='M6 18H4V4c0-1.1.9-2 2-2h14v2H6v14z'/%3E%3C/svg%3E");
+
+  --sika-w-line-numbers: 2.5rem;
+  --sika-h-page-header: 4rem;
+  --sika-h-page-header-mobile: 3.5rem;
+  --sika-h-post-header: 27rem;
+}
+
+@include media('mobile') {
+  :root {
+    --sika-h-post-header: 20rem;
+  }
+}
+
+// Light
+:root {  // color
+  --sika-c-page-bg: #fefefe;
+  --sika-c-page: #{$neutral900};
+  --sika-c-brand: #{$brandColor};
+  --sika-c-mark-bg: #{$yellow300};
+  --sika-c-mark: #{$neutral900};
+
+  // table
+  --sika-c-table-border: #{$zinc200};
+  --sika-c-table-row-bg1: #{$zinc50};
+  --sika-c-table-row-bg2: #{$zinc100};
+  --sika-c-table-header-bg: #{$zinc100};
+
+  // inline code
+  --sika-inline-code-bg-color: #{$slate200};
+  --sika-inline-code-color: #{$sky700};
+
+  // code-block
+  --sika-code-block-bg-color1: #{$neutral700};
+  --sika-code-block-bg-color2: #{$neutral800};
+  --sika-code-block-bg-color3: #{$neutral900};
+  --sika-code-block-bg-color4: #{mix($zinc800, $slate800, 50%)};
+
+  --sika-code-block-border-color: rgba(255, 255, 255, 0.08);
+  --sika-code-block-shadow-color1: rgba(0, 0, 0, 0.08);
+  --sika-code-block-shadow-color2: rgba(0, 0, 0, 0.16);
+
+  --sika-code-highlight-color: #{rgba($black, .8)};
+
+  --sika-code-lang-color: #{$white};
+
+  // button
+  --sika-button-bg-color1: #{$neutral700};
+  --sika-button-bg-color2: #{$neutral800};
+  --sika-button-bg-color3: #{$neutral900};
+  --sika-button-bg-hover-color: #{rgba($neutral700, .4)};
+
+  --sika-line-numbers-text-color: #{$neutral500};
+  --sika-line-numbers-bg-color: #{mix($neutral800, $slate700, 60%)};
+
+  --sika-c-code-block-selected: #{transparentize($neutral100, .8)};
+
+  // container
+  --sika-container-info-border: #{$green300};
+  --sika-container-info-bg: #{$green50};
+  --sika-container-info-text: #{$green900};
+
+  --sika-container-warning-border: #{$orange300};
+  --sika-container-warning-bg: #{$orange50};
+  --sika-container-warning-text: #{$orange900};
+
+  --sika-container-tip-border: #{$sky300};
+  --sika-container-tip-bg: #{$sky50};
+  --sika-container-tip-text: #{$sky900};
+
+  --sika-container-danger-border: #{$red300};
+  --sika-container-danger-bg: #{$red50};
+  --sika-container-danger-text: #{$red900};
+
+  --sika-container-details-border: #{$neutral300};
+  --sika-container-details-bg: #{$neutral50};
+  --sika-container-details-text: #{$neutral900};
+}
+// Dark
+.dark {  // Color
+  --sika-c-page-bg: #{mix($zinc800, $slate800, $weight: 50%)};
+  --sika-c-page: #{$neutral300};
+  --sika-c-brand: #{$sky600};
+  --sika-c-mark-bg: #{$yellow600};
+  --sika-c-mark: #{$neutral900};
+
+  // table
+  --sika-c-table-header-bg: #{$neutral900};
+  --sika-c-table-border: rgba(255, 255, 255, 0.06);
+  --sika-c-table-row-bg1: #{$neutral900};
+  --sika-c-table-row-bg2: #{transparentize(mix($neutral700, $gray700, 60%), 0.1)};
+
+  // inline code
+  --sika-inline-code-bg-color: #{darken($sky400, 35)};
+  --sika-inline-code-color: #{$neutral300};
+
+  // code-block
+  --sika-code-block-bg-color1: #{$neutral700};
+  --sika-code-block-bg-color2: #{$neutral800};
+  --sika-code-block-bg-color3: #{$neutral900};
+  --sika-code-block-bg-color4: #{$zinc900};
+
+  --sika-code-block-border-color: rgba(255, 255, 255, 0.08);
+  --sika-code-block-shadow-color1: rgba(0, 0, 0, 0.1);
+  --sika-code-block-shadow-color2: rgba(0, 0, 0, 0.2);
+
+  --sika-code-highlight-color: #{rgba($black, .8)};
+
+  --sika-code-lang-color: #{$white};
+
+  // button
+  --sika-button-bg-color1: #{$neutral700};
+  --sika-button-bg-color2: #{$neutral800};
+  --sika-button-bg-color3: #{$neutral900};
+  --sika-button-bg-hover-color: #{rgba($neutral700, .4)};
+
+  --sika-line-numbers-text-color: #{$neutral500};
+  --sika-line-numbers-bg-color: #{mix($neutral800, $slate700, 60%)};
+
+  // container
+  --sika-container-info-border: #{$green900};
+  --sika-container-info-bg: #{rgba($green900, .4)};
+  --sika-container-info-text: #{$green400};
+
+  --sika-container-warning-border: #{$orange800};
+  --sika-container-warning-bg: #{rgba($orange800, .4)};
+  --sika-container-warning-text: #{$orange400};
+
+  --sika-container-tip-border: #{$sky800};
+  --sika-container-tip-bg: #{rgba($sky800, .4)};
+  --sika-container-tip-text: #{$sky400};
+
+  --sika-container-danger-border: #{$red800};
+  --sika-container-danger-bg: #{rgba($red800, .4)};
+  --sika-container-danger-text: #{$red400};
+
+  --sika-container-details-border: #{$neutral600};
+  --sika-container-details-bg: #{rgba($neutral800, .4)};
+  --sika-container-details-text: #{$neutral400};
+}
