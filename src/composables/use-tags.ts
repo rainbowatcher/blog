@@ -17,7 +17,7 @@ export function useTagMap() {
 export function useTags() {
   const tagMap = useTagMap()
 
-  const tags = [] as TagInfo[]
+  const tags: TagInfo[] = []
 
   for (const tag of tagMap.keys()) {
     const info: TagInfo = { name: "", pages: [] }
