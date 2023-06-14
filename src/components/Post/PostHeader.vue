@@ -26,8 +26,8 @@ watch(isDark, () => {
   >
     <div class="post-header-mask" />
     <div class="post-header-content">
-      <div class="post-header-tags flex gap2 mb-4 text-2">
-        <span v-for="tag in frontmatter.tags" :key="tag" class="border rounded-2xl px-2 leading-5 h5 text-white">
+      <div v-if="frontmatter.tags" class="post-header-tags flex gap2 mb-4 text-2">
+        <span v-for="tag in frontmatter.tags" :key="tag" class="border rounded-2xl px-2 leading-5 h5 text-white cursor-pointer" @click="$router.push(`/tags/${tag.toLowerCase()}`)">
           {{ tag }}
         </span>
       </div>
