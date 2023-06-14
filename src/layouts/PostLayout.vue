@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-const { asideClass, canceler } = useAsidePos()
+const asideClass = useAsidePos()
 </script>
 
 <template>
@@ -18,19 +18,3 @@ const { asideClass, canceler } = useAsidePos()
   </main>
   <Footer />
 </template>
-
-<style lang="sass">
-.is-fixed
-  @apply fixed under-page-header mt-6
-
-.is-abs
-  @apply under-post-header
-
-.left-aside
-  @apply hidden xl:block
-  @apply mt-6 mx-4 overflow-y-auto basis-56 w-56 shrink-0
-
-.right-aside
-  @apply hidden lg:block relative
-  @apply mt-6 mx-4 overflow-y-auto basis-56 w-56 shrink-0
-</style>

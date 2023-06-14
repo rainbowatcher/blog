@@ -2,12 +2,12 @@
 import { PageInfo } from "~/composables/use-pages"
 
 defineProps<{
-  pages: PageInfo
+  pages: PageInfo[]
 }>()
 </script>
 
 <template>
-  <div flex="~ col" max-w-4xl mxa divide="zinc500/30 y">
+  <div w-full flex="~ col" max-w-4xl mxa divide="zinc500/30 y">
     <div v-for="page in pages" :key="page.link" class="post-item" w-auto>
       <section flex-row p4>
         <RouterLink :to="page.link">

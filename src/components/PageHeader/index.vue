@@ -1,9 +1,11 @@
 <script lang="ts" setup>
+import { toPx } from "~/utils/unit"
+
 const headerHeight = useCssVar("--sika-h-page-header")
 const [isVisible, toggleVisible] = useToggle(false)
 const [isHide, toggleHide] = useToggle(false)
 const [isAbs, toggleAbs] = useToggle(true)
-const headerHeightPx = usePx(headerHeight)
+const headerHeightPx = computed(() => toPx(headerHeight.value))
 const { y, arrivedState, directions } = useScroll(globalThis.window, { onScroll })
 
 function onScroll() {

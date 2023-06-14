@@ -108,7 +108,6 @@ export function usePrefetch(router: Router) {
           }
         })
     })
-    console.log(hasFetched.values())
   }
 
   onMounted(observeLinks)

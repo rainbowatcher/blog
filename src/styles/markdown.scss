@@ -86,9 +86,18 @@ html {
     margin: 16px 0;
   }
 
-  // text
-  // a
-  // text-decoration: none
+  a {
+    &:link, &:visited {
+      color: lighten($brandColor, 10);
+      font-weight: 600;
+      opacity: .75;
+    }
+
+    &:hover {
+      color: $brandColor;
+      opacity: 1;
+    }
+  }
 
   em {
     font-style: italic;
@@ -162,10 +171,14 @@ html {
   h3,
   h4,
   h5,
-  h6 &:hover .header-anchor,
+  h6 {
 
-  &:focus {
-    opacity: 1;
+    &:hover,
+    &:focus {
+      .header-anchor {
+        opacity: 1;
+      }
+    }
   }
 
   /* inline code */
@@ -234,7 +247,7 @@ html {
 
     // line numbers
     &.line-numbers-mode {
-      @media (min-width: 768px){
+      @media (min-width: 768px) {
         padding-left: calc(var(--sika-w-line-numbers) + .5rem)
       }
     }

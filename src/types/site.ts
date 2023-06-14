@@ -1,6 +1,6 @@
 import { type ViteSSGContext } from "vite-ssg"
 import type { UseHeadInput } from "@vueuse/head"
-import type { RouteMeta } from "vue-router"
+import type { PageInfo } from "~/composables/use-pages"
 
 export type UserModule = (ctx: ViteSSGContext) => void
 
@@ -27,7 +27,7 @@ export type Frontmatter = {
 export type TagInfo = {
   name: string
   // link?: string
-  pages: RouteMeta[]
+  pages: PageInfo[]
   color?: string
 }
 

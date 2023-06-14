@@ -1,12 +1,18 @@
 @import "variables";
 
-html {
-  background-color: var(--sika-c-page-bg);
-  color: var(--sika-c-page);
-}
-
 :root {
   color-scheme: light dark;
+  background-color: var(--sika-c-page-bg);
+  color: var(--sika-c-page);
+  line-height: 1.4rem;
+  font-size: 16px;
+  // https://developer.mozilla.org/zh-CN/docs/Web/CSS/font-smooth
+  -webkit-font-smoothing: auto;
+  -moz-osx-font-smoothing: auto;
+  font-smoothing: auto;
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 html,
@@ -17,13 +23,7 @@ body,
 }
 
 a:link {
-  text-decoration: dashed;
-  opacity: .75;
-}
-
-a:hover {
-  color: $brandColor;
-  opacity: 1;
+  text-decoration: none;
 }
 
 #nprogress {
@@ -39,18 +39,6 @@ a:hover {
     width: 100%;
     height: 2px;
   }
-}
-
-html {
-  line-height: 1.4rem;
-  font-size: 16px;
-  // https://developer.mozilla.org/zh-CN/docs/Web/CSS/font-smooth
-  -webkit-font-smoothing: auto;
-  -moz-osx-font-smoothing: auto;
-  font-smoothing: auto;
-  -webkit-text-size-adjust: 100%;
-  -moz-text-size-adjust: 100%;
-  text-size-adjust: 100%;
 }
 
 body {
@@ -114,4 +102,49 @@ h1 {
 
 .katex-display {
   overflow: auto;
+}
+
+// side anchor
+.is-fixed {
+  position: fixed;
+  margin-top: 2rem;
+  top: var(--sika-h-page-header);
+}
+
+.is-abs {
+  // position: absolute;
+  // top: var(--sika-h-post-header);
+  margin-top: 1.5rem;
+}
+
+.left-aside {
+  display: none;
+
+  margin: 1.5rem 1rem 1rem 0;
+  overflow-y: auto;
+  flex-basis: 14rem;
+  width: 14rem;
+  flex-shrink: 0;
+}
+
+@media (min-width: 1280px) {
+  .left-aside {
+    display: block;
+  }
+}
+
+.right-aside {
+  display: none;
+  position: relative;
+  margin: 1.5rem 1rem 1rem 0;
+  overflow-y: auto;
+  flex-basis: 14rem;
+  width: 14rem;
+  flex-shrink: 0;
+}
+
+@media (min-width: 1024px) {
+  .right-aside {
+    display: block;
+  }
 }
