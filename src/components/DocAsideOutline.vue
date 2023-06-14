@@ -4,16 +4,13 @@ import type { MenuItem } from "~/types"
 const headers = ref<MenuItem[]>([])
 const container = ref()
 const marker = ref()
-const { asideClass, canceler } = useAsidePos()
+const asideClass = useAsidePos()
 
 onMounted(() => {
   headers.value = getHeaders(2)
 })
 
 useActiveAnchor(container, marker)
-onUnmounted(() => {
-  canceler()
-})
 </script>
 
 <template>

@@ -1,5 +1,6 @@
 import { type Ref, onMounted, onUnmounted, onUpdated } from "vue"
 import type { MenuItem } from "~/types"
+import { toPx } from "~/utils/unit"
 
 /**
  * get blog page's headers
@@ -109,7 +110,8 @@ export function useActiveAnchor(
 }
 
 function getAnchorTop(anchor: HTMLAnchorElement): number {
-  return anchor.parentElement!.offsetTop - pageHeaderHight.value
+  const pageHeaderHeight = useCssVar("--sika-h-page-header")
+  return anchor.parentElement!.offsetTop - toPx(pageHeaderHeight.value)
 }
 
 function isAnchorActive(
