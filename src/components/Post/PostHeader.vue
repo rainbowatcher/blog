@@ -40,7 +40,7 @@ watch(isDark, () => {
       <h1 v-if="pageTitle" class="post-header-page-title mb-4 text-3.5rem text-white font-bold lh-4rem text-center">
         {{ pageTitle }}
       </h1>
-      <p v-if="frontmatter.subtitle" class="post-header-subtitle opacity-50 italic">
+      <p v-if="frontmatter.subtitle" class="post-header-subtitle opacity-75 italic">
         {{ frontmatter.subtitle }}
       </p>
       <div

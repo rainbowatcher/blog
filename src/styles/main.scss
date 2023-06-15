@@ -22,8 +22,18 @@ body,
   height: 100%;
 }
 
-a:link {
-  text-decoration: none;
+a {
+  &[target="_blank"] {
+    &:link, &:visited {
+      text-decoration: none;
+      color: var(--sika-c-link);
+    }
+
+    &:hover {
+      color: $brandColor;
+      opacity: 1;
+    }
+  }
 }
 
 #nprogress {

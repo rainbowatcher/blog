@@ -86,19 +86,6 @@ html {
     margin: 16px 0;
   }
 
-  a {
-    &:link, &:visited {
-      color: lighten($brandColor, 10);
-      font-weight: 600;
-      opacity: .75;
-    }
-
-    &:hover {
-      color: $brandColor;
-      opacity: 1;
-    }
-  }
-
   em {
     font-style: italic;
   }
@@ -187,7 +174,8 @@ html {
     font-family: var(--sika-f-code-mono);
     background-color: var(--sika-inline-code-bg-color);
     color: var(--sika-inline-code-color);
-    padding: .2rem .3rem;
+    padding: .1rem .3rem;
+    margin: 0 .1rem;
     border-radius: .25rem;
   }
 

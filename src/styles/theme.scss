@@ -2,7 +2,8 @@
 @import "mixin/media";
 
 // Common
-:root {  // font
+:root {
+  // font
   --sika-f-title: system-ui, -apple-system, 'Segoe UI', 'sans-serif', Lobster, Lato;
   --sika-f-code: 'Inter var experimental', 'Inter var', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto;
   --sika-f-code-mono: 'Fira Mono', 'FiraCode', 'DM Serif Display', Roboto, 'sans-serif', Lobster, Lato;
@@ -25,12 +26,19 @@
 }
 
 // Light
-:root {  // color
+:root {
+  // color
   --sika-c-page-bg: #fefefe;
   --sika-c-page: #{$neutral900};
   --sika-c-brand: #{$brandColor};
   --sika-c-mark-bg: #{$yellow300};
   --sika-c-mark: #{$neutral900};
+  --sika-c-link: #{$sky700};
+
+  // page header
+  --sika-c-page-header-border: #{transparentize($neutral200, .8)};
+  --sika-c-page-header-bg: #{transparentize($neutral200, .1)};
+  --sika-c-page-header-shadow: #{transparentize($neutral600, .6)};
 
   // table
   --sika-c-table-border: #{$zinc200};
@@ -88,13 +96,21 @@
   --sika-container-details-bg: #{$neutral50};
   --sika-container-details-text: #{$neutral900};
 }
+
 // Dark
-.dark {  // Color
+html.dark {
+  // Color
   --sika-c-page-bg: #{mix($zinc800, $slate800, $weight: 50%)};
   --sika-c-page: #{$neutral300};
   --sika-c-brand: #{$sky600};
   --sika-c-mark-bg: #{$yellow600};
   --sika-c-mark: #{$neutral900};
+  --sika-c-link: #{$sky500};
+
+  // page header
+  --sika-c-page-header-border: #{transparentize($neutral600, .6)};
+  --sika-c-page-header-bg: #{transparentize($gray800, .08)};
+  --sika-c-page-header-shadow: #{transparentize($gray800, .4)};
 
   // table
   --sika-c-table-header-bg: #{$neutral900};
