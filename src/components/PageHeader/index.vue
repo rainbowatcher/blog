@@ -3,23 +3,19 @@ import { toPx } from "~/utils/unit"
 
 const headerHeight = useCssVar("--sika-h-page-header")
 const [isVisible, toggleVisible] = useToggle(false)
-const [isHide, toggleHide] = useToggle(false)
-const [isAbs, toggleAbs] = useToggle(true)
+const [isFixed, toggleFixed] = useToggle(false)
 const headerHeightPx = computed(() => toPx(headerHeight.value))
 const { y, arrivedState, directions } = useScroll(globalThis.window, { onScroll })
 
 function onScroll() {
   if (directions.top && y.value > headerHeightPx.value) {
     toggleVisible(true)
-    toggleHide(false)
   } else if (directions.bottom && y.value > headerHeightPx.value) {
     toggleVisible(false)
-    toggleHide(true)
-    toggleAbs(false)
+    toggleFixed(true)
   } else if (arrivedState.top) {
-    toggleAbs(true)
     toggleVisible(false)
-    toggleHide(false)
+    toggleFixed(false)
   }
 }
 </script>
@@ -27,8 +23,7 @@ function onScroll() {
 <template>
   <header
     class="page-header" :class="{
-      'header-abs': isAbs,
-      'header-hide': isHide,
+      'header-fixed': isFixed,
       'header-visible': isVisible,
     }"
   >
@@ -42,32 +37,37 @@ function onScroll() {
   </header>
 </template>
 
-<style lang="sass" scoped>
-.page-header
-  display: flex
-  flex-direction: row
-  flex-wrap: nowrap
-  justify-content: space-between
+<style lang="scss" scoped>
+.page-header {
+  position: absolute;
+  inset: 0;
+  background-color: transparent;
+  width: 100%;
+  height: var(--sika-h-page-header);
+  padding: 1.25rem;
+  z-index: 10;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  color: white;
+  transition: background-color .1s ease-in, color .1s ease;
+}
 
-  width: 100%
-  height: var(--sika-h-page-header)
-  padding: 1.25rem
-  z-index: 99
-  transition-property: all
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1)
-  transition-duration: 250ms
+.header-visible {
+  transform: translateY(100%);
+}
 
-  color: #ffffff
-  background-color: rgba(63, 63, 70, 0.4)
-  border-bottom: 1px solid rgba(24, 24, 27, 0.1)
-  @apply shadow-md backdrop-blur-md shadow-dark/40
+html:not(.dark) .header-fixed {
+  color: rgb(82, 82, 82);
+}
 
-.header-abs
-  @apply absolute text-white bg-transparent b-b-none backdrop-blur-none shadow-none
-
-.header-visible
-  @apply fixed top-0
-
-.header-hide
-  @apply fixed top-[calc(0px-var(--sika-h-page-header))]
+.header-fixed {
+  position: fixed;
+  top: calc(0px - var(--sika-h-page-header));
+  background-color: var(--sika-c-page-header-bg);
+  border-bottom: 1px solid var(--sika-c-page-header-border);
+  box-shadow: 0 1px 8px 0 var(--sika-c-page-header-shadow);
+  transition: transform .3s ease;
+}
 </style>
