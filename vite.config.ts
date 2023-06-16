@@ -11,7 +11,6 @@ import AutoImport from "unplugin-auto-import/vite"
 import Markdown from "vite-plugin-vue-markdown"
 import VueI18n from "@intlify/unplugin-vue-i18n/vite"
 import Inspect from "vite-plugin-inspect"
-import Inspector from "vite-plugin-vue-inspector"
 // Markdown plugins
 import LinkAttributes from "markdown-it-link-attributes"
 import anchor from "markdown-it-anchor"
@@ -181,9 +180,6 @@ export default defineConfig({
     // https://github.com/antfu/vite-plugin-inspect
     // Visit http://localhost:3333/__inspect/ to see the inspector
     Inspect(),
-
-    // https://github.com/webfansplz/vite-plugin-vue-inspector
-    Inspector(),
   ],
 
   // https://github.com/antfu/vite-ssg
