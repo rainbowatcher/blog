@@ -1,5 +1,6 @@
 import { type Ref, onMounted, onUnmounted, onUpdated } from "vue"
 import type { MenuItem } from "~/types"
+import { throttleAndDebounce } from "~/utils"
 import { toPx } from "~/utils/unit"
 
 /**
@@ -31,12 +32,16 @@ export function useActiveAnchor(
   container: Ref<HTMLElement>,
   marker: Ref<HTMLElement>,
 ) {
+  const { isAsideEnabled } = useAside()
+
+  const onScroll = throttleAndDebounce(setActiveLink, 100)
+
   // eslint-disable-next-line @typescript-eslint/ban-types
   let prevActiveLink: HTMLAnchorElement | null = null
 
   onMounted(() => {
-    window.addEventListener("scroll", setActiveLink)
-    // requestAnimationFrame(setActiveLink)
+    requestAnimationFrame(setActiveLink)
+    window.addEventListener("scroll", onScroll)
   })
 
   onUpdated(() => {
@@ -45,10 +50,14 @@ export function useActiveAnchor(
   })
 
   onUnmounted(() => {
-    window.removeEventListener("scroll", setActiveLink)
+    window.removeEventListener("scroll", onScroll)
   })
 
   function setActiveLink() {
+    if (!isAsideEnabled.value) {
+      return
+    }
+
     const links = [].slice.call(
       container.value?.querySelectorAll(".outline-link"),
     ) as HTMLAnchorElement[]
@@ -76,7 +85,7 @@ export function useActiveAnchor(
       const anchor = anchors[i]
       const nextAnchor = anchors[i + 1]
 
-      const [isActive, hash] = isAnchorActive(i, anchor, nextAnchor, 74)
+      const [isActive, hash] = isAnchorActive(i, anchor, nextAnchor, 0)
 
       if (isActive) {
         activateLink(hash)
@@ -122,6 +131,7 @@ function isAnchorActive(
 ): [boolean, string | undefined] {
   const scrollTop = window.scrollY
 
+  console.log(index, top, scrollTop)
   if (index === 0 && scrollTop === top) {
     return [true, undefined]
   }
