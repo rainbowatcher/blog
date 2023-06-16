@@ -4,18 +4,19 @@
 
 ## RoadMap
 
+| 🚧 working on | ✅ done | 🎯 plan |
+| ------------ | ------ | ------ |
+
 - ✅ Floating Page Header
 - ✅ Side Outline
-- 🚧 Tags
+- ✅ Tags
 - ✅ Mobile Nav
 - ✅ Optimize css load order
-- 🎯 Remove unocss
-- 🎯 Reduce outline/code dom level
-- 🎯 Reduce font size
-- 🎯 Init Element width/height
-- 🎯 Optimize post header bg image load time
+- ✅ Reduce outline/code dom level
+- ✅ Reduce font size
+- ✅ Code copy
+- 🚧 Mermaid
 - 🎯 Pagenation
-- 🎯 Mermaid
 - 🎯 Task list
 - 🎯 Define list
 - 🎯 Quick Reference
