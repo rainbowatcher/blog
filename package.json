@@ -62,6 +62,7 @@
     "markdown-it-link-attributes": "^4.0.1",
     "markdown-it-mark": "^3.0.1",
     "mermaid": "^10.2.3",
+    "nanoid": "^4.0.2",
     "postcss": "^8.4.24",
     "rimraf": "^5.0.1",
     "sass": "^1.63.4",
