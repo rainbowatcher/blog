@@ -12,6 +12,7 @@ nextTick(() => {
   scrollIntoAnchor()
 })
 useCodeGroups()
+useCopyCode()
 </script>
 
 <template>
