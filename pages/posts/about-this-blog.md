@@ -6,6 +6,7 @@ permalinkPattern: /post/:year/:month/:day/:slug/
 headerMask: rgba(0,0,0,0.4)
 headerImage: /img/blog.jpg
 useHeaderImage: true
+hide: true
 tags: [Blog, VuePress, Github Pages, Vercel]
 ---
 
@@ -52,43 +53,34 @@ cd vuepress-starter
 
 2.  初始化项目
 
-<CodeGroup>
-<CodeGroupItem title="YARN">
-
-```shell
-git init
+::: code-group
+```shell [yarn]
 yarn init
 ```
 
-</CodeGroupItem>
-<CodeGroupItem title="NPM">
-
-```shell
-git init
+```shell [npm]
 npm init
 ```
 
-</CodeGroupItem>
-</CodeGroup>
+```shell [pnpm]
+pnpm init
+```
+:::
 
 3.  添加 VuePress 依赖
 
-<CodeGroup>
-<CodeGroupItem title="YARN">
+::: code-group
 
-```shell
+```shell [yarn]
 yarn add -D vuepress@next
 ```
 
-</CodeGroupItem>
-<CodeGroupItem title="NPM">
 
-```shell
+```shell [npm]
 npm i -D vuepress@next
 ```
 
-</CodeGroupItem>
-</CodeGroup>
+:::
 
 4.  配置 Git 忽略 VuePress 的临时文件
 
@@ -132,36 +124,29 @@ Awesome VuePress 列表
 
 第一步当让是添加依赖
 
-<CodeGroup>
-<CodeGroupItem title="PNPM">
+::: code-group
 
 ```shell
 pnpm add -D vuepress-theme-gungnir@next
 ```
 
-</CodeGroupItem>
-<CodeGroupItem title="YARN">
 
 ```shell
 yarn add -D vuepress-theme-gungnir@next
 ```
 
-</CodeGroupItem>
-<CodeGroupItem title="NPM">
 
 ```shell
 npm install -D vuepress-theme-gungnir@next
 ```
 
-</CodeGroupItem>
-</CodeGroup>
+:::
 
 ## 主题配置
 
 然后在 `.vuepress/config.js` 或 `.vuepress/config.ts`（如果你在使用 TypeScript 的话）中指定主题：
 
-<CodeGroup>
-<CodeGroupItem title="JS" active>
+::: code-group
 
 ```js{7}
 // .vuepress/config.js
@@ -176,9 +161,7 @@ module.exports = {
 }
 ```
 
-</CodeGroupItem>
 
-<CodeGroupItem title="TS">
 
 ```ts{8}
 // .vuepress/config.ts
@@ -194,8 +177,7 @@ export default defineUserConfig({
 });
 ```
 
-</CodeGroupItem>
-</CodeGroup>
+:::
 
 这时候博客主页还不会显示任何东西，仍需要进行一些[基本配置](https://v2-vuepress-theme-gungnir.vercel.app/zh/docs/basic/config.html)
 
@@ -242,29 +224,23 @@ const themeConfig: GungnirThemeOptions = {
 
 在加上这个配置之后启动项目就可以看到主页了
 
-<CodeGroup>
-<CodeGroupItem title="PNPM">
+::: code-group
 
 ```shell
 pnpm docs:dev
 ```
 
-</CodeGroupItem>
-<CodeGroupItem title="NPM">
 
 ```shell
 npm run docs:dev
 ```
 
-</CodeGroupItem>
-<CodeGroupItem title="YARN">
 
 ```shell
 yarn docs:dev
 ```
 
-</CodeGroupItem>
-</CodeGroup>
+:::
 
 不过这个时候还没有头像、页面背景图和博文。还需要根据主题文档继续配置，这里就不废话了。
 

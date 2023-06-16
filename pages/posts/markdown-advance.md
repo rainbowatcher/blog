@@ -40,6 +40,22 @@ Java[^1]
 ==黄底黑字==
 ```
 
+## Code highlight 代码高亮
+
+````markdown
+```js {2}
+function foo() {
+  console.log("bar")
+}
+```
+````
+
+```js {2}
+function foo() {
+  console.log("bar")
+}
+```
+
 ==黄底黑字==
 
 ## Anchor 锚
