@@ -191,7 +191,7 @@ html {
     overflow-x: auto;
     background: var(--sika-code-block-bg-color4);
     margin: .8rem -1rem;
-    padding: 0 1rem;
+    // padding: 0 1rem;
 
     *::selection {
       background-color: var(--sika-c-code-block-selected)
@@ -211,6 +211,8 @@ html {
       font-size: var(--sika-s-code-font);
       font-weight: 400;
       line-height: var(--sika-lh-code);
+      width: fit-content;
+      min-width: 100%;
     }
 
     pre {
@@ -222,6 +224,9 @@ html {
 
     pre,
     code {
+      /*rtl:ignore*/
+      direction: ltr;
+      /*rtl:ignore*/
       text-align: left;
       white-space: pre;
       word-spacing: normal;
@@ -239,7 +244,10 @@ html {
     // line numbers
     &.line-numbers-mode {
       @media (min-width: 768px) {
-        padding-left: calc(var(--sika-w-line-numbers) + .5rem)
+        padding-left: calc(var(--sika-w-line-numbers))
+      }
+      pre {
+        padding-left: .5rem;
       }
     }
 
@@ -273,12 +281,11 @@ html {
 
     // highlight lines
     .highlighted {
-      background-color: var(--sika-code-highlight-color);
-      // transition: background-color 0.5s;
-      margin: 0 calc(0px - var(--sika-w-line-numbers));
-      padding: 0 calc(var(--sika-w-line-numbers));
-      width: calc(100% + 2 * var(--sika-w-line-numbers));
       display: inline-block;
+      background-color: var(--sika-code-highlight-color);
+      margin-left: calc(0px - var(--sika-w-line-numbers));
+      padding-left: var(--sika-w-line-numbers);
+      width: calc(100% + var(--sika-w-line-numbers));
     }
 
     // code block button copy
@@ -288,12 +295,12 @@ html {
       right: 8px;
       z-index: 3;
       display: block;
-      justify-content: center;
-      align-items: center;
+      // justify-content: center;
+      // align-items: center;
       border-radius: 4px;
       width: 40px;
       height: 40px;
-      // background-color: var(--sika-button-bg-color3);
+      background-color: var(--sika-button-bg-color3);
       opacity: 0;
       cursor: pointer;
       background-image: var(--sika-copy-icon);
@@ -384,6 +391,6 @@ html {
 }
 
 :not(.markdown-body):not(.vp-code-group > .blocks) > div[class*=language-] {
-    border-radius: 8px;
-    margin: 0;
+  border-radius: 8px;
+  margin: 0;
 }
