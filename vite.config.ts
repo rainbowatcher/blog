@@ -58,7 +58,7 @@ export default defineConfig({
         if (route.component.endsWith(".md")) {
           const path = resolve(__dirname, route.component.slice(1))
           const md = fs.readFileSync(path, "utf-8")
-          const { author, email, commits } = getGitStat(path)
+          const { author, email, commits } = getGitStat(path) || {}
           const createTime = getCreateTime(path)
           const updateTime = getUpdateTime(path)
 
