@@ -15,11 +15,11 @@ export function getGitStat(path: string) {
 }
 
 export function getUpdateTime(path: string): string {
-  const { stdout } = execaSync("git", ["--no-pager", "log", "--format=%at", "-1", path])
+  const { stdout } = execaSync("git", ["--no-pager", "log", "-1", "--pretty=%at", "-1", path])
   return dayjs.unix(Number(stdout.trim())).format("YYYY-MM-DD HH:mm:ss")
 }
 
 export function getCreateTime(path: string) {
-  const { stdout } = execaSync("git", ["--no-pager", "log", "--diff-filter=A", "--format=%at", path])
+  const { stdout } = execaSync("git", ["--no-pager", "log", "--diff-filter=A", "--pretty=%at", path])
   return dayjs.unix(Number(stdout.trim())).format("YYYY-MM-DD HH:mm:ss")
 }
