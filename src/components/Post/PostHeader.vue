@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import Color from "color"
+import { randomColor } from "~/utils/color"
 
 defineProps({
   pageTitle: String,
@@ -17,6 +18,9 @@ watch(isDark, () => {
     dynamicHeaderMask.value = frontmatter.headerMask
   }
 })
+
+const from = randomColor()
+const to = randomColor()
 </script>
 
 <template>
@@ -70,7 +74,9 @@ watch(isDark, () => {
   color: white
 
 .default-bg-image
-  @apply bg-gradient-to-br from-teal-600 to-indigo-600
+  --sika-c-default-post-bg-from: v-bind(from)
+  --sika-c-default-post-bg-to: v-bind(to)
+  background-image: linear-gradient(to bottom right, var(--sika-c-default-post-bg-from), var(--sika-c-default-post-bg-to))
 
 .post-header-mask
   @apply absolute w-full h-full z1 top-0
