@@ -2,7 +2,6 @@
 title: Vitepress 源码解析
 subtitle: 源码解析
 date: 2022-11-30
-headerMask: rgba(0, 0, 0, .6)
 headerImage: /img/ssg-tools.jpg
 ---
 

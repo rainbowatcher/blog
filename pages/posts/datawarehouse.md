@@ -5,7 +5,6 @@ date: 2022-06-25
 permalinkPattern: /post/:year/:month/:day/:slug/
 headerImage: /img/datalake.png
 useHeaderImage: true
-headerMask: rgba(0, 0, 0, .4)
 hide: false
 tags: [Data Warehouse, DataLake, LakeHouse]
 ---

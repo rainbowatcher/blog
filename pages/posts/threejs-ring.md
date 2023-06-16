@@ -6,7 +6,6 @@ permalinkPattern: /post/:year/:month/:day/:slug/
 date: 2023-06-16
 useHeaderImage: true
 # headerImage: /img/shell.jpg
-headerMask: rgba(0, 0, 0, .4)
 hide: false
 tags: [Javascript, Three.js]
 ---

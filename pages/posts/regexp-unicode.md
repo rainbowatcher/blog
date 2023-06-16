@@ -6,7 +6,6 @@ date: 2022-07-03
 permalinkPattern: /post/:year/:month/:day/:slug/
 headerImage: /img/regexp.png
 useHeaderImage: true
-headerMask: rgba(0, 0, 0, .4)
 hide: false
 tags: [RegExp]
 ---

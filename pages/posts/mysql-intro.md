@@ -6,7 +6,6 @@ date: 2022-08-15
 permalinkPattern: /post/:year/:month/:day/:slug/
 headerImage: /img/mysql.png
 useHeaderImage: true
-headerMask: rgba(0, 0, 0, .4)
 # hide: true
 tags: [Database, Mysql]
 ---
@@ -14,9 +13,9 @@ tags: [Database, Mysql]
 ## 术语
 
 - `SQL (Structured Query Language)`: 就是用于查询的编程语言，和其他编程语言一样有判断、函数、循环、异常捕获。
-- `DDL (Data Definition Language)`: 数据定义语言、表结构、数据库结构创建  
+- `DDL (Data Definition Language)`: 数据定义语言、表结构、数据库结构创建
   create 、drop 、alter
-- `DML (Data Manipulation Language)`: 数据操作语言，数据的更改  
+- `DML (Data Manipulation Language)`: 数据操作语言，数据的更改
   select、update、delete、insert、truncate
 - `RDBMS (Relational Database Management System)`: 关系型数据库管理软件
 - `DB (Database)`: 数据库

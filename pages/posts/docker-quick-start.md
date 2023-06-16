@@ -6,7 +6,6 @@ date: 2022-08-12
 permalinkPattern: /post/:year/:month/:day/:slug/
 headerImage: /img/docker.png
 useHeaderImage: true
-headerMask: rgba(0, 0, 0, .4)
 hide: false
 tags: [Docker, Container]
 ---

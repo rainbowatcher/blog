@@ -9,13 +9,14 @@ defineProps({
 const { meta: { frontmatter, author, updateTime } } = useRoute()
 
 const bgImg = frontmatter.headerImage ? `url(${decodeURIComponent(frontmatter.headerImage!)})` : ""
-const dynamicHeaderMask = ref<string>(frontmatter.headerMask)
+const defaultMask = computed(() => frontmatter.headerMask ?? "rgba(0, 0, 0, .4)")
+const dynamicHeaderMask = ref<string>(defaultMask.value)
 
 watch(isDark, () => {
-  if (isDark.value && frontmatter.headerMask) {
-    dynamicHeaderMask.value = Color(frontmatter.headerMask).opaquer(0.3).toString()
+  if (isDark.value) {
+    dynamicHeaderMask.value = Color(defaultMask.value).opaquer(0.3).toString()
   } else {
-    dynamicHeaderMask.value = frontmatter.headerMask
+    dynamicHeaderMask.value = defaultMask.value
   }
 })
 
@@ -26,7 +27,7 @@ const to = randomColor()
 <template>
   <div
     class="post-header lt-md:h-20rem md-h-27rem bg-center-cover relative max-w-full w-full"
-    :class="{ 'has-bg-image': bgImg, 'default-bg-image': !bgImg }"
+    :class="[bgImg ? 'has-bg-image' : 'default-bg-image']"
   >
     <div class="post-header-mask" />
     <div class="post-header-content">
@@ -73,15 +74,22 @@ const to = randomColor()
   background-image: v-bind(bgImg)
   color: white
 
-.default-bg-image
-  --sika-c-default-post-bg-from: v-bind(from)
-  --sika-c-default-post-bg-to: v-bind(to)
-  background-image: linear-gradient(to bottom right, var(--sika-c-default-post-bg-from), var(--sika-c-default-post-bg-to))
+.has-bg-image {
+  background-image: v-bind(bgImg);
+}
 
-.post-header-mask
-  @apply absolute w-full h-full z1 top-0
-  background-color: v-bind(dynamicHeaderMask)
+.default-bg-image {
+  --sika-c-default-post-bg-from: v-bind(from);
+  --sika-c-default-post-bg-to: v-bind(to);
+  background-image: linear-gradient(to bottom right, var(--sika-c-default-post-bg-from), var(--sika-c-default-post-bg-to));
+}
 
-.post-header-content
-  @apply relative mx-auto lt-md:p-(y6rem x1.5rem) md:p-(y-8rem x-10) max-w-4xl z1 h-full
+.post-header-mask {
+  @apply absolute w-full h-full z1 top-0;
+  background-color: v-bind(dynamicHeaderMask);
+}
+
+.post-header-content {
+  @apply relative mx-auto lt-md: p-(y6rem x1.5rem) md:p-(y-8rem x-10) max-w-4xl z1 h-full;
+}
 </style>

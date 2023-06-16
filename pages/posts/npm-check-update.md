@@ -5,7 +5,6 @@ subtitle:
 date: 2022-06-08
 useHeaderImage: true
 headerImage: /img/2022/npm-check-update/ncu.png
-headerMask: rgba(0, 0, 0, .4)
 hide: false
 tags: [Npm, CLI]
 ---

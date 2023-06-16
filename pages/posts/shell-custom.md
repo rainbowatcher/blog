@@ -6,7 +6,6 @@ permalinkPattern: /post/:year/:month/:day/:slug/
 date: 2022-06-12
 useHeaderImage: true
 headerImage: /img/shell.jpg
-headerMask: rgba(0, 0, 0, .4)
 hide: false
 tags: [Shell, Zsh, Rust, CLI]
 ---
