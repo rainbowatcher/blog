@@ -8,13 +8,14 @@ const asideClass = useAsidePos()
 
 onMounted(() => {
   headers.value = getHeaders(2)
+  if (headers.value.length) {
+    useActiveAnchor(container, marker)
+  }
 })
-
-useActiveAnchor(container, marker)
 </script>
 
 <template>
-  <div ref="container" class="aside-outline-container hidden md:block text-sm" w-13rem :class="asideClass">
+  <div v-if="headers.length" ref="container" class="aside-outline-container hidden md:block text-sm" w-13rem :class="asideClass">
     <div pl-3 font-500>
       In the article
     </div>
