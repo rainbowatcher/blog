@@ -11,6 +11,7 @@ usePrefetch(useRouter())
 nextTick(() => {
   scrollIntoAnchor()
 })
+useCodeGroups()
 </script>
 
 <template>

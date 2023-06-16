@@ -378,8 +378,9 @@ html {
     margin: 8px 0 0;
   }
 
-  :not(.markdown-body)>div[class*=language-] {
+}
+
+:not(.markdown-body):not(.vp-code-group > .blocks) > div[class*=language-] {
     border-radius: 8px;
     margin: 0;
-  }
 }

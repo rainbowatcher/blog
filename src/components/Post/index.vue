@@ -18,4 +18,5 @@ const content = ref<HTMLDivElement>()
 
 <style lang="sass">
 @import "../../styles/markdown"
+@import "../../styles/code-group"
 </style>
