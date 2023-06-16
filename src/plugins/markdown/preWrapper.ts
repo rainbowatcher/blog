@@ -13,10 +13,19 @@ export function preWrapperPlugin(md: MarkdownIt) {
   const fence = md.renderer.rules.fence!
   md.renderer.rules.fence = (...args) => {
     const [tokens, idx] = args
-    const lang = tokens[idx].info.trim().replace(/-vue$/, "")
+    const info = tokens[idx].info.trim()/* .replace(/-vue$/, "") */
+
+    const lang = extractLang(info)
     const rawCode = fence(...args)
-    return `<div class="language-${lang}"><button title="Copy Code" class="copy"></button><span class="lang">${
+    return `<div class="language-${lang}${/ active( |$)/.test(info) ? " active" : ""}"><button title="Copy Code" class="copy"></button><span class="lang">${
       lang === "vue-html" ? "template" : lang
     }</span>${rawCode}</div>`
   }
+}
+
+export function extractLang(info: string) {
+  return info
+    // .replace(/:(no-)?line-numbers({| |$).*/, "")
+    .replace(/(-vue|{| ).*$/, "")
+    // .replace(/^vue-html$/, "template")
 }

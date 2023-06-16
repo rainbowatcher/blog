@@ -25,7 +25,7 @@ import autoprefixer from "autoprefixer"
 import {
   containerPlugin,
   highlight,
-  highlightLineAttr,
+  highlightLinePlugin,
   imagePlugin,
   katexPlugin,
   lineNumberPlugin,
@@ -125,20 +125,22 @@ export default defineConfig({
       wrapperComponent: "post",
       headEnabled: true,
       markdownItOptions: {
+        // https://prismjs.com/
         highlight: await highlight("one-dark-pro"),
       },
       markdownItUses: [
-        highlightLineAttr,
+        // local
+        highlightLinePlugin,
         imagePlugin,
         preWrapperPlugin,
+        lineNumberPlugin,
+        katexPlugin,
+        // remote
         emoji,
         footnote,
         mark,
-        lineNumberPlugin,
-        katexPlugin,
       ],
       markdownItSetup(md) {
-        // https://prismjs.com/
         md.use(LinkAttributes, {
           matcher: (link: string) => /^https?:\/\//.test(link),
           attrs: {
@@ -148,6 +150,7 @@ export default defineConfig({
         })
           .use(containerPlugin)
           // related: antfu/antfu.me
+          // https://github.com/valeriangalliat/markdown-it-anchor
           .use(anchor, {
             level: 1,
             slugify,

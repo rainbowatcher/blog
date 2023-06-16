@@ -1,67 +1,48 @@
-// https://github.com/egoist/markdown-it-highlight-lines
-import type Token from "markdown-it/lib/token"
-import type MarkdownIt from "markdown-it/lib"
+// Modified from https://github.com/egoist/markdown-it-highlight-lines
+// Now this plugin is only used to normalize line attrs.
+// The else part of line highlights logic is in './highlight.ts'.
+
+import type MarkdownIt from "markdown-it"
 
 const RE = /{([\d,-]+)}/
 
-export function highlightLines(md: MarkdownIt) {
+export function highlightLinePlugin(md: MarkdownIt) {
   const fence = md.renderer.rules.fence!
   md.renderer.rules.fence = (...args) => {
-    const [tokens, idx, options, , self] = args
+    const [tokens, idx] = args
     const token = tokens[idx]
 
-    if (!token.info || !RE.test(token.info))
-      return fence(...args)
+    // due to use of markdown-it-attrs, the {0} syntax would have been
+    // converted to attrs on the token
+    const attr = token.attrs && token.attrs[0]
 
-    const lineNumbers = RE.exec(token.info)![1]
-      .split(",")
-      .map(v => v.split("-").map(v => parseInt(v, 10)))
-    const langName = token.info.replace(RE, "").trim()
+    let lines = null
 
-    const code = options.highlight
-      ? options.highlight(token.content, langName, "")
-      : token.content
+    if (!attr) {
+      // markdown-it-attrs maybe disabled
+      const rawInfo = token.info
 
-    let lineNumber = 0
-    const codeSplits = code.split("\n").map((split) => {
-      if (split === "<code>")
-        lineNumber = 0
-      if (split.includes("class=\"line\""))
-        lineNumber += 1
-
-      const isInRange = lineNumbers.some(([start, end]) => {
-        if (start && end)
-          return lineNumber >= start && lineNumber <= end
-
-        return lineNumber === start
-      })
-      if (isInRange) {
-        return {
-          code: `<span class="highlighted-line">${split}</span>`,
-          highlighted: true,
-        }
+      if (!rawInfo || !RE.test(rawInfo)) {
+        return fence(...args)
       }
-      return {
-        code: split,
-      }
-    })
-    let highlightedCode = ""
-    codeSplits.forEach((split) => {
-      if (split.highlighted)
-        highlightedCode += split.code
 
-      else
-        highlightedCode += `${split.code}\n`
-    })
-    // If custom highlighter wraps code with starting <pre..., don't wrap code
-    if (highlightedCode.startsWith("<pre"))
-      return highlightedCode
+      const langName = rawInfo.replace(RE, "").trim()
 
-    const tmpToken = {
-      attrs: [["class", langName ? `language-${langName}` : ""]],
+      // ensure the next plugin get the correct lang
+      token.info = langName
+
+      lines = RE.exec(rawInfo)![1]
     }
-    const attrs = self.renderAttrs(tmpToken as Token)
-    // console.log(`<pre${attrs}><code${attrs}>${highlightedCode.trim()}</code></pre>`)
-    return `<pre${attrs}><code${attrs}>${highlightedCode.trim()}</code></pre>`
+
+    if (!lines) {
+      lines = attr![0]
+
+      if (!lines || !/[\d,-]+/.test(lines)) {
+        return fence(...args)
+      }
+    }
+
+    token.info += ` ${lines}`
+    return fence(...args)
   }
 }

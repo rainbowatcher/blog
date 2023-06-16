@@ -17,7 +17,6 @@ export function lineNumberPlugin(md: MarkdownIt,
   const { className, wrapperName } = { ...DEFAULT_OPTIONS, ...options }
   md.renderer.rules.fence = (...args) => {
     const rawCode = fence(...args)
-    // const lines = rawCode.split('\n').filter(line => lineRE.test(line))
 
     const lines = rawCode.slice(
       rawCode.indexOf("<code>"),
@@ -34,7 +33,7 @@ export function lineNumberPlugin(md: MarkdownIt,
 
     const finalCode = rawCode
       .replace(/<\/div>\s*?$/, `${lineNumbersWrapperCode}</div>`)
-      .replace(/"(language-\S*?)"/, "\"$1 line-numbers-mode\"")
+      .replace(/"(language-[^"]*?)"/, "\"$1 line-numbers-mode\"")
 
     return finalCode
   }
