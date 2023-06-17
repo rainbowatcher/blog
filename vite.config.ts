@@ -28,6 +28,7 @@ import {
   imagePlugin,
   katexPlugin,
   lineNumberPlugin,
+  mermaidPlugin,
   preWrapperPlugin,
 } from "./src/plugins/markdown"
 import { slugify } from "./src/utils"
@@ -134,6 +135,7 @@ export default defineConfig({
         preWrapperPlugin,
         lineNumberPlugin,
         katexPlugin,
+        mermaidPlugin,
         // remote
         emoji,
         footnote,
