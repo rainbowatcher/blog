@@ -5,7 +5,7 @@ const asideClass = useAsidePos()
 <template>
   <PageHeader />
   <PostHeader />
-  <main class="content flex justify-center mx-auto px-4 md:px-6">
+  <main class="content mx-auto flex justify-center px-4 md:px-6">
     <div class="left-aside">
       <div :class="asideClass">
         {{ "" }}

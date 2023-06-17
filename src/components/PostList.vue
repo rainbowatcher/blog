@@ -7,11 +7,11 @@ defineProps<{
 </script>
 
 <template>
-  <div w-full flex="~ col" max-w-4xl mxa divide="zinc500/30 y">
+  <div flex="~ col" mxa max-w-4xl w-full divide="zinc500/30 y">
     <div v-for="page in pages" :key="page.link" class="post-item" w-auto>
       <section flex-row p4>
         <RouterLink :to="page.link">
-          <p class="font-[SmileySans-Oblique] text-sky-500 text-xl">
+          <p class="font-[SmileySans-Oblique] text-xl text-sky-500">
             {{ page.title }}
           </p>
         </RouterLink>

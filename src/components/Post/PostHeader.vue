@@ -26,41 +26,45 @@ const to = randomColor()
 
 <template>
   <div
-    class="post-header lt-md:h-20rem md-h-27rem bg-center-cover relative max-w-full w-full"
+    class="post-header relative max-w-full w-full bg-center-cover lt-md:h-20rem md-h-27rem"
     :class="[bgImg ? 'has-bg-image' : 'default-bg-image']"
   >
     <div class="post-header-mask" />
     <div class="post-header-content">
-      <div v-if="frontmatter.tags" class="post-header-tags flex gap2 mb-4 text-2">
-        <span v-for="tag in frontmatter.tags" :key="tag" class="border rounded-2xl px-2 leading-5 h5 text-white cursor-pointer" @click="$router.push(`/tags/${tag.toLowerCase()}`)">
+      <div v-if="frontmatter.tags" class="post-header-tags mb-4 flex gap2 text-2">
+        <span
+          v-for="tag in frontmatter.tags" :key="tag" class="h5 cursor-pointer border rounded-2xl px-2 leading-5"
+          @click="$router.push(`/tags/${tag.toLowerCase()}`)"
+        >
           {{ tag }}
         </span>
       </div>
       <h1
         v-if="frontmatter.title"
-        class="post-header-title lt-md:mb-4 md:mb-10 text-white lt-md:text-2rem md:text-3.5rem font-bold md:lh-4rem"
+        class="post-header-title h-2em font-bold lt-md:mb-4 md:mb-10 lt-md:text-2rem md:text-3.5rem md:lh-1em"
       >
         {{ frontmatter.title }}
       </h1>
-      <h1 v-if="pageTitle" class="post-header-page-title mb-4 text-3.5rem text-white font-bold lh-4rem text-center">
+      <h1 v-else-if="pageTitle" class="post-header-page-title mb-4 h-2em text-center text-3.5rem font-bold lh-1em">
         {{ pageTitle }}
       </h1>
-      <p v-if="frontmatter.subtitle" class="post-header-subtitle opacity-75 italic">
+      <!-- TODO: maybe we should remove it, it look like useless -->
+      <p v-if="frontmatter.subtitle" class="post-header-subtitle italic opacity-75">
         {{ frontmatter.subtitle }}
       </p>
       <div
         v-if="frontmatter.layout === 'post' && author"
-        class="post-header-meta lt-md:(lh-6) md:(lh-8) text-sm opacity-90 items-center gap2"
+        class="post-header-meta items-center gap2 text-sm opacity-90 lt-md:(lh-6) md:(lh-8)"
       >
-        <div flex="inline" items-center gap-2 mr-4>
+        <div flex="inline" mr-4 items-center gap-2>
           <span class="i-carbon-user" />
           <p>{{ author }}</p>
         </div>
-        <div flex="inline" items-center gap-2 mr-4>
+        <div flex="inline" mr-4 items-center gap-2>
           <span class="i-carbon-calendar" />
           <p>{{ useDateFormat(frontmatter.date, 'YYYY-MM-DD').value }}</p>
         </div>
-        <div flex="inline" items-center gap-2 mr-4>
+        <div flex="inline" mr-4 items-center gap-2>
           <span class="i-carbon-time" />
           <p>{{ useDateFormat(updateTime, 'YYYY-MM-DD').value }}</p>
         </div>
@@ -69,10 +73,18 @@ const to = randomColor()
   </div>
 </template>
 
-<style lang="sass">
-.has-bg-image
-  background-image: v-bind(bgImg)
-  color: white
+<style lang="scss" scoped>
+.post-header {
+  color: #e5e5e5;
+
+  @media (max-width: 767.9px) {
+    height: 20rem;
+  }
+
+  @media (min-width: 768px) {
+    margin-bottom: 2.5rem;
+  }
+}
 
 .has-bg-image {
   background-image: v-bind(bgImg);
@@ -90,6 +102,21 @@ const to = randomColor()
 }
 
 .post-header-content {
-  @apply relative mx-auto lt-md: p-(y6rem x1.5rem) md:p-(y-8rem x-10) max-w-4xl z1 h-full;
+  position: relative;
+  z-index: 1;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 56rem;
+  height: 100%;
+
+  @media (min-width: 768px) {
+    padding: 10rem 0 0 1.5rem;
+  }
+
+  @media (max-width: 767.9px) {
+    padding: 8rem 0 0 1.5rem;
+  }
+
+  // @apply relative mx-auto lt-md:p-(y6rem x1.5rem) md:p-(y-8rem x-10) max-w-4xl z1 h-full;
 }
 </style>

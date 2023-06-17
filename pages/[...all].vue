@@ -1,5 +1,5 @@
 <template>
-  <div m-auto text-center p="t-50" h-100vh>
+  <div p="t-50" m-auto h-100vh text-center>
     <h1>Content Missing</h1>
     <br>
     <RouterLink to="/" absolute bottom-10>

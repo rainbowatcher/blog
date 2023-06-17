@@ -10,7 +10,7 @@ const props = defineProps<{
   <ul class="pl-3">
     <li v-for="{ level, link, title } in headers" :key="title">
       <a
-        class="outline-link block lh-6 font-500 color-zinc-800/80 dark:color-zinc-100/60 whitespace-nowrap overflow-hidden text-ellipsis"
+        class="outline-link block overflow-hidden text-ellipsis whitespace-nowrap font-500 lh-6 color-zinc-800/80 dark:color-zinc-100/60"
         :href="link" :class="`level-${level}`"
       >{{ title }}</a>
     </li>

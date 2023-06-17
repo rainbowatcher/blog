@@ -12,7 +12,7 @@ function toggleLocales() {
 <template>
   <div class="extra" flex="~ row nowrap gap4" justify-center :class="{ 'in-content': inContent }">
     <div class="preferences flex gap4">
-      <button class="icon-btn " :title="t('button.toggle_dark')" @click="toggleDark()">
+      <button class="icon-btn" :title="t('button.toggle_dark')" @click="toggleDark()">
         <div i="carbon-sun dark:carbon-moon" />
       </button>
       <button class="icon-btn" :title="t('button.toggle_langs')" @click="toggleLocales()">

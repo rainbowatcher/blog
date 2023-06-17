@@ -5,7 +5,7 @@ import "katex/dist/katex.min.css"
 </script>
 
 <template>
-  <article class="min-w-0 max-w-4xl shrink w-full my-8 md:p-x1.5rem">
+  <article class="my-8 max-w-4xl min-w-0 w-full shrink md:p-x1.5rem">
     <slot />
   </article>
 </template>

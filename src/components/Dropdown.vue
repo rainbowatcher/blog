@@ -25,7 +25,7 @@ function tri() {
       {{ triggerText }}
     </div>
     <div
-      v-show="show" ref="content" class="content absolute border-(1 solid black)"
+      v-show="show" ref="content" class="content absolute border-(1 black solid)"
       :style="{
         position: strategy,
         top: `${y ?? 0}px`,

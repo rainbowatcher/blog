@@ -28,7 +28,7 @@ function onScroll() {
     }"
   >
     <HeaderTitle />
-    <div class="header-content flex-(~ row) flex-gap-4">
+    <div class="header-content flex flex-(row gap-4)">
       <Nav :in-content="true" />
       <Extra :in-content="true" />
       <Flyout />

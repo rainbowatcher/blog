@@ -4,12 +4,12 @@
 
 <template>
   <PageHeader />
-  <div class="h-[var(--sika-h-post-header)] w-full bg-[url(/img/home-bg/4.jpg)] bg-cover bg-no-repeat bg-center">
-    <div class="ma max-w-4xl text-center h-full py-8rem ">
-      <div class="inline-flex items-stretch h-8 lh-8 relative vertical-middle bg-neutral8/80">
+  <div class="h-[var(--sika-h-post-header)] w-full bg-[url(/img/home-bg/4.jpg)] bg-cover bg-center bg-no-repeat">
+    <div class="ma h-full max-w-4xl py-8rem text-center">
+      <div class="relative h-8 inline-flex items-stretch bg-neutral8/80 vertical-middle lh-8">
         <Dropdown />
-        <input type="test" class="border-(sky600 y-1 r-0) bg-transparent h-8 lh-8 max-w-md focus:outline-none p-0" autocomplete="off" placeholder="type" title="searchInput">
-        <button class="lh-4 p0 m0 rounded-r cursor-pointer bg-sky/80 py-1 border-(r-1 y-1 l-0 sky500) px-4" title="search">
+        <input type="test" class="h-8 max-w-md border-(y-1 r-0 sky600) bg-transparent p-0 lh-8 focus:outline-none" autocomplete="off" placeholder="type" title="searchInput">
+        <button class="m0 cursor-pointer border-(y-1 l-0 r-1 sky500) rounded-r bg-sky/80 p0 px-4 py-1 lh-4" title="search">
           search
         </button>
       </div>
