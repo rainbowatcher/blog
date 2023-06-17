@@ -16,8 +16,11 @@
 - ✅ Reduce font size
 - ✅ Code copy
 - 🚧 Mermaid
-- 🎯 Pagenation
-- 🎯 Task list
-- 🎯 Define list
-- 🎯 Quick Reference
 - 🎯 Demo Code Block
+- 🎯 Define list
+- 🎯 Pagenation
+- 🎯 Quick Reference
+- 🎯 Search
+- 🎯 Comment system
+- 🎯 Third party document sync
+- 🎯 Custom unocss preset
