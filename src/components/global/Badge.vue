@@ -20,9 +20,7 @@ defineProps({
 
 <template>
   <span
-    class="badge"
-    :class="type"
-    :style="{
+    class="badge" :class="[type]" :style="{
       verticalAlign: vertical,
     }"
   >
@@ -30,28 +28,39 @@ defineProps({
   </span>
 </template>
 
-<style lang="sass">
-.badge
-  display: inline-block
-  font-size: 14px
-  height: 18px
-  line-height: 18px
-  border-radius: 3px
-  padding: 0 6px
-  vertical-align: top
+<style lang="scss">
+.badge {
+  display: inline-block;
+  font-size: 14px;
+  height: 1.25rem;
+  line-height: 1.25rem;
+  border-radius: .25rem;
+  padding: 0 .35rem;
+  vertical-align: top;
+  color: rgba(38, 38, 38, 1);
 
-  &.tip
-    @apply bg-green color-neutral-800
+  &.tip {
+    background-color: rgba(74, 222, 128, 1);
+  }
 
-  &.warning
-    @apply bg-yellow color-neutral-800
+  &.warning {
+    background-color: rgba(250, 204, 21, 1);
+  }
 
-  &.danger
-    @apply bg-red color-neutral-800
+  &.danger {
+    background-color: rgba(248, 113, 113, 1);
+  }
 
-  .table-of-contents &
-    vertical-align: middle
+  .table-of-contents & {
+    vertical-align: middle;
+  }
 
-  & + &
-    margin-left: 5px
+  &+& {
+    margin-left: 5px;
+  }
+}
+
+.badge-dot {
+  height: 1rem;
+}
 </style>
