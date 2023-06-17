@@ -15,7 +15,7 @@ defineProps<{
             {{ page.title }}
           </p>
         </RouterLink>
-        <small v-for="tag in page.tags" :key="tag">{{ `#${tag} ` }}</small>
+        <Tag v-for="tag in page.tags" :key="tag" :label="tag" mr-1 />
         <small>{{ `${(page.date)} ` }}</small>
         <p v-if="page.excerpt" text-sm text-gray>
           {{ page.excerpt }}

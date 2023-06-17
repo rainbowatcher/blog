@@ -21,10 +21,9 @@ tags: [Javascript, Three.js]
 var torusRadius = 10;
 var pipeRadius = 3;
 var geometry = new THREE.TorusGeometry(torusRadius, pipeRadius, 32, 64);
-
 ```
 
-1. 创建材质，并将其应用到几何体上。这里我们使用 THREE.MeshStandardMaterial 来创建一个标准材质，并设置好颜色和金属度等属性。
+3. 创建材质，并将其应用到几何体上。这里我们使用 THREE.MeshStandardMaterial 来创建一个标准材质，并设置好颜色和金属度等属性。
 
 ```js
 var material = new THREE.MeshStandardMaterial({
@@ -33,19 +32,17 @@ var material = new THREE.MeshStandardMaterial({
   roughness: 0.5
 });
 var mesh = new THREE.Mesh(geometry, material);
-
 ```
 
-1. 将几何体添加到场景中，并设置好其位置和旋转角度等属性，使其显示在合适的位置。
+4. 将几何体添加到场景中，并设置好其位置和旋转角度等属性，使其显示在合适的位置。
 
 ```js
 mesh.position.set(0, 0, 0);
 mesh.rotation.x = Math.PI / 2;
 scene.add(mesh);
-
 ```
 
-1. 使用点数据渲染器导入数据并添加到场景中。我们可以通过循环遍历点的坐标数据，创建一系列的 THREE.Points 对象，并将其添加到场景中。
+5. 使用点数据渲染器导入数据并添加到场景中。我们可以通过循环遍历点的坐标数据，创建一系列的 THREE.Points 对象，并将其添加到场景中。
 
 ```js
 var pointsGeometry = new THREE.BufferGeometry();
@@ -54,10 +51,9 @@ pointsGeometry.addAttribute('position', positionAttribute)
 var pointsMaterial = new THREE.PointsMaterial({ size: 0.5, color: 0xffffff });
 var points = new THREE.Points(pointsGeometry, pointsMaterial);
 scene.add(points);
-
 ```
 
-1. 最后通过渲染器进行绘制，我们需要在 render 函数中调用 requestAnimationFrame 和 render 方法实现持续渲染效果。
+6. 最后通过渲染器进行绘制，我们需要在 render 函数中调用 requestAnimationFrame 和 render 方法实现持续渲染效果。
 
 ```js
 function render() {
@@ -65,7 +61,6 @@ function render() {
   renderer.render(scene, camera);
 }
 render();
-
 ```
 
 上述代码仅为示例代码，具体实现还需根据实际情况进行调整。

@@ -31,13 +31,8 @@ const to = randomColor()
   >
     <div class="post-header-mask" />
     <div class="post-header-content">
-      <div v-if="frontmatter.tags" class="post-header-tags mb-4 flex gap2 text-2">
-        <span
-          v-for="tag in frontmatter.tags" :key="tag" class="h5 cursor-pointer border rounded-2xl px-2 leading-5"
-          @click="$router.push(`/tags/${tag.toLowerCase()}`)"
-        >
-          {{ tag }}
-        </span>
+      <div v-if="frontmatter.tags" class="post-header-tags mb-4">
+        <Tag v-for="tag in frontmatter.tags" :key="tag" :label="tag" type="outline" mr-1 outline-white />
       </div>
       <h1
         v-if="frontmatter.title"
