@@ -8,10 +8,9 @@ const asideClass = useAsidePos()
 
 onMounted(() => {
   headers.value = getHeaders(2)
-  if (headers.value.length) {
-    useActiveAnchor(container, marker)
-  }
 })
+
+useActiveAnchor(container, marker)
 </script>
 
 <template>

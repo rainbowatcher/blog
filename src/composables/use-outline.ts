@@ -32,7 +32,7 @@ export function useActiveAnchor(
   container: Ref<HTMLElement>,
   marker: Ref<HTMLElement>,
 ) {
-  const { isAsideEnabled } = useAside()
+  const { isAsideEnabled } = useAside(container)
 
   const onScroll = throttleAndDebounce(setActiveLink, 100)
 
@@ -131,7 +131,6 @@ function isAnchorActive(
 ): [boolean, string | undefined] {
   const scrollTop = window.scrollY
 
-  console.log(index, top, scrollTop)
   if (index === 0 && scrollTop === top) {
     return [true, undefined]
   }
