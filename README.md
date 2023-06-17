@@ -15,7 +15,7 @@
 - ✅ Reduce outline/code dom level
 - ✅ Reduce font size
 - ✅ Code copy
-- 🚧 Mermaid
+- ✅ Mermaid
 - 🎯 Demo Code Block
 - 🎯 Define list
 - 🎯 Pagenation
