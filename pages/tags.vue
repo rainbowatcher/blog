@@ -6,7 +6,7 @@ defineOptions({
 
 <template>
   <PageHeader />
-  <PostHeader />
+  <PostHeader page-title="Tags" />
   <main>
     <RouterView />
   </main>
