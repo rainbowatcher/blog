@@ -1,16 +1,24 @@
 <script lang="ts" setup>
+defineProps({
+  title: {
+    type: String,
+    required: false,
+  },
+})
+// TODO: May use useTitle() fn to specify title.
 const asideClass = useAsidePos()
+// calc((100% - (var(--vp-layout-max-width) - 64px)) / 2 + var(--vp-sidebar-width) - 32px);
 </script>
 
 <template>
-  <PageHeader />
-  <PostHeader />
-  <main class="content mx-auto flex justify-center px-4 md:px-6">
-    <div class="left-aside">
+  <PageNav />
+  <PostHeader :title="title" />
+  <main class="content mx-auto flex justify-center lt-md:px-5">
+    <aside class="left-aside">
       <div :class="asideClass">
         {{ "" }}
       </div>
-    </div>
+    </aside>
     <slot />
     <div class="right-aside">
       <DocAsideOutline />
@@ -23,8 +31,7 @@ const asideClass = useAsidePos()
 // side anchor
 .is-fixed {
   position: fixed;
-  margin-top: 2.5rem;
-  top: var(--sika-h-page-header);
+  top: calc(var(--sika-h-page-header) + 2rem);
 }
 
 .is-abs {
@@ -40,6 +47,7 @@ const asideClass = useAsidePos()
   flex-basis: 14rem;
   width: 14rem;
   flex-shrink: 0;
+  height: calc(100vh - var(--sika-h-page-header) - 2rem);
 }
 
 @media (min-width: 1280px) {
@@ -51,11 +59,14 @@ const asideClass = useAsidePos()
 .right-aside {
   display: none;
   position: relative;
-  margin: 0rem 1rem 1rem 0;
+  margin: 2rem 1rem 1rem 1rem;
   overflow-y: auto;
   flex-basis: 14rem;
   width: 14rem;
   flex-shrink: 0;
+  overflow: hidden;
+  overflow-y: scroll;
+  height: calc(100vh - var(--sika-h-page-header) - 2rem);
 }
 
 @media (min-width: 1024px) {

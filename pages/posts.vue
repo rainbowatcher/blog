@@ -1,7 +1,7 @@
 <template>
-  <PostLayout>
+  <CommonLayout>
     <router-view v-slot="{ Component }">
       <component :is="Component" />
     </router-view>
-  </PostLayout>
+  </CommonLayout>
 </template>

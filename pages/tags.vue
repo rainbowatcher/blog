@@ -5,10 +5,9 @@ defineOptions({
 </script>
 
 <template>
-  <PageHeader />
-  <PostHeader page-title="Tags" />
-  <main>
-    <RouterView />
-  </main>
-  <Footer />
+  <CommonLayout title="Tags">
+    <main>
+      <RouterView />
+    </main>
+  </CommonLayout>
 </template>
