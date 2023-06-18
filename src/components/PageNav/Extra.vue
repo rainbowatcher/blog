@@ -12,16 +12,12 @@ function toggleLocales() {
 <template>
   <div class="extra" flex="~ row nowrap gap4" justify-center :class="{ 'in-content': inContent }">
     <div class="preferences flex gap4">
-      <button class="icon-btn" :title="t('button.toggle_dark')" @click="toggleDark()">
-        <div i="carbon-sun dark:carbon-moon" />
-      </button>
-      <button class="icon-btn" :title="t('button.toggle_langs')" @click="toggleLocales()">
-        <div i-carbon-ibm-watson-language-translator />
-      </button>
+      <div i="carbon-sun dark:carbon-moon" cursor-pointer hover-c-neutral3 @click="toggleDark()" />
+      <div i-carbon-ibm-watson-language-translator cursor-pointer hover-c-neutral3 @click="toggleLocales()" />
     </div>
 
     <div class="social-links flex">
-      <a class="icon-btn" rel="noopener noreferrer" href="https://github.com/rainbowatcher/blog" target="_blank" title="GitHub">
+      <a rel="noopener noreferrer" href="https://github.com/rainbowatcher/blog" target="_blank" title="GitHub" class="cursor-pointer !c-white !hover-c-neutral3">
         <div i-carbon-logo-github />
       </a>
     </div>

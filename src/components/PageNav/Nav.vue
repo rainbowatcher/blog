@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-const props = defineProps<{
+defineProps<{
   inContent?: boolean
 }>()
 const { t } = useI18n()
@@ -10,32 +10,23 @@ const { nav } = useConfig()
   <nav class="page-nav" :class="{ 'nav-in-content': inContent }" lt-md:mb-8>
     <RouterLink
       v-for="item in nav" :key="item.link" :to="item.link" :title="t(item.text)"
-      class="lt-md:(mx-auto block max-w-18rem b-b-1 b-b-zinc500/30 py-3)"
+      class="lt-md-(mx-auto block max-w-18rem b-b-1 b-b-zinc500/30 py-3)"
     >
       <span v-t="item.text" />
     </RouterLink>
   </nav>
 </template>
 
-<style lang="sass">
-.nav-in-content
-  display: none
-  column-gap: .8rem
-  align-items: center
+<style lang="scss">
+.nav-in-content {
+  @apply hidden gap-x-4 items-center md-flex;
 
-  @media (min-width: 768px)
-    display: flex
+  a:hover {
+    @apply c-neutral3;
+  }
+}
 
-  a
-    padding-left: .1rem
-    padding-right: .1rem
-    border-radius: .2rem
-    transition: background-color 250ms
-
-    &:hover
-      background-color: rgba(aliceblue, .5)
-
-.menu-item
-  cursor: pointer
-  word-break: break-all
+.menu-item {
+  @apply cursor-pointer break-all;
+}
 </style>
