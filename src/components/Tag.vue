@@ -19,11 +19,11 @@ defineProps({
 
 <template>
   <span
-    class="relative h5 cursor-pointer items-center rounded-2xl px2 py.5 text-2 leading-4"
+    class="relative inline-block h4 cursor-pointer rounded-2xl px2 py0"
     :class="[`tag-${type}`]"
     @click="$router.push(`/tags/${label.toLowerCase()}`)"
   >
-    <span select-none text-3 font-600>{{ label }}</span>
+    <span block select-none text-2 font-600 leading-4>{{ label }}</span>
     <sup v-if="sup" absolute right--2 top--2 h4 rounded-full bg-red5 px1.25 text-center leading-4 color-white outline="1px solid [var(--sika-c-page-bg)]">
       <span select-none>{{ sup }}</span>
     </sup>
