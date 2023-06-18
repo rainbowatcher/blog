@@ -29,14 +29,6 @@ export function useConfig(): SiteConfig {
         link: "/",
       },
       {
-        text: "button.about",
-        link: "/about",
-      },
-      {
-        text: "button.blog",
-        link: "/posts",
-      },
-      {
         text: "button.archives",
         link: "/archives",
       },
@@ -44,9 +36,13 @@ export function useConfig(): SiteConfig {
         text: "button.tags",
         link: "/tags",
       },
+      // {
+      //   text: "button.note",
+      //   link: "/note",
+      // },
       {
-        text: "button.note",
-        link: "/note",
+        text: "button.about",
+        link: "/about",
       },
     ],
   }
