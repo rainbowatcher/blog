@@ -95,6 +95,11 @@ export function useActiveAnchor(
   }
 
   function activateLink(hash: string | undefined) {
+    // There are certain pages that lack an outline. should not update the marker
+    if (!marker.value) {
+      return
+    }
+
     if (prevActiveLink) {
       prevActiveLink.classList.remove("active")
     }
