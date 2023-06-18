@@ -3,47 +3,43 @@ import Color from "color"
 import { randomColor } from "~/utils/color"
 
 defineProps({
-  pageTitle: String,
+  title: String,
 })
 
 const { meta: { frontmatter, author, updateTime } } = useRoute()
 
 const bgImg = frontmatter.headerImage ? `url(${decodeURIComponent(frontmatter.headerImage!)})` : ""
-const defaultMask = computed(() => frontmatter.headerMask ?? "rgba(0, 0, 0, .4)")
-const dynamicHeaderMask = ref<string>(defaultMask.value)
-
-watch(isDark, () => {
-  if (isDark.value) {
-    dynamicHeaderMask.value = Color(defaultMask.value).opaquer(0.3).toString()
-  } else {
-    dynamicHeaderMask.value = defaultMask.value
-  }
-})
-
 const from = randomColor()
 const to = randomColor()
+const headerImageMask = computed(() => {
+  const defaultMask = frontmatter.headerMask ?? "rgba(0, 0, 0, .4)"
+  return isDark.value ? Color(defaultMask).opaquer(0.3).toString() : defaultMask
+})
 </script>
 
 <template>
   <div
-    class="post-header relative max-w-full w-full bg-center-cover lt-md:h-20rem md-h-27rem"
-    :class="[bgImg ? 'has-bg-image' : 'default-bg-image']"
+    class="post-header"
+    :class="[bgImg ? 'has-bg-image' : 'default-bg-image', frontmatter.layout === 'post' ? 'h[--sika-h-post-header]' : 'h[--sika-h-default-header]']"
+    :style="{
+      '--sika-c-default-post-bg-from': from,
+      '--sika-c-default-post-bg-to': to,
+    }"
   >
-    <div class="post-header-mask" />
-    <div class="post-header-content">
-      <div v-if="frontmatter.tags" class="post-header-tags mb-4">
-        <Tag v-for="tag in frontmatter.tags" :key="tag" :label="tag" type="outline" mr-1 outline-white />
+    <div class="post-header-mask absolute inset-0 z1 h-full w-full" :style="{ 'background-color': headerImageMask }" />
+    <div class="post-header-content" :class="[frontmatter.layout === 'post' ? 'is-post' : '']">
+      <div class="post-header-tags mb-4 h8">
+        <Tag v-for="tag in frontmatter.tags" :key="tag" :label="tag" type="outline" mr-2 outline-white />
       </div>
       <h1
         v-if="frontmatter.title"
-        class="post-header-title h-2em font-bold lt-md:mb-4 md:mb-10 lt-md:text-2rem md:text-3.5rem md:lh-1em"
+        class="post-header-title font-bold lt-md:mb-4 md:mb-10 lt-md:text-2rem md:text-3.5rem"
       >
         {{ frontmatter.title }}
       </h1>
-      <h1 v-else-if="pageTitle" class="post-header-page-title mb-4 h-2em text-center text-3.5rem font-bold lh-1em">
-        {{ pageTitle }}
+      <h1 v-else-if="title" class="post-header-page-title mb-4 text-center font-bold lh-1em lt-md:text-2rem md:text-3.5rem">
+        {{ title }}
       </h1>
-      <!-- TODO: maybe we should remove it, it look like useless -->
       <p v-if="frontmatter.subtitle" class="post-header-subtitle italic opacity-75">
         {{ frontmatter.subtitle }}
       </p>
@@ -71,14 +67,7 @@ const to = randomColor()
 <style lang="scss" scoped>
 .post-header {
   color: #e5e5e5;
-
-  @media (max-width: 767.9px) {
-    height: 20rem;
-  }
-
-  @media (min-width: 768px) {
-    margin-bottom: 2.5rem;
-  }
+  @apply relative max-w-full w-full bg-center-cover;
 }
 
 .has-bg-image {
@@ -86,14 +75,7 @@ const to = randomColor()
 }
 
 .default-bg-image {
-  --sika-c-default-post-bg-from: v-bind(from);
-  --sika-c-default-post-bg-to: v-bind(to);
   background-image: linear-gradient(to bottom right, var(--sika-c-default-post-bg-from), var(--sika-c-default-post-bg-to));
-}
-
-.post-header-mask {
-  @apply absolute w-full h-full z1 top-0;
-  background-color: v-bind(dynamicHeaderMask);
 }
 
 .post-header-content {
@@ -103,15 +85,16 @@ const to = randomColor()
   margin-right: auto;
   max-width: 56rem;
   height: 100%;
+  padding-top: 3rem;
 
-  @media (min-width: 768px) {
-    padding: 10rem 0 0 1.5rem;
+  &.is-post {
+    @media (min-width: 768px) {
+      padding: 10rem 0 0 1.5rem !important;
+    }
+
+    @media (max-width: 767.9px) {
+      padding: 5.5rem 0 0 1.5rem;
+    }
   }
-
-  @media (max-width: 767.9px) {
-    padding: 8rem 0 0 1.5rem;
-  }
-
-  // @apply relative mx-auto lt-md:p-(y6rem x1.5rem) md:p-(y-8rem x-10) max-w-4xl z1 h-full;
 }
 </style>

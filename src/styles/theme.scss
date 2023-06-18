@@ -17,13 +17,16 @@
   --sika-h-page-header: 4rem;
   --sika-h-page-header-mobile: 3.5rem;
   --sika-h-post-header: 27rem;
-}
+  --sika-h-default-header: 12rem;
 
-@include media('mobile') {
-  :root {
+  --sika-w-content-max: 1440px;
+  --sika-w-left-side: 272px;
+  @include media('mobile') {
     --sika-h-post-header: 20rem;
+    --sika-h-default-header: 10rem;
   }
 }
+
 
 // Light
 :root {

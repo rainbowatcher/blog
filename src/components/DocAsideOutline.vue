@@ -14,7 +14,7 @@ useActiveAnchor(container, marker)
 </script>
 
 <template>
-  <div v-if="headers.length" ref="container" class="aside-outline-container hidden text-sm md:block" w-13rem :class="asideClass">
+  <div v-if="headers.length" ref="container" class="aside-outline-container hidden overflow-hidden text-sm md:block hover:overflow-y-auto" w-13rem h="[calc(100vh-var(--sika-h-page-header)-2rem)]" :class="asideClass">
     <div pl-3 font-500>
       In the article
     </div>
@@ -22,5 +22,18 @@ useActiveAnchor(container, marker)
       <div ref="marker" class="outline-marker absolute left-0 top-8 z3 h-6 w-1px bg-blue opacity-0 transition-top-250" />
       <DocAsideOutlineItem :headers="headers" />
     </div>
+    <div class="right-aside-curtain" />
   </div>
 </template>
+
+
+<style>
+.right-aside-curtain {
+    position: fixed;
+    bottom: 0;
+    z-index: 10;
+    width: 224px;
+    height: 32px;
+    background: linear-gradient(transparent,var(--sika-c-page-bg) 70%);
+}
+</style>

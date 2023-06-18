@@ -6,10 +6,22 @@ const randomColors = Array.from({ length: 5 }, _ => randomColor("rgba"))
 
 <template>
   <PageNav />
+  <div
+    class="home-page-header" :style="{
+      '--sika-c-home-header-0': randomColors[0],
+      '--sika-c-home-header-1': randomColors[1],
+      '--sika-c-home-header-2': randomColors[2],
+      '--sika-c-home-header-3': randomColors[3],
+      '--sika-c-home-header-4': randomColors[4],
+    }"
+  >
+    <div class="ma h-full max-w-4xl flex-center">
+      <div class="mt-8 h-8rem w-lg flex-center rounded-lg md-bg-neutral8/20">
+        <span text-3.5rem font-bold>Welcome</span>
       </div>
-    </div> -->
+    </div>
   </div>
-  <main>
+  <main mt4>
     <slot />
   </main>
   <Footer />
@@ -17,11 +29,6 @@ const randomColors = Array.from({ length: 5 }, _ => randomColor("rgba"))
 
 <style lang="scss" scoped>
 .home-page-header {
-  --sika-c-home-header-0: v-bind(randomColors[0]);
-  --sika-c-home-header-1: v-bind(randomColors[1]);
-  --sika-c-home-header-2: v-bind(randomColors[2]);
-  --sika-c-home-header-3: v-bind(randomColors[3]);
-  --sika-c-home-header-4: v-bind(randomColors[4]);
   /* font-family: 'Quicksand', sans-serif; */
   /* min-height: 100vh; */
   width: 100%;
@@ -63,21 +70,21 @@ const randomColors = Array.from({ length: 5 }, _ => randomColor("rgba"))
   //   -webkit-backdrop-filter: blur(4px);
   // }
 
-  >span {
-    position: relative;
-    z-index: 1;
-    display: flex;
-    min-height: 100%;
-    width: 100%;
-    justify-content: center;
-    align-items: center;
-    font-size: 5rem;
-    color: transparent;
-    text-shadow:
-      0px 0px 1px rgba(255, 255, 255, 1),
-      0px 4px 4px rgba(0, 0, 0, .15);
-    letter-spacing: .2rem;
-  }
+  // >span {
+  //   position: relative;
+  //   z-index: 1;
+  //   display: flex;
+  //   min-height: 100%;
+  //   width: 100%;
+  //   justify-content: center;
+  //   align-items: center;
+  //   font-size: 5rem;
+  //   color: transparent;
+  //   text-shadow:
+  //     0px 0px 1px rgba(255, 255, 255, 1),
+  //     0px 4px 4px rgba(0, 0, 0, .15);
+  //   letter-spacing: .2rem;
+  // }
 }
 
 @keyframes movement {
