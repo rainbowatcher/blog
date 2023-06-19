@@ -11,7 +11,7 @@ const currentTag = computed(() => tags.find(i => i.name.toLowerCase() === props.
   <section flex="~ col">
     <div mxa mt-8 max-w-4xl px4 text-balance>
       <Tag
-        label="Show All" type="success" mb4 mr-2 transition-shadow-300 hover="shadow-[2px_1px_8px_2px_rgb(15,23,42,0.3)] dark:shadow-[2px_1px_8px_2px_rgb(100,116,139,.3)]"
+        label="Show All" type="success" mb16px mr-2 transition-shadow-300 hover="shadow-[2px_1px_8px_2px_rgb(15,23,42,0.3)] dark:shadow-[2px_1px_8px_2px_rgb(100,116,139,.3)]"
         @click="$router.push('/tags')"
       />
       <Tag
@@ -20,9 +20,9 @@ const currentTag = computed(() => tags.find(i => i.name.toLowerCase() === props.
         hover="shadow-[2px_1px_8px_2px_rgba(0,0,0,0.3)] dark:shadow-[2px_1px_8px_2px_rgba(163,163,163,.3)]"
       />
     </div>
-    <p v-if="!currentTag.pages">
+    <p v-if="!currentTag?.pages">
       Empty
     </p>
-    <PostList v-else :pages="currentTag.pages" />
+    <PostList v-else :pages="currentTag?.pages" />
   </section>
 </template>
