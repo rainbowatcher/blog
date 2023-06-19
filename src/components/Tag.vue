@@ -23,7 +23,7 @@ defineProps({
     :class="[`tag-${type}`]"
     @click="$router.push(`/tags/${label.toLowerCase()}`)"
   >
-    <span block select-none text-2 font-600 leading-4>{{ label }}</span>
+    <span block select-none text-3 font-600 leading-4>{{ label }}</span>
     <sup v-if="sup" absolute right--2 top--2 h4 rounded-full bg-red5 px1.25 text-center leading-4 color-white outline="1px solid [var(--sika-c-page-bg)]">
       <span select-none>{{ sup }}</span>
     </sup>
