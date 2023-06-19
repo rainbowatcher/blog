@@ -9,8 +9,8 @@ defineProps({
 const { meta: { frontmatter, author, updateTime } } = useRoute()
 
 const bgImg = frontmatter.headerImage ? `url(${decodeURIComponent(frontmatter.headerImage!)})` : ""
-const from = randomColor()
-const to = randomColor()
+const from = randomColor("hex", .6)
+const to = randomColor("hex", .6)
 const headerImageMask = computed(() => {
   const defaultMask = frontmatter.headerMask ?? "rgba(0, 0, 0, .4)"
   return isDark.value ? Color(defaultMask).opaquer(0.3).toString() : defaultMask
