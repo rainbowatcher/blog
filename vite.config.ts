@@ -191,9 +191,10 @@ export default defineConfig({
   ssgOptions: {
     crittersOptions: {
       preload: "swap",
+      logLevel: "error",
     },
     dirStyle: "nested",
-    script: "defer",
+    script: "async defer",
     formatting: "minify",
     // onBeforePageRender(_route, indexHTML) {
     //   const RE = /.*(<link rel="stylesheet".*?>).*/
@@ -208,11 +209,19 @@ export default defineConfig({
     //   }
     //   return indexHTML
     // },
-    // onBeforePageRender: (route, indexHtml) => {
-    //   console.log("route: ", route)
-    //   console.log("indexHtml: ", indexHtml)
-    //   return indexHtml
-    // },
+    includedRoutes(paths, routes) {
+      // vite-ssg will not auto include dynamic route
+      const posts = routes.find(r => r.name === "posts")
+      posts?.children?.forEach((post) => {
+        post.meta?.frontmatter.tags?.forEach((t: string) => {
+          const path = `/tags/${t.toLocaleLowerCase()}`
+          if (!paths.includes(path)) {
+            paths.push(path)
+          }
+        })
+      })
+      return paths
+    },
     onFinished() {
       generateSitemap()
     },
