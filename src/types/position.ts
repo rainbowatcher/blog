@@ -1,6 +1,6 @@
 const lengthUnits = ["px", "rem", "em"]
 export type LengthUnit = typeof lengthUnits[number]
-const lengthRE = /^-?(\d+(?:\.\d*)?|\.\d+)(px|rem|em)?$/i
+const lengthRE = /^(-?\d+(?:\.\d*)?|\.\d+)(px|rem|em)?$/
 
 export class Length {
   public static valueOf(length?: string): Length | undefined {
