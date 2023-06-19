@@ -6,8 +6,8 @@ defineOptions({
 
 <template>
   <CommonLayout title="Tags">
-    <main>
-      <RouterView />
-    </main>
+    <router-view v-slot="{ Component }">
+      <component :is="Component" />
+    </router-view>
   </CommonLayout>
 </template>
