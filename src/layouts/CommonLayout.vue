@@ -47,7 +47,6 @@ const asideClass = useAsidePos()
   flex-basis: 14rem;
   width: 14rem;
   flex-shrink: 0;
-  height: calc(100vh - var(--sika-h-page-header) - 2rem);
 }
 
 @media (min-width: 1280px) {
@@ -64,9 +63,6 @@ const asideClass = useAsidePos()
   flex-basis: 14rem;
   width: 14rem;
   flex-shrink: 0;
-  overflow: hidden;
-  overflow-y: scroll;
-  height: calc(100vh - var(--sika-h-page-header) - 2rem);
 }
 
 @media (min-width: 1024px) {
