@@ -34,3 +34,37 @@ export function randomColor(type: ColorType = "hex", minBright = 0): string {
       return rgbToHex(r, g, b)
   }
 }
+
+if (import.meta.vitest) {
+  const { describe, it, expect } = import.meta.vitest
+
+  describe("randomColor", () => {
+    it("should return a hex color by default", () => {
+      const color = randomColor()
+      expect(color).toMatch(/^#[0-9a-f]{6}$/)
+    })
+
+    it("should return a rgba color", () => {
+      const color = randomColor("rgba")
+      console.log(color)
+      expect(color).toMatch(/^rgba\(\d+, \d+, \d+, (0(\.\d+)?|1(\.0+)?)\)$/)
+    })
+
+    it("should return a rgb color", () => {
+      const color = randomColor("rgb")
+      expect(color).toMatch(/^rgb\(\d+, \d+, \d+\)$/)
+    })
+
+    it("should return a hsl color", () => {
+      const color = randomColor("hsl")
+      expect(color).toMatch(/^hsl\(\d+, \d+%, \d+%\)$/)
+    })
+
+    it("should have a min brightness", () => {
+      const color = randomColor("rgb", 0.2)
+      console.log(color)
+      const [r, g, b] = color.match(/\d+/g)!.map(Number)
+      expect(r + g + b).toBeGreaterThan(0.2 * 255 * 3)
+    })
+  })
+}
