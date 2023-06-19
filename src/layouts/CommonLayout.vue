@@ -13,7 +13,7 @@ const asideClass = useAsidePos()
 <template>
   <PageNav />
   <PostHeader :title="title" />
-  <main class="content mx-auto flex justify-center lt-md:px-5">
+  <main class="content mx-auto flex justify-center lt-md-(p-5)">
     <aside class="left-aside">
       <div :class="asideClass">
         {{ "" }}
@@ -24,6 +24,7 @@ const asideClass = useAsidePos()
       <DocAsideOutline />
     </div>
   </main>
+  <div class="page-curtain" />
   <Footer />
 </template>
 
@@ -69,5 +70,15 @@ const asideClass = useAsidePos()
   .right-aside {
     display: block;
   }
+}
+
+.page-curtain {
+  position: fixed;
+  bottom: 0;
+  z-index: 10;
+  width: 100%;
+  height: 32px;
+  pointer-events: none;
+  background: linear-gradient(transparent,var(--sika-c-page-bg) 98%);
 }
 </style>

@@ -17,13 +17,14 @@ const randomColors = Array.from({ length: 5 }, _ => randomColor("rgba", .6))
   >
     <div class="ma h-full max-w-4xl flex-center">
       <div class="mt-8 h-8rem w-lg flex-center rounded-lg md-bg-neutral8/20">
-        <span text-3.5rem font-bold>Welcome</span>
+        <span text-3.5rem font-bold c-white lt-sm-text-shadow-sm>Welcome</span>
       </div>
     </div>
   </div>
   <main mt4>
     <slot />
   </main>
+  <div class="page-curtain" />
   <Footer />
 </template>
 
@@ -70,21 +71,6 @@ const randomColors = Array.from({ length: 5 }, _ => randomColor("rgba", .6))
   //   -webkit-backdrop-filter: blur(4px);
   // }
 
-  // >span {
-  //   position: relative;
-  //   z-index: 1;
-  //   display: flex;
-  //   min-height: 100%;
-  //   width: 100%;
-  //   justify-content: center;
-  //   align-items: center;
-  //   font-size: 5rem;
-  //   color: transparent;
-  //   text-shadow:
-  //     0px 0px 1px rgba(255, 255, 255, 1),
-  //     0px 4px 4px rgba(0, 0, 0, .15);
-  //   letter-spacing: .2rem;
-  // }
 }
 
 @keyframes movement {
@@ -98,9 +84,9 @@ const randomColors = Array.from({ length: 5 }, _ => randomColor("rgba", .6))
       110vmax 110vmax,
       90vmax 90vmax;
     background-position:
-      -80vmax -80vmax,
+      -20vmax 30vmax,
       60vmax -30vmax,
-      10vmax 10vmax,
+      10vmax 100vmax,
       -30vmax -10vmax,
       50vmax 50vmax;
   }
@@ -113,7 +99,7 @@ const randomColors = Array.from({ length: 5 }, _ => randomColor("rgba", .6))
       90vmax 90vmax,
       60vmax 60vmax;
     background-position:
-      -60vmax -90vmax,
+      60vmax -90vmax,
       50vmax -40vmax,
       0vmax -20vmax,
       -40vmax -20vmax,

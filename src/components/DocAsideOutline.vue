@@ -22,7 +22,6 @@ useActiveAnchor(container, marker)
       <div ref="marker" class="outline-marker absolute left-0 top-8 z3 h-6 w-1px bg-[--sika-c-brand] opacity-0 transition-top-250" />
       <DocAsideOutlineItem :headers="headers" />
     </div>
-    <div class="right-aside-curtain" />
   </div>
 </template>
 
@@ -33,14 +32,5 @@ useActiveAnchor(container, marker)
   &::-webkit-scrollbar {
     display: none;
   }
-}
-
-.right-aside-curtain {
-    position: fixed;
-    bottom: 0;
-    z-index: 10;
-    width: 224px;
-    height: 32px;
-    background: linear-gradient(transparent,var(--sika-c-page-bg) 70%);
 }
 </style>
