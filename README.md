@@ -16,11 +16,12 @@
 - ✅ Reduce font size
 - ✅ Code copy
 - ✅ Mermaid
-- 🎯 Demo Code Block
-- 🎯 Define list
-- 🎯 Pagenation
-- 🎯 Quick Reference
+- ✅ Hide post
+- 🚧 Demo Code Block
 - 🎯 Search
+- 🎯 Pagenation
 - 🎯 Comment system
+- 🎯 Define list
 - 🎯 Third party document sync
+- 🎯 Quick Reference
 - 🎯 Custom unocss preset
