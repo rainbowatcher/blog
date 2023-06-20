@@ -1,5 +1,6 @@
 import { resolve } from "node:path"
 import fs from "node:fs"
+import type { RouteRecordRaw } from "vue-router"
 import matter from "gray-matter"
 import { defineConfig } from "vitest/config"
 // Vite plugins
@@ -83,6 +84,15 @@ export default defineConfig({
           route.meta = { frontmatter: {} }
         }
         return route
+      },
+      onRoutesGenerated(routes) {
+        routes = routes.map((r: RouteRecordRaw) => {
+          if (r.name === "posts") {
+            r.children = r.children?.filter(i => !i.meta?.frontmatter.hide)
+          }
+          return r
+        })
+        return routes
       },
     }),
 
