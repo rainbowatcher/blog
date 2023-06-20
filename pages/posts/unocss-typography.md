@@ -1,4 +1,5 @@
 ---
+layout: post
 title: Unocss Typography Record
 date: 2022-10-23
 category: 记录

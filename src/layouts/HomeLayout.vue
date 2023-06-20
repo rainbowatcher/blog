@@ -7,7 +7,7 @@ const randomColors = Array.from({ length: 5 }, _ => randomColor("rgba", .6))
 <template>
   <PageNav />
   <div
-    class="home-page-header" :style="{
+    class="home-page-nav" :style="{
       '--sika-c-home-header-0': randomColors[0],
       '--sika-c-home-header-1': randomColors[1],
       '--sika-c-home-header-2': randomColors[2],
@@ -24,12 +24,12 @@ const randomColors = Array.from({ length: 5 }, _ => randomColor("rgba", .6))
   <main mt4>
     <slot />
   </main>
-  <div class="page-curtain" />
+  <div class="page-curtain lt-md-hidden" />
   <Footer />
 </template>
 
 <style lang="scss" scoped>
-.home-page-header {
+.home-page-nav {
   /* font-family: 'Quicksand', sans-serif; */
   /* min-height: 100vh; */
   width: 100%;

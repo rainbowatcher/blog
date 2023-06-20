@@ -17,7 +17,7 @@ function toggleLocales() {
     </div>
 
     <div class="social-links flex">
-      <a rel="noopener noreferrer" href="https://github.com/rainbowatcher/blog" target="_blank" title="GitHub" class="cursor-pointer !c-white !hover-c-neutral3">
+      <a rel="noopener noreferrer" href="https://github.com/rainbowatcher/blog" target="_blank" title="GitHub" class="cursor-pointer !c-neutral7 !dark-c-white !hover-c-neutral3">
         <div i-carbon-logo-github />
       </a>
     </div>

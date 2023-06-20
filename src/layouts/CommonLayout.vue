@@ -24,7 +24,7 @@ const asideClass = useAsidePos()
       <DocAsideOutline />
     </div>
   </main>
-  <div class="page-curtain" />
+  <div class="page-curtain lt-md-hidden" />
   <Footer />
 </template>
 
@@ -32,7 +32,7 @@ const asideClass = useAsidePos()
 // side anchor
 .is-fixed {
   position: fixed;
-  top: calc(var(--sika-h-page-header) + 2rem);
+  top: calc(var(--sika-h-page-nav) + 2rem);
 }
 
 .is-abs {

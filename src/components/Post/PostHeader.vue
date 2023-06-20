@@ -33,7 +33,7 @@ const headerImageMask = computed(() => {
       </div>
       <h1
         v-if="frontmatter.title"
-        class="post-header-title font-bold lt-md:mb-4 md:mb-10 lt-md:text-2rem md:text-3.5rem"
+        class="post-header-title font-bold lt-md:mb-4 md:mb-6 lt-md-text-3xl md-text-6xl md-leading-tight"
       >
         {{ frontmatter.title }}
       </h1>
@@ -89,7 +89,7 @@ const headerImageMask = computed(() => {
 
   &.is-post {
     @media (min-width: 768px) {
-      padding: 10rem 0 0 1.5rem !important;
+      padding: 8rem 0 0 1.5rem !important;
     }
 
     @media (max-width: 767.9px) {
