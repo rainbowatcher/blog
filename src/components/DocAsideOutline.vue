@@ -14,7 +14,7 @@ useActiveAnchor(container, marker)
 </script>
 
 <template>
-  <div v-if="headers.length" ref="container" class="aside-outline-container hidden overflow-hidden text-sm md:block hover:overflow-y-auto" w-13rem h="[calc(100vh-var(--sika-h-page-header)-2rem)]" :class="asideClass">
+  <div v-if="headers.length" ref="container" class="aside-outline-container hidden overflow-hidden text-sm md:block hover:overflow-y-auto" w-13rem h="[calc(100vh-var(--sika-h-page-nav)-2rem)]" :class="asideClass">
     <div pl-3 font-500>
       In the article
     </div>

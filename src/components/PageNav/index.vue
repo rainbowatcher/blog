@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { toPx } from "~/utils/unit"
 
-const headerHeight = useCssVar("--sika-h-page-header")
+const headerHeight = useCssVar("--sika-h-page-nav")
 const [isVisible, toggleVisible] = useToggle(false)
 const [isFixed, toggleFixed] = useToggle(false)
 const headerHeightPx = computed(() => toPx(headerHeight.value))
@@ -22,7 +22,7 @@ function onScroll() {
 
 <template>
   <header
-    class="page-header" :class="{
+    class="page-nav" :class="{
       'header-fixed': isFixed,
       'header-visible': isVisible,
     }"
@@ -38,18 +38,19 @@ function onScroll() {
 </template>
 
 <style lang="scss" scoped>
-.page-header {
+.page-nav {
   position: absolute;
   inset: 0;
   background-color: transparent;
   width: 100%;
-  height: var(--sika-h-page-header);
+  height: var(--sika-h-page-nav);
   padding: 1.25rem;
   z-index: 10;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: space-between;
+  align-items: center;
   color: white;
   transition: background-color .1s ease-in, color .1s ease;
 }
@@ -64,10 +65,10 @@ html:not(.dark) .header-fixed {
 
 .header-fixed {
   position: fixed;
-  top: calc(0px - var(--sika-h-page-header));
-  background-color: var(--sika-c-page-header-bg);
-  border-bottom: 1px solid var(--sika-c-page-header-border);
-  box-shadow: 0 1px 8px 0 var(--sika-c-page-header-shadow);
+  top: calc(0px - var(--sika-h-page-nav));
+  background-color: var(--sika-c-page-nav-bg);
+  border-bottom: 1px solid var(--sika-c-page-nav-border);
+  box-shadow: 0 1px 8px 0 var(--sika-c-page-nav-shadow);
   transition: transform .3s ease;
 }
 </style>

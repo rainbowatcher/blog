@@ -6,7 +6,7 @@ import { toPx } from "~/utils/unit"
  * hook that handles the positioning of an aside element
 */
 export function useAsidePos() {
-  const pageHeaderHeight = useCssVar("--sika-h-page-header")
+  const pageHeaderHeight = useCssVar("--sika-h-page-nav")
   const postHeaderHeight = useCssVar("--sika-h-post-header")
   const asideClass = ref("is-abs")
 

@@ -124,7 +124,7 @@ export function useActiveAnchor(
 }
 
 function getAnchorTop(anchor: HTMLAnchorElement): number {
-  const pageHeaderHeight = useCssVar("--sika-h-page-header")
+  const pageHeaderHeight = useCssVar("--sika-h-page-nav")
   return anchor.parentElement!.offsetTop - toPx(pageHeaderHeight.value)
 }
 
