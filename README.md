@@ -19,6 +19,7 @@
 - ✅ Hide post
 - 🚧 Demo Code Block
 - 🎯 Search
+- 🎯 Permalink
 - 🎯 Pagenation
 - 🎯 Comment system
 - 🎯 Define list
