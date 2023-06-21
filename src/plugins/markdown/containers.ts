@@ -3,7 +3,7 @@ import type { RenderRule } from "markdown-it/lib/renderer"
 import type Token from "markdown-it/lib/token"
 import container from "markdown-it-container"
 import { nanoid } from "nanoid"
-import { extractLang } from "./preWrapper"
+import { extractLang } from "./pre-wrapper"
 
 export function containerPlugin(md: MarkdownIt) {
   md.use(...createContainer("tip", "TIP", md))
