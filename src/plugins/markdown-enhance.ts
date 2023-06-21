@@ -16,8 +16,7 @@ import {
   preWrapperPlugin,
 } from "./markdown"
 
-export async function markdownEnhance(md: MarkdownIt) {
-  md.options.highlight = await highlight("one-dark-pro"),
+export function markdownEnhance(md: MarkdownIt) {
   md.use(LinkAttributes, {
     matcher: (link: string) => /^https?:\/\//.test(link),
     attrs: {
@@ -37,10 +36,10 @@ export async function markdownEnhance(md: MarkdownIt) {
         placement: "before",
       }),
     })
-    .use(highlightLinePlugin)
-    .use(imagePlugin)
     .use(preWrapperPlugin)
+    .use(highlightLinePlugin)
     .use(lineNumberPlugin)
+    .use(imagePlugin)
     .use(katexPlugin)
     .use(mermaidPlugin)
     .use(emoji)

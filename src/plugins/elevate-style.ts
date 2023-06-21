@@ -3,7 +3,7 @@
  * note: must place `<!-- script-slot -->` in your html file
  * @param indexHTML html text
  */
-export function improveStyle(indexHTML: string) {
+export function elevateStyle(indexHTML: string) {
   const RE = /.*(<link rel="stylesheet".*?>).*/
   const match = RE.exec(indexHTML)
   if (match) {

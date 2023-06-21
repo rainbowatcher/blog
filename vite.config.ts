@@ -12,7 +12,14 @@ import Inspect from "vite-plugin-inspect"
 // Other
 import Unocss from "unocss/vite"
 import autoprefixer from "autoprefixer"
-import { dynamicRoute, extendRouteMeta, improveStyle, markdownEnhance, resolveHiddenPost } from "./src/plugins"
+import {
+  dynamicRoute,
+  elevateStyle,
+  extendRouteMeta,
+  markdownEnhance,
+  resolveHiddenPost,
+} from "./src/plugins"
+import { highlight } from "./src/plugins/markdown"
 
 
 
@@ -79,6 +86,7 @@ export default defineConfig({
     Markdown({
       // frontmatterPreprocess(_frontmatter, _options) {
       //   const head = {}
+      //   console.log(_frontmatter)
       //   return {
       //     head,
       //     frontmatter: _frontmatter,
@@ -86,6 +94,9 @@ export default defineConfig({
       // },
       wrapperComponent: "post",
       headEnabled: true,
+      markdownItOptions: {
+        highlight: await highlight("one-dark-pro"),
+      },
       markdownItSetup: markdownEnhance,
       transforms: {
         before: (code, _id) => {
@@ -118,7 +129,7 @@ export default defineConfig({
     script: "async defer",
     formatting: "minify",
     onBeforePageRender(_route, indexHTML) {
-      indexHTML = improveStyle(indexHTML)
+      indexHTML = elevateStyle(indexHTML)
       return indexHTML
     },
     includedRoutes: dynamicRoute,
