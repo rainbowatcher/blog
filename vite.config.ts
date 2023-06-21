@@ -1,7 +1,4 @@
 import { resolve } from "node:path"
-import fs from "node:fs"
-import type { RouteRecordRaw } from "vue-router"
-import matter from "gray-matter"
 import { defineConfig } from "vitest/config"
 // Vite plugins
 import Vue from "@vitejs/plugin-vue"
@@ -12,28 +9,12 @@ import AutoImport from "unplugin-auto-import/vite"
 import Markdown from "vite-plugin-vue-markdown"
 import VueI18n from "@intlify/unplugin-vue-i18n/vite"
 import Inspect from "vite-plugin-inspect"
-// Markdown plugins
-import LinkAttributes from "markdown-it-link-attributes"
-import anchor from "markdown-it-anchor"
-import emoji from "markdown-it-emoji"
-import footnote from "markdown-it-footnote"
-import mark from "markdown-it-mark"
 // Other
 import Unocss from "unocss/vite"
 import autoprefixer from "autoprefixer"
+import { dynamicRoute, extendRouteMeta, improveStyle, markdownEnhance, resolveHiddenPost } from "./src/plugins"
 
-import {
-  containerPlugin,
-  highlight,
-  highlightLinePlugin,
-  imagePlugin,
-  katexPlugin,
-  lineNumberPlugin,
-  mermaidPlugin,
-  preWrapperPlugin,
-} from "./src/plugins/markdown"
-import { slugify } from "./src/utils"
-import { getCreateTime, getGitStat, getUpdateTime } from "./src/utils/git"
+
 
 export default defineConfig({
   resolve: {
@@ -57,42 +38,10 @@ export default defineConfig({
       extensions: ["vue", "md"],
       dirs: "pages",
       extendRoute(route) {
-        if (route.component.endsWith(".md")) {
-          if (route.frontmatter) {
-            return route
-          }
-          const path = resolve(__dirname, route.component.slice(1))
-          const md = fs.readFileSync(path, "utf-8")
-          const { author, email, commits } = getGitStat(path) || {}
-          const createTime = getCreateTime(path)
-          const updateTime = getUpdateTime(path)
-
-          const { data, excerpt } = matter(md, {
-            excerpt_separator: "<!-- more -->",
-          })
-          const frontmatter = {
-            frontmatter: Object.assign(data, { excerpt }),
-            author,
-            email,
-            commits,
-            createTime,
-            updateTime,
-            path: route.path,
-          }
-          route.meta = Object.assign(route.meta || {}, frontmatter)
-        } else {
-          route.meta = { frontmatter: {} }
-        }
-        return route
+        extendRouteMeta(route)
       },
       onRoutesGenerated(routes) {
-        routes = routes.map((r: RouteRecordRaw) => {
-          if (r.name === "posts") {
-            r.children = r.children?.filter(i => !i.meta?.frontmatter.hide)
-          }
-          return r
-        })
-        return routes
+        resolveHiddenPost(routes)
       },
     }),
 
@@ -137,49 +86,11 @@ export default defineConfig({
       // },
       wrapperComponent: "post",
       headEnabled: true,
-      markdownItOptions: {
-        // https://prismjs.com/
-        highlight: await highlight("one-dark-pro"),
-      },
-      markdownItUses: [
-        // local
-        highlightLinePlugin,
-        imagePlugin,
-        preWrapperPlugin,
-        lineNumberPlugin,
-        katexPlugin,
-        mermaidPlugin,
-        // remote
-        emoji,
-        footnote,
-        mark,
-      ],
-      markdownItSetup(md) {
-        md.use(LinkAttributes, {
-          matcher: (link: string) => /^https?:\/\//.test(link),
-          attrs: {
-            target: "_blank",
-            rel: "noopener noreferrer",
-          },
-        })
-          .use(containerPlugin)
-          // related: antfu/antfu.me
-          // https://github.com/valeriangalliat/markdown-it-anchor
-          .use(anchor, {
-            level: 1,
-            slugify,
-            permalink: anchor.permalink.linkInsideHeader({
-              symbol: "#",
-              renderAttrs: () => ({ "aria-hidden": "true" }),
-              placement: "before",
-            }),
-          })
-      },
+      markdownItSetup: markdownEnhance,
       transforms: {
         before: (code, _id) => {
           //  code for markdown raw content
           //  id for file abs path
-
           return code
         },
       },
@@ -206,32 +117,11 @@ export default defineConfig({
     dirStyle: "nested",
     script: "async defer",
     formatting: "minify",
-    // onBeforePageRender(_route, indexHTML) {
-    //   const RE = /.*(<link rel="stylesheet".*?>).*/
-    //   const match = RE.exec(indexHTML)
-    //   if (match) {
-    //     const stylesheetLinkTag = match[1].trim()
-    //     indexHTML = indexHTML.replace(stylesheetLinkTag, "")
-    //     indexHTML = indexHTML.replace(
-    //       "<!-- script-slot -->",
-    //       stylesheetLinkTag,
-    //     )
-    //   }
-    //   return indexHTML
-    // },
-    includedRoutes(paths, routes) {
-      // vite-ssg will not auto include dynamic route
-      const posts = routes.find(r => r.name === "posts")
-      posts?.children?.forEach((post) => {
-        post.meta?.frontmatter.tags?.forEach((t: string) => {
-          const path = `/tags/${t.toLocaleLowerCase()}`
-          if (!paths.includes(path)) {
-            paths.push(path)
-          }
-        })
-      })
-      return paths
+    onBeforePageRender(_route, indexHTML) {
+      indexHTML = improveStyle(indexHTML)
+      return indexHTML
     },
+    includedRoutes: dynamicRoute,
     onFinished() {
       generateSitemap()
     },
