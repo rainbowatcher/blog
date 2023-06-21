@@ -5,9 +5,9 @@ defineProps({
     required: false,
   },
 })
-// TODO: May use useTitle() fn to specify title.
+// TODO: Maybe we should use useTitle() fn to specify title.
 const asideClass = useAsidePos()
-// calc((100% - (var(--vp-layout-max-width) - 64px)) / 2 + var(--vp-sidebar-width) - 32px);
+const outline = ref(undefined)
 </script>
 
 <template>
@@ -21,7 +21,7 @@ const asideClass = useAsidePos()
     </aside>
     <slot />
     <div class="right-aside">
-      <DocAsideOutline />
+      <DocAsideOutline ref="outline" />
     </div>
   </main>
   <div class="page-curtain lt-md-hidden" />
