@@ -2,17 +2,14 @@ import {
   defineConfig,
   presetAttributify,
   presetIcons,
-  presetTypography,
   presetUno,
-  presetWebFonts,
-  transformerCompileClass,
   transformerDirectives,
   transformerVariantGroup,
 } from "unocss"
 
 export default defineConfig({
   shortcuts: [
-    ["btn", "px-4 py-1 rounded inline-block bg-teal-700 text-white cursor-pointer hover:bg-teal-800 disabled:cursor-default disabled:bg-gray-600 disabled:opacity-50"],
+    ["btn", "inline-block cursor-pointer"],
     ["icon-btn", "m-auto inline-block cursor-pointer select-none opacity-75 duration-100 ease-in-out hover:opacity-100 hover:text-teal-600"],
     ["site-nav", "inline-flex items-baseline"],
     ["flex-center", "flex justify-center items-center"],
@@ -23,18 +20,21 @@ export default defineConfig({
   ],
   presets: [
     presetUno(),
+    // <div h2>
     presetAttributify(),
+    // <i carbon-sun>
     presetIcons({
       scale: 1.5,
       warn: true,
     }),
-    presetTypography(),
-    presetWebFonts(),
+    // presetTypography(),
+    // presetWebFonts(),
   ],
   transformers: [
+    // @apply / @screen / theme()
     transformerDirectives(),
+    // hover:(bg-gray-400 font-medium)
     transformerVariantGroup(),
-    transformerCompileClass(),
   ],
   // safelist: "prose m-auto text-left max-w-2/3".split(" "),
 })
