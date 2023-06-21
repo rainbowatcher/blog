@@ -37,6 +37,9 @@
   --sika-c-mark-bg: #{$yellow300};
   --sika-c-mark: #{$neutral900};
   --sika-c-link: #{$sky700};
+  --sika-c-text: #{neutral900};
+  --sika-c-text-secondary: #{neutral700};
+  --sika-c-blockquote-bg: #{mix($zinc100, $slate50, 50%)};
 
   // page header
   --sika-c-page-nav-border: #{transparentize($neutral700, .8)};
@@ -109,6 +112,9 @@ html.dark {
   --sika-c-mark-bg: #{$yellow600};
   --sika-c-mark: #{$neutral900};
   --sika-c-link: #{$sky500};
+  --sika-c-text: #{$neutral200};
+  --sika-c-text-secondary: #{$neutral400};
+  --sika-c-blockquote-bg: #{mix($zinc900, $slate800, 50%)};
 
   // page header
   --sika-c-page-nav-border: #{transparentize($neutral600, .6)};

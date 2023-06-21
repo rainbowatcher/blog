@@ -388,6 +388,19 @@ html {
     margin: 8px 0 0;
   }
 
+  // blockquote
+  blockquote {
+    margin: .5rem 0;
+    padding: .25rem 1rem;
+    border-left: 4px outset var(--sika-code-block-border-color);
+    background-color: var(--sika-c-blockquote-bg);
+
+    p {
+      margin: 0;
+      color: var(--sika-c-text-secondary);
+      font-size: 16px;
+    }
+  }
 }
 
 :not(.markdown-body):not(.vp-code-group > .blocks) > div[class*=language-] {
