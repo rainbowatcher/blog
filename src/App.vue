@@ -10,6 +10,7 @@ useHead(head)
 usePrefetch(useRouter())
 nextTick(() => {
   scrollIntoAnchor()
+  setupDetailsAnimation()
 })
 useCodeGroups()
 useCopyCode()

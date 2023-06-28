@@ -37,17 +37,21 @@
     border-color: var(--sika-container-details-border);
     color: var(--sika-container-details-text);
     background-color: var(--sika-container-details-bg);
+    padding: 8px 16px;
+
+    summary {
+      cursor: pointer;
+      font-weight: 700;
+      margin: 8px 0;
+      list-style: none;
+    }
   }
 
   p + p {
     margin: 8px 0;
   }
 
-  &.details summary {
-    font-weight: 700;
-  }
-
-  &.details summary + p {
+  &.details summary p {
     margin: 8px 0;
   }
 
