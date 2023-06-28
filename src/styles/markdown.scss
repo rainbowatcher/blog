@@ -84,8 +84,7 @@ html {
 
   // Paragraph and inline elements
   // --------------------------------------------------------------------------
-  p,
-  summary {
+  p {
     margin: 16px 0;
   }
 
@@ -180,6 +179,7 @@ html {
     padding: .1rem .3rem;
     margin: 0 .1rem;
     border-radius: .25rem;
+    vertical-align: middle;
   }
 
   // code block
