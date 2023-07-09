@@ -12,6 +12,7 @@ import Inspect from "vite-plugin-inspect"
 // Other
 import Unocss from "unocss/vite"
 import autoprefixer from "autoprefixer"
+import { unheadComposablesImports } from "unhead"
 import {
   dynamicRoute,
   elevateStyle,
@@ -59,8 +60,8 @@ export default defineConfig({
         "vue-router",
         "vue-i18n",
         "vue/macros",
-        "@vueuse/head",
         "@vueuse/core",
+        ...unheadComposablesImports,
       ],
       dts: "src/auto-imports.d.ts",
       dirs: ["src/composables", "src/store"],
