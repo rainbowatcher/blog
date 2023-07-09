@@ -4,7 +4,7 @@
   "packageManager": "pnpm@7.33.1",
   "scripts": {
     "build": "vite-ssg build",
-    "check": "pnpm exec lychee -c lychee.toml -f markdown pages",
+    "check": "pnpm exec lychee -f markdown pages",
     "clean": "rimraf src/auto-imports.d.ts src/components.d.ts dist node_modules/.vite .vite-ssg-temp",
     "dev": "vite --port 3333",
     "lint": "eslint .",

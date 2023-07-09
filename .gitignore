@@ -27,3 +27,4 @@ lib/
 .vercel
 .env
 algolia.js
+.lycheecache
