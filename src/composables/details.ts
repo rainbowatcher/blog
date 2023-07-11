@@ -8,7 +8,7 @@ export function setupDetailsAnimation() {
       allDetails.forEach((el) => {
         const summary = el.querySelector("summary")
         const content = el.querySelector(".content") as HTMLElement
-        const closeHeight = ref(0)
+        const closeHeight = ref<number>(0)
         const animation = ref<Animation>()
         const isClosing = ref(false)
         const isExpanding = ref(false)

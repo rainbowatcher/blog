@@ -14,7 +14,8 @@ jobs:
       - name: Link Checker
         uses: lycheeverse/lychee-action@v1.8.0
         with:
-          args: --no-progress pages -f markdown
+          args: --no-progress pages
+          format: markdown
           fail: true
 
   lint:

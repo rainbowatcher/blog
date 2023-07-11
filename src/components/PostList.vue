@@ -11,7 +11,7 @@ defineProps<{
     <div v-for="page in pages" :key="page.link" class="post-item" w-auto>
       <section flex-row p4>
         <RouterLink :to="page.link">
-          <p class="font-[SmileySans-Oblique] text-xl text-sky-500">
+          <p class="text-xl font-[SmileySans-Oblique] text-sky-500">
             {{ page.title }}
           </p>
         </RouterLink>
