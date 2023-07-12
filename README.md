@@ -1,6 +1,6 @@
 # Rainbow Watcher's Blog
 
-![Vercel](https://vercelbadge.vercel.app/api/rainbowatcher/blog)
+[![Vercel](https://vercelbadge.vercel.app/api/rainbowatcher/blog)](https://vercel.com/rainbowatcher/blog-v2)
 
 ## RoadMap
 
