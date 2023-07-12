@@ -137,7 +137,7 @@ export default {
   markdown: {
     lineNumbers: true,
   },
-};
+}
 ```
 ````
 
@@ -256,6 +256,24 @@ this block is closed with 5 markers below
 自动关闭容器
 
 ::::
+
+## Code Group 代码组
+
+::: code-group
+
+```shell [npm]
+npm i vue
+```
+
+```shell [yarn]
+yarn add vue
+```
+
+```shell [pnpm]
+pnpm i vue
+```
+
+:::
 
 ## Divider 分割线
 
