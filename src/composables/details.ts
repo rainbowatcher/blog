@@ -33,7 +33,7 @@ export function setupDetailsAnimation() {
           // Store the current height of the element
           const startHeight = `${el.offsetHeight}px`
           // Calculate the height of the summary
-          const endHeight = `${closeHeight.value}px`
+          const endHeight = `${closeHeight.value}px` satisfies string
           // console.log({ startHeight, endHeight, firstTop: firstTop.value, lastBottom: lastBottom.value })
 
           animation.value?.cancel()
