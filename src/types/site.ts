@@ -1,11 +1,11 @@
+import type { Head } from "@unhead/vue"
 import { type ViteSSGContext } from "vite-ssg"
-import type { UseHeadInput } from "@vueuse/head"
 import type { PageInfo } from "~/composables/use-pages"
 
 export type UserModule = (ctx: ViteSSGContext) => void
 
 export type SiteConfig = {
-  head: UseHeadInput<any>
+  head: Head
   nav: Array<{ text: string; link: string }>
 }
 
