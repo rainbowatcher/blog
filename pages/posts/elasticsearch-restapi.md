@@ -16,6 +16,18 @@ tags: [ElasticSearch, Example]
 
 ```http
 PUT /index_name/
+
+{
+  "settings": {
+    "number_of_shards": 1
+  },
+  "mappings": {
+    "dynamic": "strict",
+    "properties": {
+      "field1": { "type": "text" }
+    }
+  }
+}
 ```
 
 ### 删除 Index
