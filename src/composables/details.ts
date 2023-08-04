@@ -15,7 +15,7 @@ export function setupDetailsAnimation() {
 
         summary?.addEventListener("click", (e) => { onClick(e, el) })
 
-        function onClick(e :Event, el:HTMLDetailsElement) {
+        function onClick(e: Event, el: HTMLDetailsElement) {
           e.preventDefault()
 
           el.style.overflow = "hidden"
@@ -33,7 +33,8 @@ export function setupDetailsAnimation() {
           // Store the current height of the element
           const startHeight = `${el.offsetHeight}px`
           // Calculate the height of the summary
-          const endHeight = `${closeHeight.value}px` satisfies string
+          // eslint-disable-next-line
+          const endHeight = `${closeHeight.value}px`
           // console.log({ startHeight, endHeight, firstTop: firstTop.value, lastBottom: lastBottom.value })
 
           animation.value?.cancel()
