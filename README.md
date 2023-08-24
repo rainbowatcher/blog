@@ -19,6 +19,7 @@
 - ✅ Hide post
 - 🚧 Demo Code Block
 - 🎯 Search
+- 🎯 Back to top button
 - 🎯 Permalink
 - 🎯 Pagenation
 - 🎯 Comment system
