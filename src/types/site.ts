@@ -5,7 +5,6 @@ import type { PageInfo } from "~/composables/use-pages"
 export type UserModule = (ctx: ViteSSGContext) => void
 
 export type SiteConfig = {
-  head: Head
   nav: Array<{ text: string; link: string }>
 }
 

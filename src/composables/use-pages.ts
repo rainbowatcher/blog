@@ -15,6 +15,7 @@ export function routeRecordToPages(route: RouteRecordNormalized) {
     email,
   }
 }
+
 export function usePages() {
   return useRouter().getRoutes()
     .filter(i => i.path.startsWith("/posts/") && !i.meta.frontmatter.hide)

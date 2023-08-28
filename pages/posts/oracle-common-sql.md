@@ -125,3 +125,11 @@ SELECT owner,
        bytes / (1024 * 1024 * 1024)          AS "空间大小(G)"
   FROM dba_segments a
 ```
+
+## 表
+
+### 修改表名
+
+```sql
+rename table table_name to table_name1;
+```
