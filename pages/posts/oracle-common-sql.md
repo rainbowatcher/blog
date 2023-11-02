@@ -133,3 +133,20 @@ SELECT owner,
 ```sql
 rename table table_name to table_name1;
 ```
+
+## privilege
+
+```sql
+GRANT CREATE SESSION TO USERNAME; -- 允许用户登录到数据库
+GRANT SELECT,DELETE ANY TABLE TO USERNAME; -- 使用户能够查询和删除数据库中的任何表
+GRANT CONNECT, RESOURCE, DBA TO USERNAME; -- 赋予用户更广泛的数据库访问和管理权限
+GRANT CREATE SESSION GRANT ANY PRIVILEGE TO USERNAME; -- 允许用户用户登录和为其他用户分配权限
+GRANT UNLIMITED TABLESPACE TO USERNAME; -- 允许用户在数据库中创建表并使用无限的表空间
+GRANT SELECT, INSERT, UPDATE, DELETE ON schema.tableName TO USERNAME; -- 限定用户的权限，仅适用于特定表
+```
+
+### create user
+
+```sql
+CREATE USER USERNAME IDENTIFIED BY PASSWORD;
+```
