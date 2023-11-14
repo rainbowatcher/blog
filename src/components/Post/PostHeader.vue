@@ -40,7 +40,7 @@ const headerImageMask = computed(() => {
       <h1 v-else-if="title" class="post-header-page-title mb-4 text-center font-bold lh-1em lt-md:text-2rem md:text-3.5rem">
         {{ title }}
       </h1>
-      <p v-if="frontmatter.subtitle" class="post-header-subtitle italic opacity-75">
+      <p v-if="frontmatter.subtitle" class="post-header-subtitle italic">
         {{ frontmatter.subtitle }}
       </p>
       <div

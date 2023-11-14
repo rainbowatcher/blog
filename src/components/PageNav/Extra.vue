@@ -12,8 +12,8 @@ function toggleLocales() {
 <template>
   <div class="extra" flex="~ row nowrap gap4" justify-center :class="{ 'in-content': inContent }">
     <div class="preferences flex gap4">
-      <div i="carbon-sun dark:carbon-moon" cursor-pointer hover-c-neutral3 @click="toggleDark()" />
-      <div i-carbon-ibm-watson-language-translator cursor-pointer hover-c-neutral3 @click="toggleLocales()" />
+      <div i="carbon-sun dark:carbon-moon" cursor-pointer hover-c-neutral3 title="Theme" @click="toggleDark()" />
+      <div i-carbon-ibm-watson-language-translator cursor-pointer hover-c-neutral3 title="Language" @click="toggleLocales()" />
     </div>
 
     <div class="social-links flex">

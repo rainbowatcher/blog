@@ -9,6 +9,7 @@
     "picocolors",
     "pinia",
     "pnpm",
+    "ROWID",
     "unocss",
     "unplugin",
     "Vite",
