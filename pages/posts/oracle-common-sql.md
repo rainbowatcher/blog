@@ -150,3 +150,16 @@ GRANT SELECT, INSERT, UPDATE, DELETE ON schema.tableName TO USERNAME; -- 限定�
 ```sql
 CREATE USER USERNAME IDENTIFIED BY PASSWORD;
 ```
+
+## Data Management
+
+### Deduplication
+
+```sql
+DELETE
+  FROM TABLE_NAME
+ WHERE ROWID IN (SELECT max(t.ROWID)
+                   FROM TABLE_NAME t
+                  GROUP BY BUSINESS_PRIMARY_KEY
+                 HAVING count(1) > 1);
+```
