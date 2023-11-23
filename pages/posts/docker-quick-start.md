@@ -167,3 +167,15 @@ docker run -p 8080:8080 \
 	-e KAFKA_CLUSTERS_1_BOOTSTRAPSERVERS=prod-kafka01:9092 \
 	-d provectuslabs/kafka-ui:latest
 ```
+
+## MeiliSearch
+
+```bash
+id=$(docker ps -aqf 'name=meilisearch');[ $id ] && docker rm $id
+docker run -itd \
+    --name meilisearch \
+    -p 7700:7700 \
+    -e MEILI_ENV='development' \
+    -v ~/DockerVolumes/meili_data:/meili_data \
+    getmeili/meilisearch:v1.5
+```
