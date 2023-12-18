@@ -179,3 +179,15 @@ docker run -itd \
     -v ~/DockerVolumes/meili_data:/meili_data \
     getmeili/meilisearch:v1.5
 ```
+
+## PostgreSQL
+
+```bash
+id=$(docker ps -aqf 'name=postgresql');[ $id ] && docker rm $id
+docker run -itd \
+    --name postgresql \
+    -e POSTGRES_PASSWORD=123123 \
+    -p 5432:5432 \
+    -v ~/DockerVolumes/postgresql/data:/var/lib/postgresql/data \
+    postgres:alpine
+```
