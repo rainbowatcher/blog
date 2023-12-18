@@ -182,12 +182,17 @@ docker run -itd \
 
 ## PostgreSQL
 
+::: tip
+当设置了 POSTGRES_USER 变量时，会以指定的用户名为超级管理员，同时会创建同名数据库，若不指定则默认用户为 postgres
+:::
+
 ```bash
 id=$(docker ps -aqf 'name=postgresql');[ $id ] && docker rm $id
 docker run -itd \
     --name postgresql \
+    -e POSTGRES_USER=root \
     -e POSTGRES_PASSWORD=123123 \
     -p 5432:5432 \
     -v ~/DockerVolumes/postgresql/data:/var/lib/postgresql/data \
-    postgres:alpine
+    -d postgres:alpine
 ```
