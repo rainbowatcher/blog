@@ -38,7 +38,7 @@ export function markdownEnhance(md: MarkdownIt) {
     })
     .use(preWrapperPlugin)
     .use(highlightLinePlugin)
-    // .use(lineNumberPlugin)
+    .use(lineNumberPlugin)
     .use(imagePlugin)
     .use(katexPlugin)
     .use(mermaidPlugin)
