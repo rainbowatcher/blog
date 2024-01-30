@@ -3,7 +3,11 @@ import { scrollIntoAnchor } from "./utils/scroll"
 
 // https://github.com/vueuse/head
 // you can use this to manipulate the document head in any components,
+const pageLoaded = ref(false)
 
+window.onload = () => {
+  pageLoaded.value = true
+}
 // they will be rendered correctly in the html results with vite-ssg
 usePrefetch(useRouter())
 nextTick(() => {
@@ -15,5 +19,5 @@ useCopyCode()
 </script>
 
 <template>
-  <RouterView />
+  <RouterView v-show="pageLoaded" />
 </template>
