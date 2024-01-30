@@ -97,7 +97,8 @@ export function usePrefetch(router: Router) {
           ) {
             if (pathname !== location.pathname) {
               observer!.observe(link)
-            } else {
+            }
+            else {
               // No need to prefetch chunk for the current page, but also mark
               // it as already fetched. This is because the initial page uses its
               // lean chunk, and if we don't mark it, navigation to another page

@@ -43,7 +43,8 @@ function createContainer(
             return `<details class="${clazz} custom-block"><summary>${title}</summary><div class="content">\n`
 
           return `<div class="${clazz} custom-block"><p class="custom-block-title">${title}</p>\n`
-        } else {
+        }
+        else {
           return clazz === "details" ? "</div></details>\n" : "</div>\n"
         }
       },

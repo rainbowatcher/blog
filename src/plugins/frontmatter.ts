@@ -27,7 +27,8 @@ export function extendRouteMeta(route: any) {
       path: route.path,
     }
     route.meta = Object.assign(route.meta || {}, frontmatter)
-  } else {
+  }
+  else {
     route.meta = { frontmatter: {} }
   }
   return route

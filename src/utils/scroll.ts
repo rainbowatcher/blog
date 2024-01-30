@@ -7,7 +7,8 @@ export function scrollIntoAnchor(offset = 10) {
     const offsetTop = ele?.offsetTop
     if (offsetTop) {
       window.scroll({ top: (offsetTop - offset), behavior: "smooth" })
-    } else {
+    }
+    else {
       ele?.scrollIntoView({ behavior: "smooth" })
     }
   }

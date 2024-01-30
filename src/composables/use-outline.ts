@@ -116,7 +116,8 @@ export function useActiveAnchor(
       activeLink.classList.add("active")
       marker.value.style.top = `${activeLink.offsetTop}px`
       marker.value.style.opacity = "1"
-    } else {
+    }
+    else {
       marker.value.style.top = "0"
       marker.value.style.opacity = "0"
     }

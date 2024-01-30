@@ -23,7 +23,8 @@ function attrsToLines(attrs: string): HtmlRendererOptions["lineOptions"] {
         result.push(
           ...Array.from({ length: end - start + 1 }, (_, i) => start + i),
         )
-      } else {
+      }
+      else {
         result.push(start)
       }
     })

@@ -13,7 +13,8 @@ export function toPx(length: string, initialValue = 0) {
 
     if (unit === "px") {
       return size
-    } else {
+    }
+    else {
       return Number(toValue(fontSize)) * size
     }
   }

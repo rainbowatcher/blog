@@ -13,7 +13,8 @@ export function throttleAndDebounce(fn: () => void, delay: number): () => void {
       setTimeout(() => {
         isCalled = false
       }, delay)
-    } else {
+    }
+    else {
       timeoutId = setTimeout(fn, delay)
     }
   }
@@ -24,7 +25,8 @@ export function randomInt(min: number, max: number): number;
 export function randomInt(minOrMax: number, max?: number): number {
   if (max === undefined) {
     return Math.floor(Math.random() * (minOrMax + 1))
-  } else if (minOrMax > max) {
+  }
+  else if (minOrMax > max) {
     throw new Error("first param should always less than the second param")
   }
   return Math.floor(Math.random() * (max - minOrMax + 1) + minOrMax)

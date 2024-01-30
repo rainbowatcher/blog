@@ -44,7 +44,8 @@ function setSmoothScrollWhenClickAnchor(router: Router, isClient: boolean) {
                 // use smooth scroll when clicking on header anchor links
                 scrollTo(link, hash, link.classList.contains("header-anchor") || link.classList.contains("outline-link"))
               }
-            } else {
+            }
+            else {
               void router.push(pathname)
               // scrollTo(link, hash, true)
             }
@@ -72,7 +73,8 @@ function scrollTo(el: HTMLElement, hash: string, smooth = false) {
     target = el.classList.contains("header-anchor")
       ? el
       : document.querySelector(decodeURIComponent(hash))
-  } catch (e) {
+  }
+  catch (e) {
     console.warn(e)
   }
 

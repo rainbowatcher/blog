@@ -189,7 +189,8 @@ const katexPlugin: MarkdownIt.PluginWithOptions<KatexOptions> = (md: MarkdownIt,
 
     try {
       return katex.renderToString(tex, katexOptions)
-    } catch (error) {
+    }
+    catch (error) {
       if (katexOptions.throwOnError)
         console.warn(error)
 
@@ -204,7 +205,8 @@ const katexPlugin: MarkdownIt.PluginWithOptions<KatexOptions> = (md: MarkdownIt,
 
     try {
       return `<p>${katex.renderToString(tex, katexOptions)}</p>`
-    } catch (error) {
+    }
+    catch (error) {
       if (katexOptions.throwOnError)
         console.warn(error)
 

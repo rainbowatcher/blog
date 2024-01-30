@@ -16,7 +16,8 @@ export function useAsidePos() {
   function onScroll() {
     if (y.value >= pos.value) {
       asideClass.value = "is-fixed"
-    } else {
+    }
+    else {
       asideClass.value = "is-abs"
     }
   }

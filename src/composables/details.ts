@@ -21,7 +21,8 @@ export function setupDetailsAnimation() {
           el.style.overflow = "hidden"
           if (isClosing.value || !el.open) {
             open()
-          } else if (isExpanding.value || el.open) {
+          }
+          else if (isExpanding.value || el.open) {
             shrink()
           }
         }

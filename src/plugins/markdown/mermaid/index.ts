@@ -33,7 +33,8 @@ export function mermaidPlugin(md: MarkdownIt) {
   md.options.highlight(token.content, "mermaid", langAttrs)
 }
       </div>`
-    } else if (token.info.trim() === "mermaid") {
+    }
+    else if (token.info.trim() === "mermaid") {
       const key = index
       return `
       <Suspense>

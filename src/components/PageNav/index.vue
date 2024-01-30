@@ -10,10 +10,12 @@ const { y, arrivedState, directions } = useScroll(globalThis.window, { onScroll 
 function onScroll() {
   if (directions.top && y.value > headerHeightPx.value) {
     toggleVisible(true)
-  } else if (directions.bottom && y.value > headerHeightPx.value) {
+  }
+  else if (directions.bottom && y.value > headerHeightPx.value) {
     toggleVisible(false)
     toggleFixed(true)
-  } else if (arrivedState.top) {
+  }
+  else if (arrivedState.top) {
     toggleVisible(false)
     toggleFixed(false)
   }
