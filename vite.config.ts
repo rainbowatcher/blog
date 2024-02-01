@@ -122,14 +122,15 @@ export default defineConfig({
     // https://github.com/antfu/vite-ssg
     ssgOptions: {
         crittersOptions: {
+            preload: "js",
             logLevel: "error",
         },
         dirStyle: "nested",
         script: "async defer",
         formatting: "minify",
         onBeforePageRender(_route, indexHTML) {
-            indexHTML = elevateStyle(indexHTML)
-            return indexHTML
+        indexHTML = elevateStyle(indexHTML)
+        return indexHTML
         },
         includedRoutes: dynamicRoute,
         onFinished() {
@@ -143,7 +144,7 @@ export default defineConfig({
         },
     },
     ssr: {
-    // TODO: workaround until they support native ESM
+        // TODO: workaround until they support native ESM
         noExternal: ["workbox-window", /vue-i18n/],
     },
     test: {
