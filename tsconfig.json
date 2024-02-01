@@ -1,50 +1,50 @@
 {
-  "compilerOptions": {
-    "baseUrl": ".",
-    "module": "ESNext",
-    "target": "ESNext",
-    "lib": [
-      "DOM",
-      "ESNext"
+    "compilerOptions": {
+        "baseUrl": ".",
+        "module": "ESNext",
+        "target": "ESNext",
+        "lib": [
+            "DOM",
+            "ESNext"
+        ],
+        "strict": true,
+        "esModuleInterop": true,
+        "jsx": "preserve",
+        "skipLibCheck": true,
+        "moduleResolution": "node",
+        "resolveJsonModule": true,
+        "strictNullChecks": true,
+        "allowJs": true,
+        "forceConsistentCasingInFileNames": true,
+        "types": [
+            "vite/client",
+            "@vueuse/core",
+            "mermaid",
+            "vite-plugin-pages/client",
+            "katex",
+            "vitest/importMeta"
+        ],
+        "paths": {
+            "~/*": [
+                "src/*"
+            ],
+            "markdown-it-footnote": [
+                "./node_modules/@akiravoid/markdown-it-footnote"
+            ],
+            "markdown-it-mark": [
+                "./node_modules/@akiravoid/markdown-it-mark"
+            ]
+        }
+    },
+    "include": [
+        "src/**/*.ts",
+        "src/**/*.vue",
+        "vite.config.ts",
+        "unocss.config.ts"
     ],
-    "strict": true,
-    "esModuleInterop": true,
-    "jsx": "preserve",
-    "skipLibCheck": true,
-    "moduleResolution": "node",
-    "resolveJsonModule": true,
-    "strictNullChecks": true,
-    "allowJs": true,
-    "forceConsistentCasingInFileNames": true,
-    "types": [
-      "vite/client",
-      "@vueuse/core",
-      "mermaid",
-      "vite-plugin-pages/client",
-      "katex",
-      "vitest/importMeta"
-    ],
-    "paths": {
-      "~/*": [
-        "src/*"
-      ],
-      "markdown-it-footnote": [
-        "./node_modules/@akiravoid/markdown-it-footnote"
-      ],
-      "markdown-it-mark": [
-        "./node_modules/@akiravoid/markdown-it-mark"
-      ]
-    }
-  },
-  "include": [
-    "src/**/*.ts",
-    "src/**/*.vue",
-    "vite.config.ts",
-    "unocss.config.ts"
-  ],
-  "exclude": [
-    "dist",
-    "node_modules",
-    "markdown-it-highlight-lines"
-  ]
+    "exclude": [
+        "dist",
+        "node_modules",
+        "markdown-it-highlight-lines"
+    ]
 }

@@ -10,22 +10,22 @@
 import type MarkdownIt from "markdown-it"
 
 export function preWrapperPlugin(md: MarkdownIt) {
-  const fence = md.renderer.rules.fence!
-  md.renderer.rules.fence = (...args) => {
-    const [tokens, idx] = args
-    const info = tokens[idx].info.trim()/* .replace(/-vue$/, "") */
+    const fence = md.renderer.rules.fence!
+    md.renderer.rules.fence = (...args) => {
+        const [tokens, idx] = args
+        const info = tokens[idx].info.trim()/* .replace(/-vue$/, "") */
 
-    const lang = extractLang(info)
-    const rawCode = fence(...args)
-    return `<div class="language-${lang}${/ active( |$)/.test(info) ? " active" : ""}"><button title="Copy Code" class="copy"></button><span class="lang">${
-      lang === "vue-html" ? "template" : lang
-    }</span>${rawCode}</div>`
-  }
+        const lang = extractLang(info)
+        const rawCode = fence(...args)
+        return `<div class="language-${lang}${/ active( |$)/.test(info) ? " active" : ""}"><button title="Copy Code" class="copy"></button><span class="lang">${
+            lang === "vue-html" ? "template" : lang
+        }</span>${rawCode}</div>`
+    }
 }
 
 export function extractLang(info: string) {
-  return info
+    return info
     // .replace(/:(no-)?line-numbers({| |$).*/, "")
-    .replace(/(-vue|{| ).*$/, "")
+        .replace(/(-vue|{| ).*$/, "")
     // .replace(/^vue-html$/, "template")
 }

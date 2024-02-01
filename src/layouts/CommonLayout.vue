@@ -1,9 +1,9 @@
 <script lang="ts" setup>
 defineProps({
-  title: {
-    type: String,
-    required: false,
-  },
+    title: {
+        type: String,
+        required: false,
+    },
 })
 // TODO: Maybe we should use useTitle() fn to specify title.
 const asideClass = useAsidePos()
@@ -11,21 +11,21 @@ const outline = ref(undefined)
 </script>
 
 <template>
-  <PageNav />
-  <PostHeader :title="title" />
-  <main class="content mx-auto flex justify-center lt-md-(p-5)">
-    <aside class="left-aside">
-      <div :class="asideClass">
-        {{ "" }}
-      </div>
-    </aside>
-    <slot />
-    <div class="right-aside">
-      <DocAsideOutline ref="outline" />
-    </div>
-  </main>
-  <div class="page-curtain lt-md-hidden" />
-  <Footer />
+    <PageNav />
+    <PostHeader :title="title" />
+    <main class="content mx-auto flex justify-center lt-md-(p-5)">
+        <aside class="left-aside">
+            <div :class="asideClass">
+                {{ "" }}
+            </div>
+        </aside>
+        <slot />
+        <div class="right-aside">
+            <DocAsideOutline ref="outline" />
+        </div>
+    </main>
+    <div class="page-curtain lt-md-hidden" />
+    <Footer />
 </template>
 
 <style lang="scss">

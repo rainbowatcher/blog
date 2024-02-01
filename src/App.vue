@@ -6,13 +6,13 @@ import { scrollIntoAnchor } from "./utils/scroll"
 // they will be rendered correctly in the html results with vite-ssg
 usePrefetch(useRouter())
 nextTick(() => {
-  scrollIntoAnchor()
-  setupDetailsAnimation()
+    scrollIntoAnchor()
+    setupDetailsAnimation()
 })
 useCodeGroups()
 useCopyCode()
 </script>
 
 <template>
-  <RouterView />
+    <RouterView />
 </template>

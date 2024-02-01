@@ -8,35 +8,35 @@ const headerHeightPx = computed(() => toPx(headerHeight.value))
 const { y, arrivedState, directions } = useScroll(globalThis.window, { onScroll })
 
 function onScroll() {
-  if (directions.top && y.value > headerHeightPx.value) {
-    toggleVisible(true)
-  }
-  else if (directions.bottom && y.value > headerHeightPx.value) {
-    toggleVisible(false)
-    toggleFixed(true)
-  }
-  else if (arrivedState.top) {
-    toggleVisible(false)
-    toggleFixed(false)
-  }
+    if (directions.top && y.value > headerHeightPx.value) {
+        toggleVisible(true)
+    }
+    else if (directions.bottom && y.value > headerHeightPx.value) {
+        toggleVisible(false)
+        toggleFixed(true)
+    }
+    else if (arrivedState.top) {
+        toggleVisible(false)
+        toggleFixed(false)
+    }
 }
 </script>
 
 <template>
-  <header
-    class="page-nav" :class="{
-      'header-fixed': isFixed,
-      'header-visible': isVisible,
-    }"
-  >
-    <HeaderTitle />
-    <div class="header-content flex flex-(row gap-4)">
-      <Nav :in-content="true" />
-      <Extra :in-content="true" />
-      <Flyout />
-      <Hamburger />
-    </div>
-  </header>
+    <header
+        class="page-nav" :class="{
+            'header-fixed': isFixed,
+            'header-visible': isVisible,
+        }"
+    >
+        <HeaderTitle />
+        <div class="header-content flex flex-(row gap-4)">
+            <Nav :in-content="true" />
+            <Extra :in-content="true" />
+            <Flyout />
+            <Hamburger />
+        </div>
+    </header>
 </template>
 
 <style lang="scss" scoped>

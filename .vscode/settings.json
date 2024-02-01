@@ -1,48 +1,48 @@
 {
-  "cSpell.words": [
-    "akiravoid",
-    "antfu",
-    "Attributify",
-    "bitnami",
-    "demi",
-    "getmeili",
-    "iconify",
-    "intlify",
-    "kuma",
-    "Meili",
-    "meilisearch",
-    "picocolors",
-    "pinia",
-    "pnpm",
-    "provectuslabs",
-    "ROWID",
-    "unocss",
-    "unplugin",
-    "Vite",
-    "vitejs",
-    "Vitesse",
-    "vitest",
-    "vueuse"
-  ],
-  "i18n-ally.sourceLanguage": "zh-CN",
-  "i18n-ally.keystyle": "nested",
-  "i18n-ally.localesPaths": "src/locales",
-  "i18n-ally.sortKeys": true,
-  "[markdown]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": "explicit"
-  },
-  "editor.formatOnSave": false,
-  "files.exclude": {
-    "**/.git": true,
-    "**/.svn": true,
-    "**/.hg": true,
-    "**/CVS": true,
-    "**/.DS_Store": true,
-    "**/Thumbs.db": true,
-    "node_modules": true
-  },
-  "typescript.tsdk": "node_modules/typescript/lib"
+    "cSpell.words": [
+        "akiravoid",
+        "antfu",
+        "Attributify",
+        "bitnami",
+        "demi",
+        "getmeili",
+        "iconify",
+        "intlify",
+        "kuma",
+        "Meili",
+        "meilisearch",
+        "picocolors",
+        "pinia",
+        "pnpm",
+        "provectuslabs",
+        "ROWID",
+        "unocss",
+        "unplugin",
+        "Vite",
+        "vitejs",
+        "Vitesse",
+        "vitest",
+        "vueuse"
+    ],
+    "i18n-ally.sourceLanguage": "zh-CN",
+    "i18n-ally.keystyle": "nested",
+    "i18n-ally.localesPaths": "src/locales",
+    "i18n-ally.sortKeys": true,
+    "[markdown]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": "explicit"
+    },
+    "editor.formatOnSave": false,
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/Thumbs.db": true,
+        "node_modules": true
+    },
+    "typescript.tsdk": "node_modules/typescript/lib"
 }

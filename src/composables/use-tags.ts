@@ -5,33 +5,33 @@ import type { TagInfo } from "~/types"
 export const tagMapSymbol: InjectionKey<Map<string, TagInfo>> = Symbol.for("blogTags")
 
 export function useTagMap() {
-  const tagMap = inject(tagMapSymbol)
+    const tagMap = inject(tagMapSymbol)
 
-  if (!tagMap) {
-    throw new Error("useTagMap() is called without provider.")
-  }
+    if (!tagMap) {
+        throw new Error("useTagMap() is called without provider.")
+    }
 
-  return tagMap
+    return tagMap
 }
 
 export function useTags() {
-  const tagMap = useTagMap()
+    const tagMap = useTagMap()
 
-  const tags: TagInfo[] = []
+    const tags: TagInfo[] = []
 
-  for (const tag of tagMap.keys()) {
-    const info: TagInfo = { name: "", pages: [] }
-    const end = Color("#34d399")
+    for (const tag of tagMap.keys()) {
+        const info: TagInfo = { name: "", pages: [] }
+        const end = Color("#34d399")
 
-    info.name = tag
-    info.pages = tagMap.get(tag)?.pages || []
-    info.color = end.saturate((tagMap.get(tag)?.pages.length || 0) * 50).toString()
+        info.name = tag
+        info.pages = tagMap.get(tag)?.pages || []
+        info.color = end.saturate((tagMap.get(tag)?.pages.length || 0) * 50).toString()
 
-    tags.push(info)
-  }
+        tags.push(info)
+    }
 
-  tags.sort((prev: TagInfo, next: TagInfo) => {
-    return next.pages.length - prev.pages.length
-  })
-  return tags
+    tags.sort((prev: TagInfo, next: TagInfo) => {
+        return next.pages.length - prev.pages.length
+    })
+    return tags
 }

@@ -8,11 +8,11 @@ const currentTag = computed(() => tags.find(i => i.name.toLowerCase() === props.
 </script>
 
 <template>
-  <section flex="~ col">
-    <TagList :tags="tags" />
-    <p v-if="!currentTag?.pages">
-      Empty
-    </p>
-    <PostList v-else :pages="currentTag?.pages" />
-  </section>
+    <section flex="~ col">
+        <TagList :tags="tags" />
+        <p v-if="!currentTag?.pages">
+            Empty
+        </p>
+        <PostList v-else :pages="currentTag?.pages" />
+    </section>
 </template>

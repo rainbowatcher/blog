@@ -1,33 +1,33 @@
 <script lang="ts" setup>
 defineProps({
-  label: {
-    type: String,
-    required: true,
-  },
-  sup: {
-    type: [String, Number],
-    required: false,
-    default: "",
-  },
-  type: {
-    type: String,
-    options: ["outline", "primary", "success", "warning", "error", "info"],
-    default: "primary",
-  },
+    label: {
+        type: String,
+        required: true,
+    },
+    sup: {
+        type: [String, Number],
+        required: false,
+        default: "",
+    },
+    type: {
+        type: String,
+        options: ["outline", "primary", "success", "warning", "error", "info"],
+        default: "primary",
+    },
 })
 </script>
 
 <template>
-  <span
-    class="relative inline-block h4 cursor-pointer rounded-2xl px2 py0"
-    :class="[`tag-${type}`]"
-    @click="$router.push(`/tags/${label.toLowerCase()}`)"
-  >
-    <span block select-none text-3 font-600 leading-4>{{ label }}</span>
-    <sup v-if="sup" absolute right--2 top--2 h4 rounded-full bg-red5 px1.25 text-center leading-4 color-white outline="1px solid [var(--sika-c-page-bg)]">
-      <span select-none>{{ sup }}</span>
-    </sup>
-  </span>
+    <span
+        class="relative inline-block h4 cursor-pointer rounded-2xl px2 py0"
+        :class="[`tag-${type}`]"
+        @click="$router.push(`/tags/${label.toLowerCase()}`)"
+    >
+        <span block select-none text-3 font-600 leading-4>{{ label }}</span>
+        <sup v-if="sup" absolute right--2 top--2 h4 rounded-full bg-red5 px1.25 text-center color-white leading-4 outline="1px solid [var(--sika-c-page-bg)]">
+            <span select-none>{{ sup }}</span>
+        </sup>
+    </span>
 </template>
 
 <style lang="scss">

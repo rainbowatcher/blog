@@ -5,7 +5,7 @@ const pages = usePages()
 </script>
 
 <template>
-  <HomeLayout>
-    <PostList :pages="pages" />
-  </HomeLayout>
+    <HomeLayout>
+        <PostList :pages="pages" />
+    </HomeLayout>
 </template>

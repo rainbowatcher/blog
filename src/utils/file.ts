@@ -2,10 +2,10 @@
  * Converts a url path to the corresponding js chunk filename.
  */
 export function pathToFile(path: string): string {
-  let pagePath = path.replace(/\.html$/, "")
-  pagePath = decodeURIComponent(pagePath)
-  // pagePath = pagePath.replace(/\/$/, "/index") // /foo/ -> /foo/index
-  return pagePath
+    let pagePath = path.replace(/\.html$/, "")
+    pagePath = decodeURIComponent(pagePath)
+    // pagePath = pagePath.replace(/\/$/, "/index") // /foo/ -> /foo/index
+    return pagePath
 }
 
 // https://github.com/rollup/rollup/blob/main/src/utils/sanitizeFileName.ts
@@ -20,10 +20,10 @@ const DRIVE_LETTER_REGEX = /^[a-z]:/i
  * @return {string} The sanitized file name.
  */
 export function sanitizeFileName(name: string): string {
-  const match = DRIVE_LETTER_REGEX.exec(name)
-  const driveLetter = match ? match[0] : ""
+    const match = DRIVE_LETTER_REGEX.exec(name)
+    const driveLetter = match ? match[0] : ""
 
-  // A `:` is only allowed as part of a windows drive letter (ex: C:\foo)
-  // Otherwise, avoid them because they can refer to NTFS alternate data streams.
-  return driveLetter + name.slice(driveLetter.length).replace(INVALID_CHAR_REGEX, "_")
+    // A `:` is only allowed as part of a windows drive letter (ex: C:\foo)
+    // Otherwise, avoid them because they can refer to NTFS alternate data streams.
+    return driveLetter + name.slice(driveLetter.length).replace(INVALID_CHAR_REGEX, "_")
 }

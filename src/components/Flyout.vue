@@ -3,7 +3,7 @@
 </script>
 
 <template>
-  <div lg:hidden lt-md:hidden>
-    Flyout
-  </div>
+    <div lg:hidden lt-md:hidden>
+        Flyout
+    </div>
 </template>

@@ -17,6 +17,7 @@
 - ✅ Code copy
 - ✅ Mermaid
 - ✅ Hide post
+- ✅ Optimize page load logic
 - 🚧 Demo Code Block
 - 🎯 Search
 - 🎯 Back to top button

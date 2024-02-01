@@ -5,27 +5,27 @@ const randomColors = Array.from({ length: 5 }, _ => randomColor("rgba", .6))
 </script>
 
 <template>
-  <PageNav />
-  <div
-    class="home-page-nav" :style="{
-      '--sika-c-home-header-0': randomColors[0],
-      '--sika-c-home-header-1': randomColors[1],
-      '--sika-c-home-header-2': randomColors[2],
-      '--sika-c-home-header-3': randomColors[3],
-      '--sika-c-home-header-4': randomColors[4],
-    }"
-  >
-    <div class="ma h-full max-w-4xl flex-center">
-      <div class="mt-8 h-8rem w-lg flex-center rounded-lg md-bg-neutral8/20">
-        <span text-3.5rem font-bold c-white lt-sm-text-shadow-sm>Welcome</span>
-      </div>
+    <PageNav />
+    <div
+        class="home-page-nav" :style="{
+            '--sika-c-home-header-0': randomColors[0],
+            '--sika-c-home-header-1': randomColors[1],
+            '--sika-c-home-header-2': randomColors[2],
+            '--sika-c-home-header-3': randomColors[3],
+            '--sika-c-home-header-4': randomColors[4],
+        }"
+    >
+        <div class="ma h-full max-w-4xl flex-center">
+            <div class="mt-8 h-8rem w-lg flex-center rounded-lg md-bg-neutral8/20">
+                <span text-3.5rem c-white font-bold lt-sm-text-shadow-sm>Welcome</span>
+            </div>
+        </div>
     </div>
-  </div>
-  <main mt4>
-    <slot />
-  </main>
-  <div class="page-curtain lt-md-hidden" />
-  <Footer />
+    <main mt4>
+        <slot />
+    </main>
+    <div class="page-curtain lt-md-hidden" />
+    <Footer />
 </template>
 
 <style lang="scss" scoped>

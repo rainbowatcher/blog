@@ -7,8 +7,8 @@ const pages = usePages()
 </script>
 
 <template>
-  <section flex="~ col">
-    <TagList :tags="tags" />
-    <PostList :pages="pages" />
-  </section>
+    <section flex="~ col">
+        <TagList :tags="tags" />
+        <PostList :pages="pages" />
+    </section>
 </template>
