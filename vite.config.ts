@@ -122,7 +122,7 @@ export default defineConfig({
     // https://github.com/antfu/vite-ssg
     ssgOptions: {
         crittersOptions: {
-            preload: "false",
+            preload: "js",
             front: true,
             logLevel: "error",
         },
