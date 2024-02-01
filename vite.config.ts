@@ -122,13 +122,13 @@ export default defineConfig({
     // https://github.com/antfu/vite-ssg
     ssgOptions: {
         crittersOptions: {
-            preload: "js",
+            preload: "false",
             logLevel: "error",
         },
         dirStyle: "nested",
         script: "async defer",
         formatting: "minify",
-        // onBeforePageRender(_route, indexHTML) {
+        // onPageRendered(_route, indexHTML) {
         //     indexHTML = elevateStyle(indexHTML)
         //     return indexHTML
         // },
