@@ -123,7 +123,6 @@ export default defineConfig({
   // https://github.com/antfu/vite-ssg
   ssgOptions: {
     crittersOptions: {
-      preload: "swap",
       logLevel: "error",
     },
     dirStyle: "nested",

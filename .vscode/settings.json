@@ -3,12 +3,18 @@
     "akiravoid",
     "antfu",
     "Attributify",
+    "bitnami",
     "demi",
+    "getmeili",
     "iconify",
     "intlify",
+    "kuma",
+    "Meili",
+    "meilisearch",
     "picocolors",
     "pinia",
     "pnpm",
+    "provectuslabs",
     "ROWID",
     "unocss",
     "unplugin",
@@ -26,7 +32,7 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
+    "source.fixAll.eslint": "explicit"
   },
   "editor.formatOnSave": false,
   "files.exclude": {
