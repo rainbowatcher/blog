@@ -1,17 +1,17 @@
 {
-  "headers": [
-    {
-      "source": "/assets/index*.css",
-      "headers": [
+    "headers": [
         {
-          "key": "Cache-Control",
-          "value": "public, max-age=31536000"
-        },
-        {
-          "key": "Expires",
-          "value": "3600"
+            "source": "/assets/(index*.css)",
+            "headers": [
+                {
+                    "key": "Cache-Control",
+                    "value": "public, max-age=31536000"
+                },
+                {
+                    "key": "Expires",
+                    "value": "3600"
+                }
+            ]
         }
-      ]
-    }
-  ]
+    ]
 }
