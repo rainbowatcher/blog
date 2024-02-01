@@ -123,6 +123,7 @@ export default defineConfig({
     ssgOptions: {
         crittersOptions: {
             preload: "false",
+            front: true,
             logLevel: "error",
         },
         dirStyle: "nested",
