@@ -1,7 +1,7 @@
 {
     "headers": [
         {
-            "source": "/assets/index-.*\\.css",
+            "source": "/assets/index-(.*)\\.css",
             "headers": [
                 {
                     "key": "Cache-Control",
