@@ -128,10 +128,10 @@ export default defineConfig({
         dirStyle: "nested",
         script: "async defer",
         formatting: "minify",
-        onBeforePageRender(_route, indexHTML) {
-        indexHTML = elevateStyle(indexHTML)
-        return indexHTML
-        },
+        // onBeforePageRender(_route, indexHTML) {
+        //     indexHTML = elevateStyle(indexHTML)
+        //     return indexHTML
+        // },
         includedRoutes: dynamicRoute,
         onFinished() {
             // buildIndex()
