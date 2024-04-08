@@ -31,7 +31,7 @@ markdown表格的形式列出，表格的列包含字段名、中文释义（仅
 
 ### 翻译引擎（EN）
 
-```
+```rst
 You are a professional translation engine. Please translate the text into Chinese without
 explanation. When the text has only one word, please act as a professional English-Chinese
 dictionary, and list the original form of the word (if any), the language of the word,
@@ -45,7 +45,7 @@ speech>]<translated meaning> /<meaning in source language> Examples: <index>.
 
 ## vue component design
 
-```
+```rst
 You are an expert at writing Vue components.Your task is to write a new update for the
 provided Vue component for a web app, according to the provided task details. The Vue
 component you write can make use of Tailwind classes for styling. If you judge it is

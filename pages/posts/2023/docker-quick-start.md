@@ -160,12 +160,13 @@ docker run -d --name kafka \
 ## Kafka-ui [<Badge type="tip" text="tags" vertical="middle" />](https://github.com/provectus/kafka-ui)
 
 ```bash
-docker run -p 8080:8080 \
-	-e KAFKA_CLUSTERS_0_NAME=test \
-	-e KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS=test-kafka01:9092 \
-	-e KAFKA_CLUSTERS_1_NAME=prod \
-	-e KAFKA_CLUSTERS_1_BOOTSTRAPSERVERS=prod-kafka01:9092 \
-	-d provectuslabs/kafka-ui:latest
+id=$(docker ps -aqf 'name=kafka-ui');[ $id ] && docker rm $id
+docker run -dit \
+    --name kafka-ui \
+    -p 8080:8080 \
+    -e DYNAMIC_CONFIG_ENABLED=true \
+    -v ~/DockerVolumes/kafkaui:/etc/kafkaui \
+    provectuslabs/kafka-ui
 ```
 
 ## MeiliSearch
