@@ -1,8 +1,8 @@
 <script lang="ts" setup>
 defineProps<{
-  inContent?: boolean
+    inContent?: boolean
 }>()
-const { t, availableLocales, locale } = useI18n()
+const { availableLocales, locale } = useI18n()
 function toggleLocales() {
     const locales = availableLocales
     locale.value = locales[(locales.indexOf(locale.value) + 1) % locales.length]

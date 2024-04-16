@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { randomColor } from "~/utils/color"
 
-const randomColors = Array.from({ length: 5 }, _ => randomColor("rgba", .6))
+const randomColors = Array.from({ length: 5 }, _ => randomColor("rgba", 0.6))
 </script>
 
 <template>

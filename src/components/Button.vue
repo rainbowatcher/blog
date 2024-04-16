@@ -7,10 +7,10 @@ const props = withDefaults(defineProps<Props>(), {
 })
 
 interface Props {
-  round?: "none" | "sm" | "md" | "lg" | "xl" | "2xl"
-  color: string
-  size: "sm" | "md" | "lg" | "xl"
-  disabled: boolean
+    round?: "none" | "sm" | "md" | "lg" | "xl" | "2xl"
+    color: string
+    size: "sm" | "md" | "lg" | "xl"
+    disabled: boolean
 }
 
 function mapRound(round: string): string {

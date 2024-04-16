@@ -1,10 +1,9 @@
 import { isClient } from "@vueuse/core"
 import { toPx } from "~/utils/unit"
 
-
 /**
  * hook that handles the positioning of an aside element
-*/
+ */
 export function useAsidePos() {
     const pageHeaderHeight = useCssVar("--sika-h-page-nav")
     const postHeaderHeight = useCssVar("--sika-h-post-header")
@@ -29,7 +28,6 @@ export function useAsidePos() {
     // const canceler = useEventListener("scroll", onScroll)
 
     return asideClass
-
 }
 
 /**
@@ -43,7 +41,7 @@ export function useFontSize(defaultSize = 16) {
     return computed(() => {
         if (isClient) {
             const fontSize = getComputedStyle(window.document.body).getPropertyValue("font-size")
-            return parseInt(fontSize, 10)
+            return Number.parseInt(fontSize, 10)
         }
 
         return defaultSize

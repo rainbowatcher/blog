@@ -75,7 +75,6 @@ pnpm init
 yarn add -D vuepress@next
 ```
 
-
 ```shell [npm]
 npm i -D vuepress@next
 ```
@@ -94,10 +93,10 @@ echo '.cache' >> .gitignore
 
 ```json
 {
-  "scripts": {
-    "docs:dev": "vuepress dev docs",
-    "docs:build": "vuepress build docs"
-  }
+    "scripts": {
+        "docs:dev": "vuepress dev docs",
+        "docs:build": "vuepress build docs"
+    }
 }
 ```
 
@@ -130,11 +129,9 @@ Awesome VuePress 列表
 pnpm add -D vuepress-theme-gungnir@next
 ```
 
-
 ```shell
 yarn add -D vuepress-theme-gungnir@next
 ```
-
 
 ```shell
 npm install -D vuepress-theme-gungnir@next
@@ -160,8 +157,6 @@ module.exports = {
   })
 }
 ```
-
-
 
 ```ts{8}
 // .vuepress/config.ts
@@ -230,11 +225,9 @@ const themeConfig: GungnirThemeOptions = {
 pnpm docs:dev
 ```
 
-
 ```shell
 npm run docs:dev
 ```
-
 
 ```shell
 yarn docs:dev

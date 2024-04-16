@@ -3,4 +3,3 @@ export * from "./device"
 export * from "./slugify"
 export * from "./file"
 export * from "./utilities"
-

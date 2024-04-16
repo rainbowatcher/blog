@@ -22,40 +22,37 @@ function viaXHR(url: string) {
 }
 
 let link
-const doFetch: (url: string) => void =
-  isBrowser &&
-  (link = createLink()) &&
-  link.relList &&
-  link.relList.supports &&
-  link.relList.supports("prefetch")
+const doFetch: (url: string) => void
+  = isBrowser
+  && (link = createLink())
+  && link.relList
+  && link.relList.supports
+  && link.relList.supports("prefetch")
       ? viaDOM
       : viaXHR
 
 export function usePrefetch(router: Router) {
-    if (!isBrowser) {
+    if (!isBrowser)
         return
-    }
 
-    if (!window.IntersectionObserver) {
+    if (!window.IntersectionObserver)
         return
-    }
 
     let conn
     if (
-        (conn = (navigator as any).connection) &&
-    (conn.saveData || /2g/.test(conn.effectiveType))
+        (conn = (navigator as any).connection)
+        && (conn.saveData || /2g/.test(conn.effectiveType))
     ) {
     // Don't prefetch if using 2G or if Save-Data is enabled.
         return
     }
 
     const rIC = window.requestIdleCallback || setTimeout
-    let observer: IntersectionObserver | undefined = undefined
+    let observer: IntersectionObserver | undefined
 
     const observeLinks = () => {
-        if (observer) {
+        if (observer)
             observer.disconnect()
-        }
 
         observer = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
@@ -84,16 +81,15 @@ export function usePrefetch(router: Router) {
                         link.baseURI,
                     )
                     const extMatch = pathname.match(/\.\w+$/)
-                    if (extMatch && extMatch[0] !== ".html") {
+                    if (extMatch && extMatch[0] !== ".html")
                         return
-                    }
 
                     if (
                     // only prefetch same tab navigation, since a new tab will load
                     // the lean js chunk instead.
-                        target !== "_blank" &&
-            // only prefetch inbound links
-            hostname === location.hostname
+                        target !== "_blank"
+                        // only prefetch inbound links
+                        && hostname === location.hostname
                     ) {
                         if (pathname !== location.pathname) {
                             observer!.observe(link)

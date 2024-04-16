@@ -13,7 +13,9 @@ export function setupDetailsAnimation() {
                 const isClosing = ref(false)
                 const isExpanding = ref(false)
 
-                summary?.addEventListener("click", (e) => { onClick(e, el) })
+                summary?.addEventListener("click", (e) => {
+                    onClick(e, el)
+                })
 
                 function onClick(e: Event, el: HTMLDetailsElement) {
                     e.preventDefault()
@@ -34,8 +36,7 @@ export function setupDetailsAnimation() {
                     // Store the current height of the element
                     const startHeight = `${el.offsetHeight}px`
                     // Calculate the height of the summary
-                    // eslint-disable-next-line
-          const endHeight = `${closeHeight.value}px`
+                    const endHeight = `${closeHeight.value}px`
                     // console.log({ startHeight, endHeight, firstTop: firstTop.value, lastBottom: lastBottom.value })
 
                     animation.value?.cancel()
@@ -50,7 +51,9 @@ export function setupDetailsAnimation() {
                     })
 
                     // When the animation is complete, call onAnimationFinish()
-                    animation.value.onfinish = () => { onAnimationFinish(false) }
+                    animation.value.onfinish = () => {
+                        onAnimationFinish(false)
+                    }
                     // If the animation is cancelled, isClosing variable is set to false
                     animation.value.oncancel = () => isClosing.value = false
                 }
@@ -62,7 +65,9 @@ export function setupDetailsAnimation() {
                     // Force the [open] attribute on the details element
                     el.open = true
                     // Wait for the next frame to call the expand function
-                    window.requestAnimationFrame(() => { expand() })
+                    window.requestAnimationFrame(() => {
+                        expand()
+                    })
                 }
 
                 function expand() {
@@ -89,7 +94,9 @@ export function setupDetailsAnimation() {
                         easing: "ease-in-out",
                     })
                     // When the animation is complete, call onAnimationFinish()
-                    animation.value.onfinish = () => { onAnimationFinish(true) }
+                    animation.value.onfinish = () => {
+                        onAnimationFinish(true)
+                    }
                     // If the.valueanimation is cancelled, isExpanding variable is set to false
                     animation.value.oncancel = () => isExpanding.value = false
                 }
@@ -109,5 +116,3 @@ export function setupDetailsAnimation() {
         }
     }, 500)
 }
-
-

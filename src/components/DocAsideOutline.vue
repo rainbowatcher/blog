@@ -25,7 +25,6 @@ useActiveAnchor(container, marker)
     </div>
 </template>
 
-
 <style lang="scss">
 .aside-outline-container {
   scrollbar-width: none;

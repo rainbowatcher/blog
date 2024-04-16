@@ -1,4 +1,4 @@
-#############################  Display  #############################
+# ############################  Display  #############################
 
 # Verbose program output
 # Accepts log level: "error", "warn", "info", "debug", "trace"
@@ -10,7 +10,7 @@ no_progress = false
 # Path to summary output file.
 # output = ".config.dummy.report.md"
 
-#############################  Cache  ###############################
+# ############################  Cache  ###############################
 
 # Enable link caching. This can be helpful to avoid checking the same links on
 # multiple runs.
@@ -19,7 +19,7 @@ cache = true
 # Discard all cached requests older than this duration.
 max_cache_age = "2d"
 
-#############################  Runtime  #############################
+# ############################  Runtime  #############################
 
 # Number of threads to utilize.
 # Defaults to number of cores available to the system if omitted.
@@ -34,7 +34,7 @@ max_retries = 2
 # Maximum number of concurrent link checks.
 max_concurrency = 14
 
-#############################  Requests  ############################
+# ############################  Requests  ############################
 # User agent to send with each request.
 user_agent = "curl/7.83. 1"
 
@@ -45,14 +45,22 @@ timeout = 20
 retry_wait_time = 2
 
 # Comma-separated list of accepted status codes for valid links.
-accept = [200, 429, 403]
+accept = [
+    200,
+    429,
+    403
+]
 
 # Proceed for server connections considered insecure (invalid TLS).
 insecure = false
 
 # Only test links with the given schemes (e.g. https).
 # Omit to check links with any scheme.
-scheme = [ "https", "http", "file" ]
+scheme = [
+    "https",
+    "http",
+    "file"
+]
 
 # When links are available using HTTPS, treat HTTP links as errors.
 require_https = false
@@ -74,7 +82,7 @@ base = "https://blog-v2-theta.vercel.app/"
 # <https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Authorization>
 # basic_auth = ["example.com user:pwd"]
 
-#############################  Exclusions  ##########################
+# ############################  Exclusions  ##########################
 
 # Skip missing input files (default is to error if they don't exist).
 skip_missing = false

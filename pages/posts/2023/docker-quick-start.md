@@ -13,7 +13,7 @@ tags: [Docker, Container]
 ## MySQL [<Badge type="tip" text="tags" vertical="middle"/>](https://hub.docker.com/_/mysql/tags)
 
 ```shell
-id=$(docker ps -aqf 'name=mysql5.7');[ $id ] && docker rm $id
+id=$(docker ps -aqf 'name=mysql5.7$');[ $id ] && docker rm $id
 docker run -tid \
   --name mysql5.7 \
   -v ~/DockerVolumes/mysql:/var/lib/mysql \
@@ -72,7 +72,7 @@ docker run -tid \
 
 ```shell
 docker network create elk
-id=$(docker ps -aqf 'name=elasticsearch7');[ $id ] && docker stop $id;docker rm $id
+id=$(docker ps -aqf 'name=elasticsearch7$');[ $id ] && docker stop $id;docker rm $id
 docker run -d \
   --name elasticsearch7 \
   --net elk \
@@ -130,7 +130,7 @@ docker run -d \
 ## zookeeper [<Badge type="tip" text="tags" vertical="middle" />](https://hub.docker.com/r/bitnami/zookeeper)
 
 ```shell
-id=$(docker ps -aqf 'name=zookeeper');[ $id ] && docker rm $id
+id=$(docker ps -aqf 'name=zookeeper$');[ $id ] && docker rm $id
 docker run -d --name zookeeper \
   -p 2181:2181 \
   -e ALLOW_ANONYMOUS_LOGIN=yes \
@@ -140,19 +140,17 @@ docker run -d --name zookeeper \
 ## kafka [<Badge type="tip" text="tags" vertical="middle" />](https://hub.docker.com/r/bitnami/kafka)
 
 ```shell
-id=$(docker ps -aqf 'name=kafka');[ $id ] && docker rm $id
+id=$(docker ps -aqf 'name=kafka$');[ $id ] && docker stop "$id" && docker rm "$id"
 docker run -d --name kafka \
-    -e ALLOW_PLAINTEXT_LISTENER=yes \
     -e KAFKA_CFG_AUTO_CREATE_TOPICS_ENABLE=true \
-    -e KAFKA_ENABLE_KRAFT=yes \
-    -e KAFKA_CFG_PROCESS_ROLES=broker,controller \
+    -e KAFKA_CFG_NODE_ID=0 \
+    -e KAFKA_CFG_PROCESS_ROLES=controller,broker \
+    -e KAFKA_CFG_CONTROLLER_QUORUM_VOTERS=0@127.0.0.1:9093 \
+    -e KAFKA_CFG_LISTENERS=PLAINTEXT://:9092,CONTROLLER://:9093,EXTERNAL://:9094 \
+    -e KAFKA_CFG_ADVERTISED_LISTENERS=PLAINTEXT://kafka:9092,EXTERNAL://localhost:9094 \
+    -e KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP=CONTROLLER:PLAINTEXT,EXTERNAL:PLAINTEXT,PLAINTEXT:PLAINTEXT \
     -e KAFKA_CFG_CONTROLLER_LISTENER_NAMES=CONTROLLER \
-    -e KAFKA_CFG_LISTENERS=PLAINTEXT://:9092,CONTROLLER://:9093 \
-    -e KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP=CONTROLLER:PLAINTEXT,PLAINTEXT:PLAINTEXT \
-    -e KAFKA_CFG_ADVERTISED_LISTENERS=PLAINTEXT://127.0.0.1:9092 \
-    -e KAFKA_CFG_CONTROLLER_QUORUM_VOTERS=1@127.0.0.1:9093 \
-    -e KAFKA_BROKER_ID=1 \
-    -p 9092:9092 \
+    -p 9094:9094 \
     -v ~/DockerVolumes/kafka:/bitnami/kafka \
     bitnami/kafka:latest
 ```
@@ -160,7 +158,7 @@ docker run -d --name kafka \
 ## Kafka-ui [<Badge type="tip" text="tags" vertical="middle" />](https://github.com/provectus/kafka-ui)
 
 ```bash
-id=$(docker ps -aqf 'name=kafka-ui');[ $id ] && docker rm $id
+id=$(docker ps -aqf 'name=kafka-ui$');[ $id ] && docker rm $id
 docker run -dit \
     --name kafka-ui \
     -p 8080:8080 \
@@ -172,7 +170,7 @@ docker run -dit \
 ## MeiliSearch
 
 ```bash
-id=$(docker ps -aqf 'name=meilisearch');[ $id ] && docker rm $id
+id=$(docker ps -aqf 'name=meilisearch$');[ $id ] && docker rm $id
 docker run -itd \
     --name meilisearch \
     -p 7700:7700 \
@@ -188,7 +186,7 @@ docker run -itd \
 :::
 
 ```bash
-id=$(docker ps -aqf 'name=postgresql');[ $id ] && docker rm $id
+id=$(docker ps -aqf 'name=postgresql$');[ $id ] && docker rm $id
 docker run -itd \
     --name postgresql \
     -e POSTGRES_USER=root \

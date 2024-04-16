@@ -1,8 +1,8 @@
 <script lang="ts" setup>
-import { PageInfo } from "~/composables/use-pages"
+import type { PageInfo } from "~/composables/use-pages"
 
 defineProps<{
-  pages: PageInfo[]
+    pages: PageInfo[]
 }>()
 </script>
 

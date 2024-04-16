@@ -51,7 +51,7 @@ function foo() {
 
 ```js {2}
 function foo() {
-  console.log("bar")
+    console.log("bar")
 }
 ```
 
@@ -387,7 +387,6 @@ y= \begin{cases}
 x,\quad x>0
 \end{cases}
 $$
-
 
 ### 编号
 

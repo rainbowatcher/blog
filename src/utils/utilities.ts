@@ -20,8 +20,8 @@ export function throttleAndDebounce(fn: () => void, delay: number): () => void {
     }
 }
 
-export function randomInt(max: number): number;
-export function randomInt(min: number, max: number): number;
+export function randomInt(max: number): number
+export function randomInt(min: number, max: number): number
 export function randomInt(minOrMax: number, max?: number): number {
     if (max === undefined) {
         return Math.floor(Math.random() * (minOrMax + 1))

@@ -2,7 +2,7 @@
 import type { MenuItem } from "~/types"
 
 const props = defineProps<{
-  headers: MenuItem[]
+    headers: MenuItem[]
 }>()
 </script>
 

@@ -23,18 +23,18 @@ function setSmoothScrollWhenClickAnchor(router: Router, isClient: boolean) {
                     // only intercept inbound links
                     if (
                         !e.ctrlKey
-            && !e.shiftKey
-            && !e.altKey
-            && !e.metaKey
-            && target !== "_blank"
-            && origin === currentUrl.origin
-            // don't intercept if non-html extension is present
-            && !(extMatch && extMatch[0] !== ".html")
+                        && !e.shiftKey
+                        && !e.altKey
+                        && !e.metaKey
+                        && target !== "_blank"
+                        && origin === currentUrl.origin
+                        // don't intercept if non-html extension is present
+                        && !(extMatch && extMatch[0] !== ".html")
                     ) {
                         e.preventDefault()
                         if (
                             pathname === currentUrl.pathname
-              && search === currentUrl.search
+                            && search === currentUrl.search
                         ) {
                             // scroll between hash anchors in the same page
                             if (hash) {
@@ -66,7 +66,6 @@ function handleHashChange() {
 }
 
 function scrollTo(el: HTMLElement, hash: string, smooth = false) {
-    // eslint-disable-next-line @typescript-eslint/ban-types
     let target: HTMLElement | null = null
 
     try {
@@ -79,7 +78,7 @@ function scrollTo(el: HTMLElement, hash: string, smooth = false) {
     }
 
     if (target) {
-        const targetPadding = parseInt(
+        const targetPadding = Number.parseInt(
             window.getComputedStyle(target).paddingTop,
             10,
         )
@@ -119,6 +118,3 @@ export const install: UserModule = ({ router, isClient }) => {
     // handleHashChange()
     // setupHistoryPosition()
 }
-
-
-

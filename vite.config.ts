@@ -23,7 +23,6 @@ import {
 } from "./src/plugins"
 import { highlight } from "./src/plugins/markdown"
 
-
 export default defineConfig({
     resolve: {
         alias: {

@@ -7,7 +7,6 @@ import mark from "markdown-it-mark"
 import { slugify } from "../utils"
 import {
     containerPlugin,
-    highlightLinePlugin,
     imagePlugin,
     katexPlugin,
     lineNumberPlugin,

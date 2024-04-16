@@ -1,9 +1,11 @@
 {
+    "eslint.experimental.useFlatConfig": true,
     "cSpell.words": [
         "akiravoid",
         "antfu",
         "Attributify",
         "bitnami",
+        "Debezium",
         "demi",
         "getmeili",
         "iconify",
@@ -33,7 +35,8 @@
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
     "editor.codeActionsOnSave": {
-        "source.fixAll.eslint": "explicit"
+        "source.fixAll.eslint": "explicit",
+        "source.organizeImports": "never"
     },
     "editor.formatOnSave": false,
     "files.exclude": {
@@ -45,5 +48,20 @@
         "**/Thumbs.db": true,
         "node_modules": true
     },
+    "eslint.validate": [
+        "javascript",
+        "javascriptreact",
+        "typescript",
+        "typescriptreact",
+        "vue",
+        "html",
+        "markdown",
+        "json",
+        "jsonc",
+        "yaml",
+        "toml",
+        "gql",
+        "graphql"
+    ],
     "typescript.tsdk": "node_modules/typescript/lib"
 }

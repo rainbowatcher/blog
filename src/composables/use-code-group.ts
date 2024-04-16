@@ -1,6 +1,5 @@
 import { isClient } from "@vueuse/core"
 
-
 export function useCodeGroups() {
     if (isClient) {
         window.addEventListener("click", (e) => {
@@ -11,9 +10,9 @@ export function useCodeGroups() {
                 const group = el.parentElement?.parentElement
                 const i = Array.from(group?.querySelectorAll("input") || []).indexOf(el)
 
-                const current = group?.querySelector('div[class*="language-"].active')
+                const current = group?.querySelector("div[class*=\"language-\"].active")
                 const next = group?.querySelectorAll(
-                    'div[class*="language-"]:not(.language-id)',
+                    "div[class*=\"language-\"]:not(.language-id)",
                 )?.[i]
 
                 if (current && next && current !== next) {

@@ -31,13 +31,12 @@ export class Length {
     }
 }
 
-export type Position = {
+export interface Position {
     top?: Length
     bottom?: Length
     left?: Length
     right?: Length
 }
-
 
 if (import.meta.vitest) {
     const { it, expect, describe } = import.meta.vitest
@@ -71,5 +70,4 @@ if (import.meta.vitest) {
             })
         })
     })
-
 }

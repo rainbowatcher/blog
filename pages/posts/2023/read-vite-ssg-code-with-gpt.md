@@ -68,12 +68,12 @@ export const createApp = ViteSSG(
 
 ```ts
 export function ViteSSG(
-  App: Component,
-  routerOptions: RouterOptions,
-  fn?: (context: ViteSSGContext<true>) => Promise<void> | void,
-  options: ViteSSGClientOptions = {},
+    App: Component,
+    routerOptions: RouterOptions,
+    fn?: (context: ViteSSGContext<true>) => Promise<void> | void,
+    options: ViteSSGClientOptions = {},
 ) {
-  // ...
+    // ...
 }
 ```
 

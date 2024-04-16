@@ -52,4 +52,3 @@ export function mermaidPlugin(md: MarkdownIt) {
         return defaultRenderer(tokens, index, options, env, slf)
     }
 }
-

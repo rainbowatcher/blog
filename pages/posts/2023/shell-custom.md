@@ -112,27 +112,27 @@ github = 'romkatv/zsh-defer'
 
 [plugins.zsh-syntax-highlighting]
 github = "zsh-users/zsh-syntax-highlighting"
-apply = ["defer"]
+apply = [ "defer" ]
 
 [plugins.alias-tips]
 github = "djui/alias-tips"
-apply = ["defer"]
+apply = [ "defer" ]
 
 [plugins.zsh-autocomplete]
 github = "marlonrichert/zsh-autocomplete"
-apply = ["defer"]
+apply = [ "defer" ]
 
 [plugins.zsh-autosuggestions]
 github = "zsh-users/zsh-autosuggestions"
-apply = ["defer"]
+apply = [ "defer" ]
 
 [plugins.cd-ls]
 github = "zshzoo/cd-ls"
-apply = ["defer"]
+apply = [ "defer" ]
 
 [plugins.extract]
 remote = "https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/extract/extract.plugin.zsh"
-apply = ["defer"]
+apply = [ "defer" ]
 
 [plugins.starship]
 inline = "eval \"$(starship init zsh)\""

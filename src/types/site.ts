@@ -1,14 +1,13 @@
-import type { Head } from "@unhead/vue"
-import { type ViteSSGContext } from "vite-ssg"
+import type { ViteSSGContext } from "vite-ssg"
 import type { PageInfo } from "~/composables/use-pages"
 
 export type UserModule = (ctx: ViteSSGContext) => void
 
-export type SiteConfig = {
-    nav: Array<{ text: string; link: string }>
+export interface SiteConfig {
+    nav: Array<{ text: string, link: string }>
 }
 
-export type Frontmatter = {
+export interface Frontmatter {
     [key: string]: unknown
     layout: "post" | "home" | "Post" | "Home"
     permalinkPattern: string
@@ -23,14 +22,14 @@ export type Frontmatter = {
     tags: string[]
 }
 
-export type TagInfo = {
+export interface TagInfo {
     name: string
     // link?: string
     pages: PageInfo[]
     color?: string
 }
 
-export type MenuItem = {
+export interface MenuItem {
     level: number
     title: string
     link: string

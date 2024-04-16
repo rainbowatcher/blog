@@ -1,8 +1,8 @@
 <script lang="ts" setup>
-import { TagInfo } from "~/types"
+import type { TagInfo } from "~/types"
 
 defineProps<{
-  tags: TagInfo[]
+    tags: TagInfo[]
 }>()
 </script>
 

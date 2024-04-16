@@ -143,9 +143,9 @@ export default {
 
 ```js
 export default {
-  markdown: {
-    lineNumbers: true,
-  },
+    markdown: {
+        lineNumbers: true,
+    },
 }
 ```
 

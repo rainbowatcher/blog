@@ -5,7 +5,7 @@ export function useCopyCode() {
         const timeoutIdMap = new Map<HTMLElement, NodeJS.Timeout>()
         window.addEventListener("click", (e) => {
             const el = e.target as HTMLElement
-            if (el.matches('div[class*="language-"] > button.copy')) {
+            if (el.matches("div[class*=\"language-\"] > button.copy")) {
                 const parent = el.parentElement
                 const sibling = el.nextElementSibling
                     ?.nextElementSibling as HTMLPreElement | undefined

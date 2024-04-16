@@ -1,6 +1,7 @@
 <!-- ref: https://github.com/mermaid-js/mermaid/blob/develop/packages/mermaid/src/docs/.vitepress/theme/Mermaid.vue  -->
 <script lang="ts" setup>
-import mermaid, { MermaidConfig } from "mermaid"
+import type { MermaidConfig } from "mermaid"
+import mermaid from "mermaid"
 import { onMounted, onUnmounted, ref } from "vue"
 
 const props = defineProps({
@@ -15,7 +16,7 @@ const props = defineProps({
 })
 
 const svg = ref("")
-let mut: MutationObserver | undefined = undefined
+let mut: MutationObserver | undefined
 
 onMounted(async () => {
     mut = new MutationObserver(() => renderChart())

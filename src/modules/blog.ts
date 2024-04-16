@@ -15,7 +15,6 @@ function setupTagMap(router: Router, app: App<Element>) {
             pages.push(pageInfo)
             tagMap.set(tag, { name: tag, pages })
         })
-
     })
     app.provide(tagMapSymbol, tagMap)
 }

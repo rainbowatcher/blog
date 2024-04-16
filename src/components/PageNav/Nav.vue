@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 defineProps<{
-  inContent?: boolean
+    inContent?: boolean
 }>()
 const { t } = useI18n()
 const { nav } = useConfig()

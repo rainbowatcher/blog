@@ -7,8 +7,7 @@ import type StateInline from "markdown-it/lib/rules_inline/state_inline"
 import type Token from "markdown-it/lib/token"
 import { escapeHtml } from "markdown-it/lib/common/utils"
 
-function isValidDelim(state: StateInline,
-    pos: number): { canOpen: boolean; canClose: boolean } {
+function isValidDelim(state: StateInline, pos: number): { canOpen: boolean, canClose: boolean } {
     const prevChar = pos > 0 ? state.src.charCodeAt(pos - 1) : -1
     const nextChar = pos + 1 <= state.posMax ? state.src.charCodeAt(pos + 1) : -1
 
@@ -21,8 +20,8 @@ function isValidDelim(state: StateInline,
    */
     if (
         prevChar === 0x20
-    || /* " " */ prevChar === 0x09
-    || /* \t */ (nextChar >= 0x30 /* "0" */ && nextChar <= 0x39) /* "9" */
+        || /* " " */ prevChar === 0x09
+        || /* \t */ (nextChar >= 0x30 /* "0" */ && nextChar <= 0x39) /* "9" */
     )
         canClost = false
 
@@ -114,10 +113,7 @@ function mathInline(state: StateInline, silent?: boolean): boolean {
     return true
 }
 
-function mathBlock(state: StateBlock,
-    start: number,
-    end: number,
-    silent: boolean): boolean {
+function mathBlock(state: StateBlock, start: number, end: number, silent: boolean): boolean {
     let firstLine
     let lastLine
     let next
@@ -179,8 +175,7 @@ function mathBlock(state: StateBlock,
     return true
 }
 
-const katexPlugin: MarkdownIt.PluginWithOptions<KatexOptions> = (md: MarkdownIt,
-    options: KatexOptions = { throwOnError: false }): void => {
+const katexPlugin: MarkdownIt.PluginWithOptions<KatexOptions> = (md: MarkdownIt, options: KatexOptions = { throwOnError: false }): void => {
     const katexOptions: KatexOptions = { ...options, output: "html" }
 
     // set KaTeX as the renderer for markdown-it-simplemath
