@@ -1,7 +1,7 @@
 import type MarkdownIt from "markdown-it"
 import LinkAttributes from "markdown-it-link-attributes"
 import anchor from "markdown-it-anchor"
-import { light as emoji } from "markdown-it-emoji"
+import { light as markdownitEmoji } from "markdown-it-emoji"
 import footnote from "markdown-it-footnote"
 import mark from "markdown-it-mark"
 import { slugify } from "../utils"
@@ -36,12 +36,12 @@ export function markdownEnhance(md: MarkdownIt) {
             }),
         })
         .use(preWrapperPlugin)
-        .use(highlightLinePlugin)
+        // .use(highlightLinePlugin)
         .use(lineNumberPlugin)
         .use(imagePlugin)
         .use(katexPlugin)
         .use(mermaidPlugin)
-        .use(emoji)
+        .use(markdownitEmoji)
         .use(footnote)
         .use(mark)
 }

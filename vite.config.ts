@@ -38,7 +38,6 @@ export default defineConfig({
 
         Vue({
             include: [/\.vue$/, /\.md$/],
-            reactivityTransform: true,
         }),
 
         // https://github.com/hannoeru/vite-plugin-pages
@@ -95,7 +94,7 @@ export default defineConfig({
             wrapperComponent: "post",
             headEnabled: true,
             markdownItOptions: {
-                highlight: await highlight("one-dark-pro"),
+                highlight: await highlight(),
             },
             markdownItSetup: markdownEnhance,
             transforms: {
@@ -123,7 +122,7 @@ export default defineConfig({
     ssgOptions: {
         crittersOptions: {
             preload: "js",
-            front: true,
+            // front: true,
             logLevel: "error",
         },
         dirStyle: "nested",
