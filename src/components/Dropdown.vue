@@ -6,7 +6,7 @@ const trigger = ref<HTMLElement>()
 const content = ref<HTMLElement>()
 const show = ref(false)
 const toggleShow = useToggle(show)
-const triggerRect = computed(() => trigger.value?.getBoundingClientRect())
+// const triggerRect = computed(() => trigger.value?.getBoundingClientRect())
 const { x, y, strategy } = useFloating(trigger, content, {
     placement: "left",
     middleware: [offset(10)],
@@ -14,8 +14,6 @@ const { x, y, strategy } = useFloating(trigger, content, {
 
 function tri() {
     toggleShow()
-    console.log(x.value, y.value, strategy.value)
-    console.log(triggerRect.value)
 }
 </script>
 

@@ -20,7 +20,7 @@ export function getHeaders(levelDeep = 2, baseLevel = 2) {
             if (el.textContent && el.id && isInRange) {
                 updatedHeaders.push({
                     level: Number(el.tagName[1]),
-                    title: el.innerText.replace(/\s*#\s*/, ""),
+                    title: el.textContent.replace(/\s*#\s*/, ""),
                     link: `#${el.id}`,
                 })
             }
@@ -36,7 +36,6 @@ export function useActiveAnchor(
 
     const onScroll = throttleAndDebounce(setActiveLink, 100)
 
-    // eslint-disable-next-line @typescript-eslint/ban-types
     let prevActiveLink: HTMLAnchorElement | null = null
 
     onMounted(() => {

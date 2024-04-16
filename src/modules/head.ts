@@ -55,6 +55,6 @@ const globalHead = {
     ],
 }
 
-export const install: UserModule = ({ app, router, isClient, head }) => {
+export const install: UserModule = ({ head }) => {
     head?.push(globalHead)
 }

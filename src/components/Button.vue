@@ -31,7 +31,7 @@ function mapRound(round: string): string {
 }
 
 function classList() {
-    const { round, color, size, disabled } = props
+    const { round, color, size } = props
     const _round = mapRound(round)
     return [
         "px-2 py-1",

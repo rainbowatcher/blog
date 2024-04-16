@@ -1,39 +1,39 @@
 name: Links
 
 on:
-    push:
-        branches:
-            - main
+  push:
+    branches:
+      - main
 
 jobs:
-    linkChecker:
-        runs-on: ubuntu-latest
-        steps:
-            - uses: actions/checkout@v4
+  linkChecker:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
 
-            - name: Link Checker
-                uses: lycheeverse/lychee-action@v1.9.0
-                with:
-                    args: --no-progress pages
-                    format: markdown
-                    fail: true
+      - name: Link Checker
+        uses: lycheeverse/lychee-action@v1.9.0
+        with:
+          args: --no-progress pages
+          format: markdown
+          fail: true
 
-    lint:
-        runs-on: ubuntu-latest
-        steps:
-            - uses: actions/checkout@v4
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
 
-            - name: Install pnpm
-                uses: pnpm/action-setup@v2
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
 
-            - name: Set node
-                uses: actions/setup-node@v4
-                with:
-                    node-version: 18.x
-                    cache: pnpm
+      - name: Set node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18.x
+          cache: pnpm
 
-            - name: Install
-                run: pnpm install
+      - name: Install
+        run: pnpm install
 
-            - name: Lint
-                run: pnpm lint
+      - name: Lint
+        run: pnpm lint

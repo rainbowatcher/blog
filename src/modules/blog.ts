@@ -23,7 +23,7 @@ function globalComponent(app: App<Element>) {
     app.component("Mermaid", Mermaid)
 }
 
-export const install: UserModule = ({ app, router, isClient }) => {
+export const install: UserModule = ({ app, router }) => {
     setupTagMap(router, app)
     globalComponent(app)
 }

@@ -15,7 +15,7 @@ export class Length {
 
         const size = Number(match[1])
         const unit = match[2] || "px"
-        if (isNaN(size) || !lengthUnits.includes(unit)) {
+        if (Number.isNaN(size) || !lengthUnits.includes(unit)) {
             return undefined
         }
 

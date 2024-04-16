@@ -1,4 +1,3 @@
-import { isClient } from "@vueuse/core"
 import type { Router } from "vue-router"
 import type { UserModule } from "~/types"
 
@@ -57,13 +56,13 @@ function setSmoothScrollWhenClickAnchor(router: Router, isClient: boolean) {
     }
 }
 
-function handleHashChange() {
-    if (isClient) {
-        window.addEventListener("hashchange", (e) => {
-            e.preventDefault()
-        })
-    }
-}
+// function handleHashChange() {
+//     if (isClient) {
+//         window.addEventListener("hashchange", (e) => {
+//             e.preventDefault()
+//         })
+//     }
+// }
 
 function scrollTo(el: HTMLElement, hash: string, smooth = false) {
     let target: HTMLElement | null = null

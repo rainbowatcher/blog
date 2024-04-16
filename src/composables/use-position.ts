@@ -33,7 +33,6 @@ export function useAsidePos() {
 /**
  * Custom hook that retrieves the font size of a given element or returns a default value.
  *
- * @param maybeElRef Optional reference to the element whose font size is to be retrieved.
  * @param defaultSize The default font size to be returned if no element is provided or if running on the server-side.
  * @returns The font size of the element, if available and running on the client-side; otherwise, it returns the default font size.
  */

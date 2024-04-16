@@ -2,7 +2,6 @@
 // Customized pre-fetch for page chunks based on
 // https://github.com/GoogleChromeLabs/quicklink
 
-import type { Router } from "vue-router"
 import { isBrowser, pathToFile } from "~/utils"
 
 const hasFetched = new Set<string>()
@@ -23,36 +22,40 @@ function viaXHR(url: string) {
 
 let link
 const doFetch: (url: string) => void
-  = isBrowser
-  && (link = createLink())
-  && link.relList
-  && link.relList.supports
-  && link.relList.supports("prefetch")
-      ? viaDOM
-      : viaXHR
+  = () => {
+      if (isBrowser) {
+          link = createLink()
+          if (link.relList && link.relList.supports && link.relList.supports("prefetch")) {
+              return viaDOM
+          }
+          else {
+              return viaXHR
+          }
+      }
+  }
 
-export function usePrefetch(router: Router) {
-    if (!isBrowser)
+export function usePrefetch() {
+    if (!isBrowser) {
         return
+    }
 
-    if (!window.IntersectionObserver)
+    if (!window.IntersectionObserver) {
         return
+    }
 
-    let conn
-    if (
-        (conn = (navigator as any).connection)
-        && (conn.saveData || /2g/.test(conn.effectiveType))
-    ) {
-    // Don't prefetch if using 2G or if Save-Data is enabled.
+    const conn = (navigator as any).connection
+    if (conn.saveData || /2g/.test(conn.effectiveType)) {
+        // Don't prefetch if using 2G or if Save-Data is enabled.
         return
     }
 
     const rIC = window.requestIdleCallback || setTimeout
-    let observer: IntersectionObserver | undefined
+    let observer: IntersectionObserver | null = null
 
     const observeLinks = () => {
-        if (observer)
+        if (observer) {
             observer.disconnect()
+        }
 
         observer = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
@@ -63,7 +66,8 @@ export function usePrefetch(router: Router) {
                     if (!hasFetched.has(pathname)) {
                         hasFetched.add(pathname)
                         const pageChunkPath = pathToFile(pathname)
-                        doFetch(pageChunkPath)
+                        if (pageChunkPath)
+                            doFetch(pageChunkPath)
                     }
                 }
             })
@@ -73,7 +77,6 @@ export function usePrefetch(router: Router) {
             document
                 .querySelectorAll<HTMLAnchorElement | SVGAElement>("#app a")
                 .forEach((link) => {
-                    const { target } = link
                     const { hostname, pathname } = new URL(
                         link.href instanceof SVGAnimatedString
                             ? link.href.animVal
@@ -81,13 +84,14 @@ export function usePrefetch(router: Router) {
                         link.baseURI,
                     )
                     const extMatch = pathname.match(/\.\w+$/)
-                    if (extMatch && extMatch[0] !== ".html")
+                    if (extMatch && extMatch[0] !== ".html") {
                         return
+                    }
 
                     if (
                     // only prefetch same tab navigation, since a new tab will load
                     // the lean js chunk instead.
-                        target !== "_blank"
+                        link.target !== "_blank"
                         // only prefetch inbound links
                         && hostname === location.hostname
                     ) {
@@ -109,7 +113,8 @@ export function usePrefetch(router: Router) {
 
     onMounted(observeLinks)
 
-    watch(() => router.currentRoute.value.path, observeLinks)
+    const route = useRoute()
+    watch(() => route.path, observeLinks)
 
     onUnmounted(() => {
         observer && observer.disconnect()

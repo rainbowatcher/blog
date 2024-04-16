@@ -24,7 +24,7 @@ onMounted(async () => {
     await renderChart()
 
     // refresh images on first render
-    const hasImages = /<img([\w\W]+?)>/.exec(decodeURIComponent(props.graph))?.length || 0 > 0
+    const hasImages = /<img([\w\W]+?)>/.exec(decodeURIComponent(props.graph))?.length || false
     if (hasImages)
         setTimeout(() => {
             const imgElements = document.getElementsByTagName("img")

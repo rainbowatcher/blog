@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { MenuItem } from "~/types"
 
-const props = defineProps<{
+defineProps<{
     headers: MenuItem[]
 }>()
 </script>

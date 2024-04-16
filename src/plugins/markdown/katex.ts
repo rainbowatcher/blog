@@ -118,7 +118,6 @@ function mathBlock(state: StateBlock, start: number, end: number, silent: boolea
     let lastLine
     let next
     let lastPos
-    // eslint-disable-next-line @typescript-eslint/naming-convention
     let found = false
     let pos = state.bMarks[start] + state.tShift[start]
     let max = state.eMarks[start]

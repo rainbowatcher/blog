@@ -9,5 +9,7 @@ export default antfu({
     rules: {
         curly: "off",
     },
-    ignores: [".github/**"],
+    yaml: false,
+}).prepend({
+    ignores: ["**/*.d.ts"],
 })

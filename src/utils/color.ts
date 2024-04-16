@@ -45,7 +45,6 @@ if (import.meta.vitest) {
 
         it("should return a rgba color", () => {
             const color = randomColor("rgba")
-            console.log(color)
             expect(color).toMatch(/^rgba\(\d+, \d+, \d+, (0(\.\d+)?|1(\.0+)?)\)$/)
         })
 
@@ -61,7 +60,6 @@ if (import.meta.vitest) {
 
         it("should have a min brightness", () => {
             const color = randomColor("rgb", 0.2)
-            console.log(color)
             const [r, g, b] = color.match(/\d+/g)!.map(Number)
             expect(r + g + b).toBeGreaterThan(0.2 * 255 * 3)
         })

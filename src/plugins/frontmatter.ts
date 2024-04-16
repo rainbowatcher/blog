@@ -1,5 +1,6 @@
 import { readFileSync } from "node:fs"
 import { resolve } from "node:path"
+import process from "node:process"
 import matter from "gray-matter"
 import { getCreateTime, getGitStat, getUpdateTime } from "../utils/git"
 
