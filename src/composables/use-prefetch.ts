@@ -1,7 +1,8 @@
 // https://github.com/vuejs/vitepress/blob/main/src/client/app/composables/preFetch.ts
 // Customized pre-fetch for page chunks based on
 // https://github.com/GoogleChromeLabs/quicklink
-
+import { useRoute } from "vue-router"
+import { onMounted, onUnmounted, watch } from "vue"
 import { isBrowser, pathToFile } from "~/utils"
 
 const hasFetched = new Set<string>()
@@ -21,18 +22,17 @@ function viaXHR(url: string) {
 }
 
 let link
-const doFetch: (url: string) => void
-  = () => {
-      if (isBrowser) {
-          link = createLink()
-          if (link.relList && link.relList.supports && link.relList.supports("prefetch")) {
-              return viaDOM
-          }
-          else {
-              return viaXHR
-          }
-      }
-  }
+function doFetch(url: string) {
+    if (isBrowser) {
+        link = createLink()
+        if (link.relList?.supports?.("prefetch")) {
+            viaDOM(url)
+        }
+        else {
+            viaXHR(url)
+        }
+    }
+}
 
 export function usePrefetch() {
     if (!isBrowser) {
@@ -66,8 +66,9 @@ export function usePrefetch() {
                     if (!hasFetched.has(pathname)) {
                         hasFetched.add(pathname)
                         const pageChunkPath = pathToFile(pathname)
-                        if (pageChunkPath)
+                        if (pageChunkPath) {
                             doFetch(pageChunkPath)
+                        }
                     }
                 }
             })
