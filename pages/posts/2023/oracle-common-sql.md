@@ -124,6 +124,34 @@ SELECT owner,
        ceil(max_size / (1024 * 1024 * 1024)) AS "上限(G)",
        bytes / (1024 * 1024 * 1024)          AS "空间大小(G)"
   FROM dba_segments a
+
+-- 用户所有表的大小，按大小排序
+SELECT owner,
+       table_name,
+       TRUNC(sum(bytes) / 1024 / 1024)           AS Meg,
+       ROUND(ratio_to_report(sum(bytes)) OVER () * 100) AS Percent
+  FROM (SELECT segment_name AS table_name, owner, bytes
+          FROM dba_segments
+         WHERE segment_type IN ('TABLE', 'TABLE PARTITION', 'TABLE SUBPARTITION')
+         UNION ALL
+        SELECT i.table_name, i.owner, s.bytes
+          FROM dba_indexes i, dba_segments s
+         WHERE s.segment_name = i.index_name AND s.owner = i.owner
+           AND s.segment_type IN ('INDEX', 'INDEX PARTITION', 'INDEX SUBPARTITION')
+         UNION ALL
+        SELECT l.table_name, l.owner, s.bytes
+          FROM dba_lobs l, dba_segments s
+         WHERE s.segment_name = l.segment_name AND s.owner = l.owner
+           AND s.segment_type IN ('LOBSEGMENT', 'LOB PARTITION')
+         UNION ALL
+        SELECT l.table_name, l.owner, s.bytes
+          FROM dba_lobs l, dba_segments s
+         WHERE s.segment_name = l.index_name AND s.owner = l.owner AND s.segment_type = 'LOBINDEX'
+       )
+ WHERE owner IN UPPER('TRACEUSER')
+ GROUP BY table_name, owner
+HAVING SUM(bytes) / 1024 / 1024 > 10 /* Ignore really small tables */
+ ORDER BY SUM(bytes) DESC;
 ```
 
 ## 表
