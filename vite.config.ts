@@ -16,7 +16,7 @@ import { unheadComposablesImports } from "unhead"
 import {
     // buildIndex,
     dynamicRoute,
-    elevateStyle,
+    // elevateStyle,
     extendRouteMeta,
     markdownEnhance,
     resolveHiddenPost,
