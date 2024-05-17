@@ -24,6 +24,7 @@ const nanoid = customAlphabet("abcdefghijklmnopqrstuvwxyz", 10)
  *    [{ line: number, classes: string[] }]
  */
 function attrsToLines(attrs: string): TransformerCompactLineOption[] {
+    // eslint-disable-next-line regexp/no-super-linear-backtracking, regexp/optimal-quantifier-concatenation
     attrs = attrs.replace(/^(?:\[.*?\])?.*?([\d,-]+).*/, "$1").trim()
     const result: number[] = []
     if (!attrs) {

@@ -13,7 +13,7 @@ export function useCopyCode() {
                     return
                 }
 
-                const isShell = /language-(shellscript|shell|bash|sh|zsh)/.test(
+                const isShell = /language-(?:shellscript|shell|bash|sh|zsh)/.test(
                     parent.className,
                 )
 
@@ -25,7 +25,7 @@ export function useCopyCode() {
                 text = text.slice(0, -1)
 
                 if (isShell) {
-                    text = text.replace(/^\s*$ /gm, "").trim()
+                    text = text.replace(/^\s*\$ /gm, "").trim()
                 }
 
                 void copyToClipboard(text).then(() => {

@@ -17,7 +17,7 @@ export function preWrapperPlugin(md: MarkdownIt) {
 
         const lang = extractLang(info)
         const rawCode = fence(...args)
-        return `<div class="language-${lang}${/ active( |$)/.test(info) ? " active" : ""}"><button title="Copy Code" class="copy"></button><span class="lang">${
+        return `<div class="language-${lang}${/ active(?: |$)/.test(info) ? " active" : ""}"><button title="Copy Code" class="copy"></button><span class="lang">${
             lang === "vue-html" ? "template" : lang
         }</span>${rawCode}</div>`
     }
@@ -26,6 +26,6 @@ export function preWrapperPlugin(md: MarkdownIt) {
 export function extractLang(info: string) {
     return info
     // .replace(/:(no-)?line-numbers({| |$).*/, "")
-        .replace(/(-vue|{| ).*$/, "")
+        .replace(/(-vue|\{| ).*$/, "")
     // .replace(/^vue-html$/, "template")
 }
