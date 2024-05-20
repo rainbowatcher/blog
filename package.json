@@ -52,7 +52,7 @@
         "dayjs": "^1.11.11",
         "diacritics": "^1.3.0",
         "eslint": "^9.3.0",
-        "execa": "^8.0.1",
+        "execa": "^9.1.0",
         "flexsearch": "^0.7.43",
         "globby": "^14.0.1",
         "gray-matter": "^4.0.3",
