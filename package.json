@@ -28,7 +28,7 @@
     "devDependencies": {
         "@akiravoid/markdown-it-footnote": "^1.0.2",
         "@akiravoid/markdown-it-mark": "^1.0.2",
-        "@antfu/eslint-config": "^2.27.3",
+        "@antfu/eslint-config": "^3.3.2",
         "@floating-ui/vue": "^1.1.4",
         "@iconify-json/carbon": "^1.2.1",
         "@iconify-json/icon-park-outline": "^1.2.0",
