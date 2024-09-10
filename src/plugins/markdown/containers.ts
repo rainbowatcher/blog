@@ -1,8 +1,8 @@
+import container from "markdown-it-container"
+import { nanoid } from "nanoid"
 import type MarkdownIt from "markdown-it"
 import type { RenderRule } from "markdown-it/lib/renderer"
 import type Token from "markdown-it/lib/token"
-import container from "markdown-it-container"
-import { nanoid } from "nanoid"
 import { extractLang } from "./pre-wrapper"
 
 export function containerPlugin(md: MarkdownIt) {
@@ -34,7 +34,7 @@ function createContainer(
         container,
         clazz,
         {
-            render(tokens, idx) {
+            render(tokens: Token[], idx: number) {
                 const token = tokens[idx]
                 const info = token.info.trim().slice(clazz.length).trim()
                 if (token.nesting === 1) {
@@ -57,7 +57,7 @@ function createCodeGroup(): ContainerArgs {
         container,
         "code-group",
         {
-            render(tokens, idx) {
+            render(tokens: Token[], idx: number) {
                 if (tokens[idx].nesting === 1) {
                     const name = nanoid(5)
                     let tabs = ""

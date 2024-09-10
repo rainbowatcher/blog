@@ -25,8 +25,8 @@ SSG: 静态内容生成
 // src/node/cli.ts
 import c from "picocolors" // 控制台颜色库
 import minimist from "minimist" // 命令行参数解析库
-import { version } from "../../package.json"
-import { build, createServer, serve } from "." // 从index.ts中导入
+import { build, createServer, serve } from "."
+import { version } from "../../package.json" // 从index.ts中导入
 
 const argv: any = minimist(process.argv.slice(2))
 

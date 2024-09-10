@@ -22,7 +22,7 @@ export function lineNumberPlugin(md: MarkdownIt, options: LineNumberOptions) {
             rawCode.indexOf("</code>"),
         ).split("\n")
 
-        const lineNumbersCode = [...Array(lines.length - 1)]
+        const lineNumbersCode = [...Array.from({ length: lines.length - 1 })]
             .map(
                 (_line, index) => `<span class="${className}" aria-hidden="true">${index + 1}</span><br>`,
             )

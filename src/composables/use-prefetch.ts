@@ -1,8 +1,8 @@
 // https://github.com/vuejs/vitepress/blob/main/src/client/app/composables/preFetch.ts
 // Customized pre-fetch for page chunks based on
+import { onMounted, onUnmounted, watch } from "vue"
 // https://github.com/GoogleChromeLabs/quicklink
 import { useRoute } from "vue-router"
-import { onMounted, onUnmounted, watch } from "vue"
 import { isBrowser, pathToFile } from "~/utils"
 
 const hasFetched = new Set<string>()
@@ -118,6 +118,6 @@ export function usePrefetch() {
     watch(() => route.path, observeLinks)
 
     onUnmounted(() => {
-        observer && observer.disconnect()
+        observer?.disconnect()
     })
 }

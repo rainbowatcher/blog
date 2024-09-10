@@ -2,11 +2,11 @@ import { randomInt } from "./utilities"
 
 type ColorType = "rgba" | "rgb" | "hex" | "hsl"
 
-export function randomColor(type: ColorType = "hex", minBright = 0): string {
-    function rgbToHex(r: number, g: number, b: number): string {
-        return `#${((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1)}`
-    }
+function rgbToHex(r: number, g: number, b: number): string {
+    return `#${((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1)}`
+}
 
+export function randomColor(type: ColorType = "hex", minBright = 0): string {
     let r, g, b
     do {
         r = randomInt(0, 255)

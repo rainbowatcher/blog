@@ -17,7 +17,8 @@ export function routeRecordToPages(route: RouteRecordNormalized) {
 }
 
 export function usePages() {
-    return useRouter().getRoutes()
+    return useRouter()
+        .getRoutes()
         .filter(i => i.path.startsWith("/posts/") && !i.meta.frontmatter.hide)
         .sort((a, b) => +new Date(b.meta.frontmatter.date) - +new Date(a.meta.frontmatter.date))
         .map(routeRecordToPages)

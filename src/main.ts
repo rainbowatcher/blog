@@ -1,15 +1,15 @@
+import routes from "~pages"
 import { ViteSSG } from "vite-ssg"
 import App from "./App.vue"
-import type { UserModule } from "./types"
 import { scrollBehavior } from "./modules/router"
-import routes from "~pages"
+import type { UserModule } from "./types"
 
 import "@unocss/reset/normalize.css"
 import "@unocss/reset/tailwind.css"
-import "~/styles/theme.scss"
+import "~/styles/container.scss"
 import "~/styles/fonts.scss"
 import "~/styles/main.scss"
-import "~/styles/container.scss"
+import "~/styles/theme.scss"
 import "uno.css"
 
 // https://github.com/antfu/vite-ssg

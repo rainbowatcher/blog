@@ -1,5 +1,5 @@
-import { execaSync } from "execa"
 import dayjs from "dayjs"
+import { execaSync } from "execa"
 
 export function getGitStat(path: string) {
     const { stdout } = execaSync("git", ["--no-pager", "shortlog", "-nes", "HEAD", "--", path])

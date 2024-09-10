@@ -1,18 +1,16 @@
 import { resolve } from "node:path"
-import { defineConfig } from "vitest/config"
-// Vite plugins
-import Vue from "@vitejs/plugin-vue"
-import Pages from "vite-plugin-pages"
-import generateSitemap from "vite-ssg-sitemap"
-import Components from "unplugin-vue-components/vite"
-import AutoImport from "unplugin-auto-import/vite"
-import Markdown from "vite-plugin-vue-markdown"
 import VueI18n from "@intlify/unplugin-vue-i18n/vite"
-import Inspect from "vite-plugin-inspect"
-// Other
-import Unocss from "unocss/vite"
+import Vue from "@vitejs/plugin-vue"
 import autoprefixer from "autoprefixer"
 import { unheadComposablesImports } from "unhead"
+import Unocss from "unocss/vite"
+import AutoImport from "unplugin-auto-import/vite"
+import Components from "unplugin-vue-components/vite"
+import Inspect from "vite-plugin-inspect"
+import Pages from "vite-plugin-pages"
+import Markdown from "vite-plugin-vue-markdown"
+import generateSitemap from "vite-ssg-sitemap"
+import { defineConfig } from "vitest/config"
 import {
     // buildIndex,
     dynamicRoute,

@@ -1,8 +1,8 @@
 <!-- ref: https://github.com/mermaid-js/mermaid/blob/develop/packages/mermaid/src/docs/.vitepress/theme/Mermaid.vue  -->
 <script lang="ts" setup>
-import type { MermaidConfig } from "mermaid"
 import mermaid from "mermaid"
 import { onMounted, onUnmounted, ref } from "vue"
+import type { MermaidConfig } from "mermaid"
 
 const props = defineProps({
     graph: {
@@ -25,7 +25,7 @@ onMounted(async () => {
 
     // refresh images on first render
     const hasImages = /<img([\s\S]+?)>/.exec(decodeURIComponent(props.graph))?.length || false
-    if (hasImages)
+    if (hasImages) {
         setTimeout(() => {
             const imgElements = document.getElementsByTagName("img")
             const imgs = Array.from(imgElements)
@@ -44,6 +44,7 @@ onMounted(async () => {
                 })
             }
         }, 100)
+    }
 })
 
 onUnmounted(() => mut?.disconnect())

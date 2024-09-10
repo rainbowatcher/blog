@@ -1,8 +1,4 @@
 // Modified from: https://github.com/vuejs/vitepress/blob/main/src/node/markdown/plugins/highlight.ts
-import { customAlphabet } from "nanoid"
-import c from "picocolors"
-import type { ShikiTransformer } from "shiki"
-import { bundledLanguages, getHighlighter, isSpecialLang } from "shiki"
 import {
     type TransformerCompactLineOption,
     transformerCompactLineOptions,
@@ -11,6 +7,10 @@ import {
     transformerNotationFocus,
     transformerNotationHighlight,
 } from "@shikijs/transformers"
+import { customAlphabet } from "nanoid"
+import c from "picocolors"
+import { bundledLanguages, getSingletonHighlighter, isSpecialLang } from "shiki"
+import type { ShikiTransformer } from "shiki"
 import type { Logger } from "vite"
 
 const nanoid = customAlphabet("abcdefghijklmnopqrstuvwxyz", 10)
@@ -56,7 +56,7 @@ export async function highlight(
     const defaultLang = ""
     const userTransformers: never[] = []
 
-    const highlighter = await getHighlighter({
+    const highlighter = await getSingletonHighlighter({
         themes: [theme],
         langs: [...Object.keys(bundledLanguages)],
     // langAlias: options.languageAlias
@@ -106,9 +106,9 @@ export async function highlight(
             if (!langLoaded && !isSpecialLang(lang)) {
                 logger.warn(
                     c.yellow(
-            `\nThe language '${lang}' is not loaded, falling back to '${
-              defaultLang || "txt"
-            }' for syntax highlighting.`,
+                        `\nThe language '${lang}' is not loaded, falling back to '${
+                            defaultLang || "txt"
+                        }' for syntax highlighting.`,
                     ),
                 )
                 lang = defaultLang

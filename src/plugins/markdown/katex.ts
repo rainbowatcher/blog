@@ -1,11 +1,11 @@
 // ref: https://github.com/Renovamen/vuepress-theme-gungnir/blob/main/packages/plugins/katex/src/node/markdown-it-katex.ts
 import katex from "katex"
-import type { KatexOptions } from "katex"
-import type MarkdownIt from "markdown-it"
-import type StateBlock from "markdown-it/lib/rules_block/state_block"
-import type StateInline from "markdown-it/lib/rules_inline/state_inline"
-import type Token from "markdown-it/lib/token"
 import { escapeHtml } from "markdown-it/lib/common/utils"
+import type { KatexOptions } from "katex"
+import type * as MarkdownIt from "markdown-it"
+import type * as StateBlock from "markdown-it/lib/rules_block/state_block"
+import type * as StateInline from "markdown-it/lib/rules_inline/state_inline"
+import type * as Token from "markdown-it/lib/token"
 
 function isValidDelim(state: StateInline, pos: number): { canOpen: boolean, canClose: boolean } {
     const prevChar = pos > 0 ? state.src.charCodeAt(pos - 1) : -1
@@ -22,8 +22,9 @@ function isValidDelim(state: StateInline, pos: number): { canOpen: boolean, canC
         prevChar === 0x20
         || /* " " */ prevChar === 0x09
         || /* \t */ (nextChar >= 0x30 /* "0" */ && nextChar <= 0x39) /* "9" */
-    )
+    ) {
         canClost = false
+    }
 
     if (nextChar === 0x20 /* " " */ || nextChar === 0x09 /* \t */)
         canOpen = false

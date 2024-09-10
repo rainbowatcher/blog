@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { useTags } from "../../src/composables/use-tags"
 import { usePages } from "../../src/composables/use-pages"
+import { useTags } from "../../src/composables/use-tags"
 
 const tags = useTags()
 const pages = usePages()

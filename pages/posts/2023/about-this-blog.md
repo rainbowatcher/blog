@@ -178,7 +178,7 @@ export default defineUserConfig({
 
 ### 作者信息
 
-```javascript
+```ts
 // .vuepress/config.js
 import { GungnirThemeOptions } from "vuepress-theme-gungnir"
 

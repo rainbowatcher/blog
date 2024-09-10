@@ -41,9 +41,9 @@ pnpm i -D vite-ssg vue-router @unhead/vue
 1. 修改 main.ts
 
 ```typescript [src/main.ts]
+import routes from "~pages"
 import { ViteSSG } from "vite-ssg"
-import App from "./App.vue"
-import routes from "~pages" // vite-plugin-pages
+import App from "./App.vue" // vite-plugin-pages
 
 // `export const createApp` is required instead of the original `createApp(App).mount('#app')`
 export const createApp = ViteSSG(

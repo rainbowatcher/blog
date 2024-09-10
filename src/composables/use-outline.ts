@@ -1,4 +1,4 @@
-import { type Ref, onMounted, onUnmounted, onUpdated } from "vue"
+import { onMounted, onUnmounted, onUpdated, type Ref } from "vue"
 import type { MenuItem } from "~/types"
 import { throttleAndDebounce } from "~/utils"
 import { toPx } from "~/utils/unit"
@@ -61,7 +61,8 @@ export function useActiveAnchor(
             container.value?.querySelectorAll(".outline-link"),
         ) as HTMLAnchorElement[]
 
-        const anchors = [].slice
+        const anchors = []
+            .slice
             .call(document.querySelectorAll(".markdown-body .header-anchor"))
             .filter((anchor: HTMLAnchorElement) => {
                 return links.some((link) => {
@@ -125,7 +126,7 @@ export function useActiveAnchor(
 
 function getAnchorTop(anchor: HTMLAnchorElement): number {
     const pageHeaderHeight = useCssVar("--sika-h-page-nav")
-    return anchor.parentElement!.offsetTop - toPx(pageHeaderHeight.value)
+    return anchor.parentElement!.offsetTop - toPx(pageHeaderHeight.value!)
 }
 
 function isAnchorActive(
