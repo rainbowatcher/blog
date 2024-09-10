@@ -3,17 +3,14 @@ layout: post
 title: Docker 常用的容器启动命令
 subtitle:
 date: 2022-08-12
-permalinkPattern: /post/:year/:month/:day/:slug/
 headerImage: /img/docker.png
-useHeaderImage: true
-hide: false
 tags: [Docker, Container]
 ---
 
-## MySQL [<Badge type="tip" text="tags" vertical="middle"/>](https://hub.docker.com/_/mysql/tags)
+## MySQL [<Badge type="tip" text="tags" vertical="middle"/>](https://hub.docker.com/_/mysql?tab=tags)
 
 ```shell
-id=$(docker ps -aqf 'name=mysql5.7$');[ $id ] && docker rm $id
+id=$(docker ps -aqf 'name=mysql5.7');[ $id ] && docker rm $id
 docker run -tid \
   --name mysql5.7 \
   -v ~/DockerVolumes/mysql:/var/lib/mysql \
@@ -58,7 +55,7 @@ docker run -d \
   portainer/portainer-ce
 ```
 
-## Redis [<Badge type="tip" text="tags" vertical="middle"/>](https://hub.docker.com/_/redis/tags)
+## Redis [<Badge type="tip" text="tags" vertical="middle"/>](https://hub.docker.com/_/redis?tab=tags)
 
 ```shell
 docker run -tid \
@@ -68,11 +65,12 @@ docker run -tid \
   redis
 ```
 
-## ElasticSearch [<Badge type="tip" text="tags" vertical="middle"/>](https://hub.docker.com/_/elasticsearch/tags)
+## ElasticSearch [<Badge type="tip" text="tags" vertical="middle"/>](https://hub.docker.com/_/elasticsearch?tab=tags)
 
 ```shell
 docker network create elk
-id=$(docker ps -aqf 'name=elasticsearch7$');[ $id ] && docker stop $id;docker rm $id
+id=$(docker ps -qf name=elasticsearch7$);[ $id ] && docker stop $id;
+id=$(docker ps -qaf name=elasticsearch7$);[ $id ] && docker rm $id;
 docker run -d \
   --name elasticsearch7 \
   --net elk \
@@ -84,7 +82,7 @@ docker run -d \
   elasticsearch:7.7.0
 ```
 
-## Kibana [<Badge type="tip" text="tags" vertical="middle"/>](https://hub.docker.com/_/kibana/tags)
+## Kibana [<Badge type="tip" text="tags" vertical="middle"/>](https://hub.docker.com/_/kibana?tab=tags)
 
 ```shell
 # 7.7.0
@@ -119,18 +117,21 @@ docker run -d \
 OpenGrok 是一个源代码查看的工具，感觉优势主要是轻量吧。
 
 ```shell
+id=$(docker ps -qf name=opengrok$);[ $id ] && docker stop $id;
+id=$(docker ps -qaf name=opengrok$);[ $id ] && docker rm $id;
 docker run -d \
+  --name opengrok \
   -v ~/DockerVolumes/opengrok/src:/opengrok/src \
   -p 8080:8080 \
   -e TZ=Asia/Shanghai \
-  --name opengrok \
   opengrok/docker:latest
 ```
 
 ## zookeeper [<Badge type="tip" text="tags" vertical="middle" />](https://hub.docker.com/r/bitnami/zookeeper)
 
 ```shell
-id=$(docker ps -aqf 'name=zookeeper$');[ $id ] && docker rm $id
+id=$(docker ps -qf name=zookeeper$);[ $id ] && docker stop $id;
+id=$(docker ps -qaf name=zookeeper$);[ $id ] && docker rm $id;
 docker run -d --name zookeeper \
   -p 2181:2181 \
   -e ALLOW_ANONYMOUS_LOGIN=yes \
@@ -140,12 +141,13 @@ docker run -d --name zookeeper \
 ## kafka [<Badge type="tip" text="tags" vertical="middle" />](https://hub.docker.com/r/bitnami/kafka)
 
 ```shell
-id=$(docker ps -aqf 'name=kafka$');[ $id ] && docker stop "$id" && docker rm "$id"
+id=$(docker ps -qf name=kafka$);[ $id ] && docker stop $id;
+id=$(docker ps -qaf name=kafka$);[ $id ] && docker rm $id;
 docker run -d --name kafka \
-    -e KAFKA_CFG_AUTO_CREATE_TOPICS_ENABLE=true \
+    --hostname kafka \
     -e KAFKA_CFG_NODE_ID=0 \
     -e KAFKA_CFG_PROCESS_ROLES=controller,broker \
-    -e KAFKA_CFG_CONTROLLER_QUORUM_VOTERS=0@127.0.0.1:9093 \
+    -e KAFKA_CFG_CONTROLLER_QUORUM_VOTERS=0@kafka:9093 \
     -e KAFKA_CFG_LISTENERS=PLAINTEXT://:9092,CONTROLLER://:9093,EXTERNAL://:9094 \
     -e KAFKA_CFG_ADVERTISED_LISTENERS=PLAINTEXT://kafka:9092,EXTERNAL://localhost:9094 \
     -e KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP=CONTROLLER:PLAINTEXT,EXTERNAL:PLAINTEXT,PLAINTEXT:PLAINTEXT \
@@ -158,7 +160,8 @@ docker run -d --name kafka \
 ## Kafka-ui [<Badge type="tip" text="tags" vertical="middle" />](https://github.com/provectus/kafka-ui)
 
 ```bash
-id=$(docker ps -aqf 'name=kafka-ui$');[ $id ] && docker rm $id
+id=$(docker ps -qf name=kafka-ui$);[ $id ] && docker stop $id;
+id=$(docker ps -qaf name=kafka-ui$);[ $id ] && docker rm $id;
 docker run -dit \
     --name kafka-ui \
     -p 8080:8080 \
@@ -167,10 +170,11 @@ docker run -dit \
     provectuslabs/kafka-ui
 ```
 
-## MeiliSearch
+## MeiliSearch [<Badge type="tip" text="tags" vertical="middle" />](https://github.com/meilisearch/meilisearch)
 
 ```bash
-id=$(docker ps -aqf 'name=meilisearch$');[ $id ] && docker rm $id
+id=$(docker ps -qf name=meilisearch$);[ $id ] && docker stop $id;
+id=$(docker ps -qaf name=meilisearch$);[ $id ] && docker rm $id;
 docker run -itd \
     --name meilisearch \
     -p 7700:7700 \
@@ -179,14 +183,15 @@ docker run -itd \
     getmeili/meilisearch:v1.5
 ```
 
-## PostgreSQL
+## PostgreSQL [<Badge type="tip" text="tags" vertical="middle" />](https://github.com/postgres/postgres)
 
 ::: tip
 当设置了 POSTGRES_USER 变量时，会以指定的用户名为超级管理员，同时会创建同名数据库，若不指定则默认用户为 postgres
 :::
 
 ```bash
-id=$(docker ps -aqf 'name=postgresql$');[ $id ] && docker rm $id
+id=$(docker ps -qf name=postgresql$);[ $id ] && docker stop $id;
+id=$(docker ps -qaf name=postgresql$);[ $id ] && docker rm $id;
 docker run -itd \
     --name postgresql \
     -e POSTGRES_USER=root \
@@ -194,4 +199,54 @@ docker run -itd \
     -p 5432:5432 \
     -v ~/DockerVolumes/postgresql/data:/var/lib/postgresql/data \
     -d postgres:alpine
+```
+
+## Gitea [<Badge type="tip" text="tags" vertical="middle" />](https://github.com/go-gitea/gitea)
+
+```yaml
+version: "3"
+
+networks:
+  gitea:
+    external: false
+
+volumes:
+  gitea:
+    driver: local
+
+services:
+  server:
+    image: gitea/gitea:1.21.11
+    container_name: gitea
+    environment:
+      - USER_UID=1000
+      - USER_GID=1000
+      - GITEA__database__DB_TYPE=mysql
+      - GITEA__database__HOST=db:3306
+      - GITEA__database__NAME=gitea
+      - GITEA__database__USER=gitea
+      - GITEA__database__PASSWD=gitea
+    restart: always
+    networks:
+      - gitea
+    volumes:
+      - gitea:/data
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+    ports:
+      - "8081:3000"
+      - "2281:22"
+
+  db:
+    image: mysql:8
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=gitea
+      - MYSQL_USER=gitea
+      - MYSQL_PASSWORD=gitea
+      - MYSQL_DATABASE=gitea
+    networks:
+      - gitea
+    volumes:
+      - ./mysql:/var/lib/mysql
 ```

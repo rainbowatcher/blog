@@ -6,9 +6,9 @@ import { unheadComposablesImports } from "unhead"
 import Unocss from "unocss/vite"
 import AutoImport from "unplugin-auto-import/vite"
 import Components from "unplugin-vue-components/vite"
+import Markdown from "unplugin-vue-markdown/vite"
 import Inspect from "vite-plugin-inspect"
 import Pages from "vite-plugin-pages"
-import Markdown from "vite-plugin-vue-markdown"
 import generateSitemap from "vite-ssg-sitemap"
 import { defineConfig } from "vitest/config"
 import {
@@ -29,6 +29,11 @@ export default defineConfig({
     },
     define: {
         "import.meta.vitest": undefined,
+    },
+    server: {
+        warmup: {
+            clientFiles: ["src/**/*.vue", "pages/**/*.vue"],
+        },
     },
     publicDir: "src/public",
     plugins: [
@@ -55,7 +60,6 @@ export default defineConfig({
                 "vue",
                 "vue-router",
                 "vue-i18n",
-                "vue/macros",
                 "@vueuse/core",
                 ...unheadComposablesImports,
             ],
@@ -123,7 +127,7 @@ export default defineConfig({
             logLevel: "error",
         },
         dirStyle: "nested",
-        script: "async defer",
+        script: "async",
         formatting: "minify",
         // onPageRendered(_route, indexHTML) {
         //     indexHTML = elevateStyle(indexHTML)
