@@ -27,11 +27,7 @@ export function mermaidPlugin(md: MarkdownIt) {
       <div class="language-mermaid">
         <button class="copy"></button>
         <span class="lang">mermaid</span>
-        ${
-    // html is pre-escaped by the highlight function
-    // (it also adds `v-pre` to ignore Vue template syntax)
-    md.options.highlight(token.content, "mermaid", langAttrs)
-}
+        ${md.options.highlight(token.content, "mermaid", langAttrs)}
       </div>`
         }
         else if (token.info.trim() === "mermaid") {
