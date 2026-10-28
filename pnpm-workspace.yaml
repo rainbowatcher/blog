@@ -1,0 +1,7 @@
+allowBuilds:
+  '@parcel/watcher': false
+  esbuild: false
+  vue-demi: false
+minimumReleaseAgeExclude:
+  - '@intlify/bundle-utils@11.2.8'
+  - '@intlify/unplugin-vue-i18n@11.2.8'
